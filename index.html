@@ -1,24 +1,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css" type="text/css"/>
-    <script id="vert-shader" type="x-shader/x-vertex">
-        attribute vec2 a_position;
-        uniform mat3 u_matrix;
 
-        // shader main function
-        void main() {
-            vec2 position = (u_matrix * vec3(a_position, 1)).xy;
-            gl_Position = vec4(position, 0, 1);
-        }
-    </script>
-    <script id="frag-shader" type="x-shader/x-fragment">
-        precision mediump float;
-        uniform vec4 u_color;
-
-        void main() {
-            gl_FragColor = u_color;
-        }
-    </script>
     <script id="frag-shader-3d" type="x-shader/x-fragment">
         precision mediump float;
         varying vec3 v_normal;
@@ -33,6 +16,7 @@
             gl_FragColor.rgb *= light;
         }
     </script>
+
     <script id="vert-shader-3d" type="x-shader/x-vertex">
         attribute vec4 a_position;
         attribute vec3 a_normal;
@@ -54,14 +38,14 @@
         }
     </script>
 
-    <script src="glUtils.js"></script>
     <title>Mihael Medan - Diplomski</title>
 </head>
 <body>
 <canvas id="main-canvas" width="600" height="600"></canvas>
+<script src="engine/rendering/shaderUtils.js" type="module"></script>
+<script src="engine/math/vec3.js" type="module"></script>
+<script src="engine/math/mat4.js" type="module"></script>
+
 <script src="index.js" type="module"></script>
-<script src="vec3.js" type="module"></script>
-<script src="mat3.js" type="module"></script>
-<script src="mat4.js" type="module"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-import {mat4} from "./mat4.js";
+import {mat4} from "../math/mat4.js";
 
 export class Camera3D {
     constructor(fov, aspect, near, far) {

@@ -1,5 +1,5 @@
-import {vec3} from "./vec3.js";
-import {mat4} from "./mat4.js";
+import {vec3} from "../math/vec3.js";
+import {mat4} from "../math/mat4.js";
 
 export class Mesh {
     constructor(gl, program) {
@@ -13,15 +13,18 @@ export class Mesh {
             scale: [1, 1, 1]
         }
 
+        this.gl.useProgram(this.program);
+
         let modelMatrix = null;
         this.calculateModelMatrix();
         this.initSkeleton();
     }
 
-    render(camera) {
+    render() {
+        this.gl.useProgram(this.program);
         const verticesAttribute = this.attributes['a_position'];
 
-        this.setRenderMatrices(camera.projectionViewMatrix());
+        this.setRenderMatrices(this.camera.projectionViewMatrix());
         this.fillUniforms();
         this.fillBuffers();
 
@@ -32,10 +35,18 @@ export class Mesh {
         );
     }
 
+    update() {
+    }
+
+    setCamera(camera) {
+        this.camera = camera;
+    }
+
     setColor(color) {
         this.setUniform('u_color', 'uniform4fv', color);
     }
 
+    // temporarily calculates it's own
     setSkeletonWeights(weights) {
         if (!this.attributes['a_weights']) {
             this.createAttributeBuffer('a_weights', 1);
@@ -171,7 +182,6 @@ export class Mesh {
         };
 
         const attr = this.attributes[shaderBinding];
-        console.log(shaderBinding);
         this.gl.enableVertexAttribArray(attr.attribLocation);
         this.gl.vertexAttribPointer(
             attr.attribLocation,

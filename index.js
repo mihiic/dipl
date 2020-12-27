@@ -1,62 +1,54 @@
-import {Camera3D} from "./camera.js";
-import {vec3} from "./vec3.js";
-import {Mesh} from "./mesh.js";
+import {Camera3D} from "./engine/rendering/camera.js";
+import {vec3} from "./engine/math/vec3.js";
+import {Mesh} from "./engine/rendering/mesh.js";
+import {Engine} from "./engine/engine.js";
+import {shaderUtils} from "./engine/rendering/shaderUtils.js";
 
 function main() {
-    const canvas = document.querySelector('#main-canvas');
-    const gl = canvas.getContext('webgl');
+    const engine = Engine.instance();
+    engine.initialize(
+        '#main-canvas',
+        [600, 600],
+        60, true, true,
+        [0.85, 0.85, 0.85, 1]
+    );
 
-    if (!gl) {
-        console.error('Could not load webgl context');
-        return;
-    }
-
-    gl.viewport(0, 0, 600, 600);
-    gl.clearColor(0.95, 0.95, 0.95, 1);
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-    gl.enable(gl.CULL_FACE);
-    gl.enable(gl.DEPTH_TEST);
-
-    advancedExample(gl);
+    advancedExample();
 }
 
-function advancedExample(gl) {
+function advancedExample() {
+    const engine = Engine.instance();
+
     const camera = new Camera3D(Math.PI / 3, 1, 1, 1000);
     camera.setPosition([0, 1.5, 3]);
     camera.setTarget([0, 0, 0]);
 
-    const program = webglUtils.createProgramFromScripts(gl, ['vert-shader-3d', 'frag-shader-3d']);
-    gl.useProgram(program);
+    const program = shaderUtils.createProgramFromScripts(
+        engine.gl, ['vert-shader-3d', 'frag-shader-3d']
+    );
 
-    const points = generateBasePlantVertices(6);
-    const model = new Mesh(gl, program);
-    model.setVertices(points)
+    const model = new Mesh(engine.gl, program);
+    model.setVertices(generateBasePlantVertices(6))
     model.setNormals();
     model.setColor([0.2, 0.85, 0.2, 1]);
     model.setReverseLightDirection(vec3.normalize([0.5, 0.7, 1]));
     model.setPosition([0, -0.5, 0]);
     model.setScale([0.3, 0.3, 0.3]);
 
-    console.log(points.length / 3);
     model.setSkeletonWeights([]);
+    model.setCamera(camera);
 
     let angle = 0;
-    console.log(model);
-    setInterval(() => {
-        gl.clearColor(0.85, 0.85, 0.85, 1);
-        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-        angle += 2 * Math.PI / 1000;
+    model.update = (elapsed) => {
+        angle += elapsed * 0.1 * Math.PI;
         if (angle > 2 * Math.PI) {
             angle -= 2 * Math.PI;
         }
 
         model.setSkeletonRotation(Math.sin(angle * 10) * Math.PI / 3);
+    };
 
-        // model.setRotation([0, angle, 0]);
-        model.render(camera);
-    }, 16);
+    engine.setRootScene(model);
 }
 
 function generateCubeVertices() {

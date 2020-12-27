@@ -18,7 +18,6 @@ export const vec3 = {
             return [0, 0, 0];
         }
     },
-
     normalFromPoints: function(a, b, c) {
         return this.normalize(
             this.cross(this.subtract(b, a), this.subtract(c, a))
