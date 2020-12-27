@@ -1,5 +1,3 @@
-import {mat4} from "./mat4.js";
-import {mat3} from "./mat3.js";
 import {Camera3D} from "./camera.js";
 import {vec3} from "./vec3.js";
 import {Mesh} from "./mesh.js";
@@ -32,10 +30,12 @@ function advancedExample(gl) {
     gl.useProgram(program);
 
     const model = new Mesh(gl, program);
-    model.setVertices(generateCubeVertices())
+    model.setVertices(generateBasePlantVertices(6))
     model.setNormals();
     model.setColor([0.2, 0.85, 0.2, 1]);
     model.setReverseLightDirection(vec3.normalize([0.5, 0.7, 1]));
+    model.setPosition([0, -0.5, 0]);
+    model.setScale([0.3, 0.3, 0.3]);
 
     let angle = 0;
     setInterval(() => {
@@ -82,6 +82,77 @@ function generateCubeVertices() {
     }
 
     return vertexData;
+}
+
+function generateBasePlantVertices(height) {
+    if (!height) {
+        height = 4;
+    }
+
+    let baseShape = getBaseShape();
+    const constructionVertices = [];
+    for (const v of baseShape) {
+        constructionVertices.push(v);
+    }
+    // return;
+
+    for (let i = 1; i < height; i++) {
+        const newBaseShape = [];
+        for (const v of baseShape) {
+            newBaseShape.push(v.map(a => a * 0.75));
+        }
+        baseShape = newBaseShape;
+
+        for (const v of baseShape) {
+            v[1] = i;
+            constructionVertices.push(v);
+        }
+    }
+
+    for (let i = 0; i < baseShape.length; i++) {
+        constructionVertices.push([0, height, 0]);
+    }
+
+    const vertices = [];
+    // only first ring for now
+    for (let level = 0; level < height; level++) {
+        for (let i = 0; i < 4; i++) {
+            const next = i + 1 < baseShape.length ? i + 1 : 0;
+            const rectVertices = [
+                constructionVertices[baseShape.length * level + i],
+                constructionVertices[baseShape.length * level + i + baseShape.length],
+                constructionVertices[baseShape.length * level + next],
+                constructionVertices[baseShape.length * level + next + baseShape.length]
+            ]
+
+            vertices.push(
+                rectVertices[0],
+                rectVertices[2],
+                rectVertices[1],
+                rectVertices[1],
+                rectVertices[2],
+                rectVertices[3],
+            )
+        }
+    }
+
+    const vertexData = [];
+    for (const vertex of vertices) {
+        for (const dataPoint of vertex) {
+            vertexData.push(dataPoint);
+        }
+    }
+
+    return vertexData;
+}
+
+function getBaseShape() {
+    return [
+        [-1, 0, 0],
+        [0, 0, 0.7],
+        [1, 0, 0],
+        [0, 0, -0.5]
+    ];
 }
 
 main();
