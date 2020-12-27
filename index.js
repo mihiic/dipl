@@ -13,8 +13,6 @@ function main() {
         return;
     }
 
-    // set canvas and background
-    // webglUtils.resizeCanvasToDisplaySize(gl.canvas);
     gl.viewport(0, 0, 600, 600);
     gl.clearColor(0.95, 0.95, 0.95, 1);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -22,7 +20,6 @@ function main() {
     gl.enable(gl.CULL_FACE);
     gl.enable(gl.DEPTH_TEST);
 
-    // basicExample(gl);
     advancedExample(gl);
 }
 
@@ -85,22 +82,6 @@ function generateCubeVertices() {
     }
 
     return vertexData;
-}
-
-function generateRectanglePoints(x, y, w, h) {
-    const x1 = x;
-    const y1 = y;
-    const x2 = x + w;
-    const y2 = y + h;
-
-    return [
-        x1, y1,
-        x2, y1,
-        x1, y2,
-        x1, y2,
-        x2, y1,
-        x2, y2
-    ];
 }
 
 main();
