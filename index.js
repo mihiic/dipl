@@ -29,17 +29,22 @@ function advancedExample(gl) {
     const program = webglUtils.createProgramFromScripts(gl, ['vert-shader-3d', 'frag-shader-3d']);
     gl.useProgram(program);
 
+    const points = generateBasePlantVertices(6);
     const model = new Mesh(gl, program);
-    model.setVertices(generateBasePlantVertices(6))
+    model.setVertices(points)
     model.setNormals();
     model.setColor([0.2, 0.85, 0.2, 1]);
     model.setReverseLightDirection(vec3.normalize([0.5, 0.7, 1]));
     model.setPosition([0, -0.5, 0]);
     model.setScale([0.3, 0.3, 0.3]);
 
+    console.log(points.length / 3);
+    model.setSkeletonWeights([]);
+
     let angle = 0;
+    console.log(model);
     setInterval(() => {
-        gl.clearColor(0.95, 0.95, 0.95, 0);
+        gl.clearColor(0.85, 0.85, 0.85, 1);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
         angle += 2 * Math.PI / 1000;
@@ -47,7 +52,9 @@ function advancedExample(gl) {
             angle -= 2 * Math.PI;
         }
 
-        model.setRotation([0, angle, 0]);
+        model.setSkeletonRotation(Math.sin(angle * 10) * Math.PI / 3);
+
+        // model.setRotation([0, angle, 0]);
         model.render(camera);
     }, 16);
 }
@@ -82,6 +89,21 @@ function generateCubeVertices() {
     }
 
     return vertexData;
+}
+
+function generateSkeletonWeights(points) {
+    const levels = points.length / 4 / 3;
+    const increment = 1 / levels;
+
+    const weights = [];
+
+    for (let i = 0; i < levels; i++) {
+        for (let j = 0; j < 4; j++) {
+            weights.push(i * increment);
+        }
+    }
+
+    return weights;
 }
 
 function generateBasePlantVertices(height) {

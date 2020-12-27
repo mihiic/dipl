@@ -36,13 +36,20 @@
     <script id="vert-shader-3d" type="x-shader/x-vertex">
         attribute vec4 a_position;
         attribute vec3 a_normal;
+        attribute vec4 a_weights;
+
         uniform mat4 u_worldViewProjection;
         uniform mat4 u_worldInverseTranspose;
+        uniform mat4 u_bone;
 
         varying vec3 v_normal;
 
         void main() {
-            gl_Position = u_worldViewProjection * a_position;
+            float counterWeight = 1.0 - a_weights[0];
+            gl_Position = u_worldViewProjection * (
+                u_bone * a_position * a_weights[0] +
+                a_position * counterWeight
+            );
             v_normal = mat3(u_worldInverseTranspose) * a_normal;
         }
     </script>
