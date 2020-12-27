@@ -31,8 +31,8 @@
         void main() {
             float counterWeight = 1.0 - a_weights[0];
             gl_Position = u_worldViewProjection * (
-                u_bone * a_position * a_weights[0] +
-                a_position * counterWeight
+            u_bone * a_position * a_weights[0] +
+            a_position * counterWeight
             );
             v_normal = mat3(u_worldInverseTranspose) * a_normal;
         }
@@ -41,11 +41,7 @@
     <title>Mihael Medan - Diplomski</title>
 </head>
 <body>
-<canvas id="main-canvas" width="600" height="600"></canvas>
-<script src="engine/rendering/shaderUtils.js" type="module"></script>
-<script src="engine/math/vec3.js" type="module"></script>
-<script src="engine/math/mat4.js" type="module"></script>
-
-<script src="index.js" type="module"></script>
+    <canvas id="main-canvas" width="600" height="600"></canvas>
+    <script src="index.js" type="module"></script>
 </body>
 </html>
