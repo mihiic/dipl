@@ -1,5 +1,6 @@
 class EngineImplementation {
     constructor() {
+        this.currentId = 0;
     }
 
     initialize(
@@ -76,6 +77,11 @@ class EngineImplementation {
         // browser runs at 60 frames, adding -1 to offset rounding errors
         this.frameTime = 1000.0 / frameRate - 1;
         this.updateClock();
+    }
+
+    generateId() {
+        this.currentId++;
+        return this.currentId;
     }
 }
 
