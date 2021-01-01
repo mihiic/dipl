@@ -43,7 +43,6 @@ export class SceneNode {
     }
 
     init() {
-        console.log('parent init');
     }
 
     update(elapsed) {
