@@ -19,8 +19,6 @@ export class BasePlant extends SceneNode {
         this.mesh.setNormals();
         this.mesh.setColor([0.2, 0.85, 0.2, 1]);
         this.mesh.setReverseLightDirection(vec3.normalize([0.5, 0.7, 1]));
-        // this.mesh.setPosition([0, -0.5, 0]);
-        // this.mesh.setScale([0.3, 0.3, 0.3]);
         this.mesh.setSkeletonWeights([]);
     }
 
