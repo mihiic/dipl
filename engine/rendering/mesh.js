@@ -117,21 +117,6 @@ export class Mesh {
         return this.uniforms[shaderBinding];
     }
 
-    setRotation(rotation) {
-        this.properties.rotation = rotation;
-        this.calculateModelMatrix();
-    }
-
-    setPosition(position) {
-        this.properties.position = position;
-        this.calculateModelMatrix();
-    }
-
-    setScale(scale) {
-        this.properties.scale = scale;
-        this.calculateModelMatrix();
-    }
-
     setVertices(vertices) {
         if (!this.attributes['a_position']) {
             this.createAttributeBuffer('a_position', 3);
