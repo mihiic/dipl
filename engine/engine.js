@@ -47,6 +47,10 @@ class EngineImplementation {
         this.root = scene;
     }
 
+    setMainCamera(camera) {
+        this.camera = camera;
+    }
+
     initializeContext(canvasQuery, resolution, faceCulling, depthTest, clearColor) {
         const canvas = document.querySelector(canvasQuery);
         this.gl = canvas.getContext('webgl');

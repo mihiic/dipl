@@ -20,11 +20,11 @@ export class Mesh {
         this.initSkeleton();
     }
 
-    render() {
+    render(camera) {
         this.gl.useProgram(this.program);
         const verticesAttribute = this.attributes['a_position'];
 
-        this.setRenderMatrices(this.camera.projectionViewMatrix());
+        this.setRenderMatrices(camera.projectionViewMatrix());
         this.fillUniforms();
         this.fillBuffers();
 
@@ -36,10 +36,6 @@ export class Mesh {
     }
 
     update() {
-    }
-
-    setCamera(camera) {
-        this.camera = camera;
     }
 
     setColor(color) {

@@ -1,14 +1,14 @@
 import {mat4} from "../math/mat4.js";
 import {Engine} from "../engine.js";
 
-export class TransformNode {
+export class SceneNode {
     constructor(parent, position, rotation, scale) {
         if (parent) {
             this.assignParent(parent);
         }
         this.id = Engine.instance().generateId();
         this.children = [];
-        this.init(position, rotation, scale);
+        this.initializeProperties(position, rotation, scale);
     }
 
     assignParent(parent) {
@@ -17,7 +17,7 @@ export class TransformNode {
         }
 
         this.parent = parent;
-        parent.addChild(child);
+        parent.addChild(this);
     }
 
     removeChild(child) {
@@ -40,6 +40,22 @@ export class TransformNode {
 
         child.parent = this;
         this.children.push(child);
+    }
+
+    init() {
+        console.log('parent init');
+    }
+
+    update(elapsed) {
+        for (const child of this.children) {
+            child.update(elapsed);
+        }
+    }
+
+    render() {
+        for (const child of this.children) {
+            child.render();
+        }
     }
 
     setPosition(pos) {
@@ -86,10 +102,10 @@ export class TransformNode {
         );
     }
 
-    init(position, rotation, scale) {
-        this.setPosition(position ? position : [0, 0, 0]);
-        this.setRotation(rotation ? rotation : [1, 1, 1]);
-        this.setScale(scale ? scale : [1, 1, 1]);
+    initializeProperties(position, rotation, scale) {
+        this.position = position ? position : [0, 0, 0];
+        this.rotation = rotation ? rotation : [1, 1, 1];
+        this.scale = scale ? scale : [1, 1, 1];
 
         this.recalculate();
     }
