@@ -36,35 +36,9 @@ export class Mesh {
         this.setUniform('u_color', 'uniform4fv', color);
     }
 
-    // temporarily calculates it's own
     setSkeletonWeights(weights) {
         if (!this.attributes['a_weights']) {
             this.createAttributeBuffer('a_weights', 1);
-        }
-
-        weights = [];
-        let counter = 0;
-        let baseWeight = 0;
-        const weightStep = 1 / 6;
-        let botTopCounter = 0;
-        const order = [0, 0, 1, 1, 0, 1];
-        for (let i = 0; i < 144; i++) {
-
-            if (order[botTopCounter] % 2 === 0) {
-                weights.push(baseWeight);
-            } else {
-                weights.push(baseWeight + weightStep);
-            }
-
-            botTopCounter++;
-            if (botTopCounter >= 6) {
-                botTopCounter = 0;
-            }
-            counter++;
-            if (counter === 24) {
-                counter = 0;
-                baseWeight += weightStep;
-            }
         }
 
         this.fillAttributeBuffer('a_weights', weights);

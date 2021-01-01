@@ -13,13 +13,14 @@ export class BasePlant extends SceneNode {
             gl, ['vert-shader-3d', 'frag-shader-3d']
         );
         this.angle = 0;
+        this.vertices = this.generateVertices(4);
 
         this.mesh = new Mesh(gl, this.program, this);
-        this.mesh.setVertices(this.generateVertices(4));
+        this.mesh.setVertices(this.vertices);
         this.mesh.setNormals();
         this.mesh.setColor([0.2, 0.85, 0.2, 1]);
         this.mesh.setReverseLightDirection(vec3.normalize([0.5, 0.7, 1]));
-        this.mesh.setSkeletonWeights([]);
+        this.mesh.setSkeletonWeights(this.calculateSkeletonWeights());
     }
 
     update(elapsed) {
@@ -99,6 +100,34 @@ export class BasePlant extends SceneNode {
         }
 
         return vertexData;
+    }
+
+    calculateSkeletonWeights() {
+        const weights = [];
+        let counter = 0;
+        let baseWeight = 0;
+        const weightStep = 1 / 6;
+        let botTopCounter = 0;
+        const order = [0, 0, 1, 1, 0, 1];
+        for (let i = 0; i < this.vertices.length; i++) {
+            if (order[botTopCounter] % 2 === 0) {
+                weights.push(baseWeight);
+            } else {
+                weights.push(baseWeight + weightStep);
+            }
+
+            botTopCounter++;
+            if (botTopCounter >= 6) {
+                botTopCounter = 0;
+            }
+            counter++;
+            if (counter === 24) {
+                counter = 0;
+                baseWeight += weightStep;
+            }
+        }
+
+        return weights;
     }
 
     getBaseShape() {
