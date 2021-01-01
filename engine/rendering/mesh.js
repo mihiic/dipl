@@ -56,6 +56,7 @@ export class Mesh {
     }
 
     setSkeletonRotation(angle) {
+        this.gl.useProgram(this.program);
         let boneMatrix = mat4.zRotation(angle);
         const uBone = this.uniform('u_bone');
 
@@ -145,7 +146,7 @@ export class Mesh {
     fillBuffers() {
         for (const key in this.attributes) {
             const attr = this.attributes[key];
-            this.gl.bindBuffer(this.gl.ARRAY_BUFFER, attr.buffer);
+            // this.gl.bindBuffer(this.gl.ARRAY_BUFFER, attr.buffer);
 
             this.fillAttributeBuffer(key, attr.currentData);
         }
@@ -156,6 +157,15 @@ export class Mesh {
         attr.currentData = data;
 
         this.gl.bindBuffer(this.gl.ARRAY_BUFFER, attr.buffer);
+        this.gl.enableVertexAttribArray(attr.attribLocation);
+        this.gl.vertexAttribPointer(
+            attr.attribLocation,
+            attr.numComponents,
+            attr.type,
+            false,
+            0,
+            0
+        );
         this.gl.bufferData(
             this.gl.ARRAY_BUFFER,
             new Float32Array(attr.currentData),
