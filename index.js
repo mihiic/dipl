@@ -25,6 +25,7 @@ function advancedExample() {
 
     const model = new BasePlant();
     model.init();
+    model.setScale([0.3, 0.3, 0.3]);
 
     engine.setRootScene(model);
 }

@@ -104,7 +104,7 @@ export class SceneNode {
 
     initializeProperties(position, rotation, scale) {
         this.position = position ? position : [0, 0, 0];
-        this.rotation = rotation ? rotation : [1, 1, 1];
+        this.rotation = rotation ? rotation : [0, 0, 0];
         this.scale = scale ? scale : [1, 1, 1];
 
         this.recalculate();

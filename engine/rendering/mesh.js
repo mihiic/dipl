@@ -2,21 +2,15 @@ import {vec3} from "../math/vec3.js";
 import {mat4} from "../math/mat4.js";
 
 export class Mesh {
-    constructor(gl, program) {
+    constructor(gl, program, transform) {
         this.gl = gl;
         this.program = program;
         this.attributes = {};
         this.uniforms = {};
-        this.properties = {
-            position: [0, 0, 0],
-            rotation: [0, 0, 0],
-            scale: [1, 1, 1]
-        }
+
+        this.transform = transform;
 
         this.gl.useProgram(this.program);
-
-        let modelMatrix = null;
-        this.calculateModelMatrix();
         this.initSkeleton();
     }
 
@@ -236,35 +230,17 @@ export class Mesh {
         return normals;
     }
 
-    calculateModelMatrix() {
-        this.modelMatrix = mat4.translation(
-            this.properties.position[0],
-            this.properties.position[1],
-            this.properties.position[2]
-        );
-        this.modelMatrix = mat4.xRotate(this.modelMatrix, this.properties.rotation[0]);
-        this.modelMatrix = mat4.yRotate(this.modelMatrix, this.properties.rotation[1]);
-        this.modelMatrix = mat4.zRotate(this.modelMatrix, this.properties.rotation[2]);
-
-        this.modelMatrix = mat4.scale(
-            this.modelMatrix,
-            this.properties.scale[0],
-            this.properties.scale[1],
-            this.properties.scale[2]
-        );
-    }
-
     setRenderMatrices(projectionView) {
         this.gl.uniformMatrix4fv(
             this.uniform('u_worldViewProjection').location,
             false,
-            mat4.multiply(projectionView, this.modelMatrix)
+            mat4.multiply(projectionView, this.transform.getGlobalTransform())
         );
 
         this.gl.uniformMatrix4fv(
             this.uniform('u_worldInverseTranspose').location,
             false,
-            mat4.transpose(mat4.inverse(this.modelMatrix))
+            mat4.transpose(mat4.inverse(this.transform.getGlobalTransform()))
         );
     }
 
