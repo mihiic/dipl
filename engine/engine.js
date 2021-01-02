@@ -35,6 +35,9 @@ class EngineImplementation {
         const elapsedTime = frameStart - this.lastFrameTime;
 
         if (elapsedTime > this.frameTime) {
+            if (this.world) {
+                this.world.step(this.frameTime / 1000);
+            }
             this.update(elapsedTime / 1000);
             this.render();
 
@@ -81,6 +84,12 @@ class EngineImplementation {
         // browser runs at 60 frames, adding -1 to offset rounding errors
         this.frameTime = 1000.0 / frameRate - 1;
         this.updateClock();
+    }
+
+    initializePhysicsWorld() {
+        this.world = new OIMO.World(1, new OIMO.Vec3(0, -9.8, 0));
+
+        console.log('initialized world');
     }
 
     generateId() {
