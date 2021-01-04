@@ -9,7 +9,7 @@ function main() {
     engine.initialize(
         '#main-canvas',
         [600, 600],
-        10, false, true,
+        60, false, true,
         [0.85, 0.85, 0.85, 1]
     );
 

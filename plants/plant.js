@@ -62,17 +62,17 @@ export class Plant extends SceneNode {
 
         this.mesh.setSkeletonRotation(Math.sin(this.angle * 10) * Math.PI / 12);
 
-        // if (this.skeleton) {
-        //     let rigid = Engine.instance().world.getRigidBodyList();
-        //     console.log(rigid.getPosition());
-        //
-        //     rigid = rigid.getNext();
-        //     while (rigid) {
-        //         console.log(rigid.getPosition());
-        //         rigid = rigid.getNext();
-        //     }
-        // }
-        // this.setRotation([0, this.angle, 0]);
+        if (this.skeleton) {
+            let rigid = Engine.instance().world.getRigidBodyList();
+            while (rigid) {
+                rigid.applyForceToCenter(new OIMO.Vec3(0, 9.81 / 60, 0));
+                rigid = rigid.getNext();
+            }
+        }
+        this.setRotation([0, this.angle, 0]);
+    }
+
+    calculateSkeletonBoneMatrix() {
     }
 
     render() {
