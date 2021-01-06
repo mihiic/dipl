@@ -88,8 +88,6 @@ class EngineImplementation {
 
     initializePhysicsWorld() {
         this.world = new OIMO.World(1, new OIMO.Vec3(0, -9.8, 0));
-
-        console.log('initialized world');
     }
 
     generateId() {

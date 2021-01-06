@@ -56,13 +56,11 @@ export class Plant extends SceneNode {
 
     enablePhysics() {
         this.skeleton = new PlantSkeleton();
-        this.skeleton.skeletonSetup();
+        this.skeleton.skeletonSetup(this);
     }
 
     update(elapsed) {
         super.update(elapsed);
-
-        document.title = 'Wind: ' + this.windStrength + ', Angle: ' + Math.round(this.windAngle * 57.3);
 
         if (this.skeleton) {
             const angles = this.simulateMovement();
@@ -77,6 +75,7 @@ export class Plant extends SceneNode {
             const rigid2 = joint.getRigidBody2();
 
             this.applyWind(rigid2);
+            this.applyInnerFriction(rigid2);
 
             // we need relative position of joint
             const pos1 = rigid1.getPosition();
@@ -85,7 +84,7 @@ export class Plant extends SceneNode {
             rot = [this.calculateAngleX(pos2), 0, this.calculateAngleZ(pos2)];
 
             const difference = Math.abs(this.forceAngle(pos2));
-            rigid2.applyForceToCenter(new OIMO.Vec3(0, difference, 0));
+            rigid2.applyForceToCenter(new OIMO.Vec3(0, difference / 2, 0));
         }
 
         return rot;
@@ -100,6 +99,9 @@ export class Plant extends SceneNode {
     }
 
     applyWind(rigid) {
+        if (this.windStrength < 0.1) {
+            return;
+        }
         rigid.applyForceToCenter(new OIMO.Vec3(
             Math.cos(this.windAngle) / 60 * this.windStrength,
             0,
@@ -120,6 +122,11 @@ export class Plant extends SceneNode {
         );
     }
 
+    applyInnerFriction(rigid) {
+        const vel = rigid.getLinearVelocity();
+        rigid.setLinearVelocity(new OIMO.Vec3(vel.x * 0.99, vel.y * 0.99, vel.z * 0.99));
+    }
+
     render() {
         super.render();
 
@@ -128,5 +135,9 @@ export class Plant extends SceneNode {
 
     setGenerationFunction(fn) {
         this.fn = fn;
+    }
+
+    vecToString(vec) {
+        return `x: ${vec.x.toFixed(2)} y: ${vec.y.toFixed(2)} z: ${vec.z.toFixed(2)}`;
     }
 }
