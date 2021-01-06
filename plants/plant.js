@@ -50,15 +50,6 @@ export class Plant extends SceneNode {
     enablePhysics() {
         this.skeleton = new PlantSkeleton();
         this.skeleton.skeletonSetup();
-
-        let rigid = Engine.instance().world.getRigidBodyList().getNext();
-        // setTimeout(() => {
-        //     rigid.applyForceToCenter(new OIMO.Vec3(1 / 60, 0, 0));
-        // }, 2000);
-        //
-        // setTimeout(() => {
-        //     rigid.applyForceToCenter(new OIMO.Vec3(-30 / 60, 0, 0));
-        // }, 4000);
     }
 
     update(elapsed) {
