@@ -4,6 +4,7 @@ export class PlantSkeleton {
     constructor() {
         this.world = Engine.instance().world;
         this.rigidBodies = [];
+        this.joints = [];
     }
 
     skeletonSetup() {
@@ -31,16 +32,17 @@ export class PlantSkeleton {
 
         this.world.addRigidBody(tip);
 
-        tip.applyForceToCenter(new OIMO.Vec3(0, 9.81, 0));
-
         // joint
         const jointConfig = new OIMO.SphericalJointConfig();
         jointConfig.init(base, tip, new OIMO.Vec3(0, 0, 0));
-        jointConfig.springDamper = new OIMO.SpringDamper().setSpring(1, 0.6);
+        // 1, 0.6 -> sturdy plant
+        jointConfig.springDamper = new OIMO.SpringDamper().setSpring(0, 1);
         jointConfig.breakForce = 0;
         jointConfig.breakTorque = 0;
 
         const joint = new OIMO.SphericalJoint(jointConfig);
-        this.world.addJoint(joint)
+        this.world.addJoint(joint);
+
+        this.joints.push(joint);
     }
 }

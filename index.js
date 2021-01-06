@@ -3,6 +3,7 @@ import {Engine} from "./engine/engine.js";
 import {Plant} from "./plants/plant.js";
 import {TyphaFunction} from "./plants/generation/functions/typha-fn.js";
 import {SceneNode} from "./engine/scene-graph/scene-node.js";
+import {LeafFunction} from "./plants/generation/functions/leaf-fn.js";
 
 function main() {
     const engine = Engine.instance();
@@ -27,12 +28,13 @@ function advancedExample() {
     engine.setMainCamera(camera);
 
     const model = new Plant();
-    model.setGenerationFunction(new TyphaFunction());
+    model.setGenerationFunction(new LeafFunction());
     model.setPosition([0, -1, 0]);
     model.setLod(15);
     model.init();
 
     model.enablePhysics();
+    model.setWind(60, 5);
 
     const root = new SceneNode();
     root.addChild(model);

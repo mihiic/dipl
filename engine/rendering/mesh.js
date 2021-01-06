@@ -55,9 +55,10 @@ export class Mesh {
         );
     }
 
-    setSkeletonRotation(angle) {
+    setSkeletonRotation(angles) {
         this.gl.useProgram(this.program);
-        let boneMatrix = mat4.zRotation(angle);
+        let boneMatrix = mat4.xRotation(angles[0]);
+        boneMatrix = mat4.zRotate(boneMatrix, angles[2]);
         const uBone = this.uniform('u_bone');
 
         this.gl.uniformMatrix4fv(

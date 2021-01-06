@@ -37,6 +37,13 @@ export class Plant extends SceneNode {
         this.mesh.setSkeletonWeights(plantGenerator.calculateSkeletonWeights());
 
         this.skeleton = null;
+        this.windStrength = 0;
+        this.windAngle = 0;
+    }
+
+    setWind(angle, strength) {
+        this.windAngle = angle / 57.3;
+        this.windStrength = strength;
     }
 
     setLod(lod) {
@@ -55,52 +62,62 @@ export class Plant extends SceneNode {
     update(elapsed) {
         super.update(elapsed);
 
-        // wiggle animation and rotate!
-        this.wind += elapsed * 0.2;
-        document.title = 'Wind: ' + (-0.1).toFixed(2);
+        document.title = 'Wind: ' + this.windStrength + ', Angle: ' + Math.round(this.windAngle * 57.3);
 
         if (this.skeleton) {
-            let joint = Engine.instance().world.getJointList();
-            const rigid1 = joint.getRigidBody1();
-            const rigid2 = joint.getRigidBody2();
-
-            // wind
-            rigid2.applyForceToCenter(new OIMO.Vec3(-0.1 / 60, 0, 0));
-
-            const upVector = new OIMO.Vec3(0, 1, 0);
-
-            // normalized position (we are only interested in the angle)
-            const basePosition = rigid1.getPosition().normalized();
-            const tipPosition = rigid2.getPosition().normalized();
-
-            let tipAngle = 0;
-            const s1 = upVector.cross(tipPosition).length();
-            const c1 = upVector.dot(tipPosition);
-            if (s1 || c1) {
-                tipAngle = Math.atan2(s1, c1);
-            }
-
-            // protect division by 0
-            let baseAngle = 0;
-            const s = upVector.cross(basePosition).length();
-            const c = upVector.dot(basePosition);
-            if (s || c) {
-                baseAngle = Math.atan2(s, c);
-            }
-
-            // ranges from 0 to Math.PI
-            const difference = Math.abs(tipAngle - baseAngle);
-            let appliedForce = difference * 9.81;
-
-            rigid2.applyForceToCenter(new OIMO.Vec3(0, appliedForce / 60, 0));
-
-            // get angle orientation
-            const angleDirection = Math.sign(upVector.cross(tipPosition).z);
-            this.mesh.setSkeletonRotation(tipAngle * angleDirection);
+            const angles = this.simulateMovement();
+            this.mesh.setSkeletonRotation(angles);
         }
     }
 
-    calculateSkeletonBoneMatrix() {
+    simulateMovement() {
+        let rot = null;
+        for (const joint of this.skeleton.joints) {
+            const rigid1 = joint.getRigidBody1();
+            const rigid2 = joint.getRigidBody2();
+
+            this.applyWind(rigid2);
+
+            // we need relative position of joint
+            const pos1 = rigid1.getPosition();
+            const pos2 = pos1.sub(rigid2.getPosition());
+
+            rot = [this.calculateAngleX(pos2), 0, this.calculateAngleZ(pos2)];
+
+            const difference = Math.abs(this.forceAngle(pos2));
+            rigid2.applyForceToCenter(new OIMO.Vec3(0, difference, 0));
+        }
+
+        return rot;
+    }
+
+    calculateAngleZ(pos) {
+        return Math.atan2(pos.y, pos.z) + Math.PI / 2;
+    }
+
+    calculateAngleX(pos) {
+        return Math.atan2(pos.y, pos.x) + Math.PI / 2;
+    }
+
+    applyWind(rigid) {
+        rigid.applyForceToCenter(new OIMO.Vec3(
+            Math.cos(this.windAngle) / 60 * this.windStrength,
+            0,
+            Math.sin(this.windAngle) / 60 * this.windStrength)
+        );
+    }
+
+    forceAngle(pos) {
+        if (Math.abs(pos.x) < 0.01 && Math.abs(pos.z) < 0.01) {
+            return 0;
+        }
+
+        pos.y = -pos.y;
+        const a = Math.sqrt(pos.x * pos.x + pos.z * pos.z);
+        const h = Math.sqrt(a * a + pos.y * pos.y)
+        return Math.asin(
+            a / h
+        );
     }
 
     render() {
