@@ -20,7 +20,7 @@ export class PlantSkeleton {
 
         // tip
         const tipConfig = new OIMO.RigidBodyConfig();
-        tipConfig.position = new OIMO.Vec3(0.1, 1, 0);
+        tipConfig.position = new OIMO.Vec3(0, 1, 0);
         tipConfig.type = OIMO.RigidBodyType.DYNAMIC;
 
         shapeConfig = new OIMO.ShapeConfig();
@@ -36,7 +36,7 @@ export class PlantSkeleton {
         // joint
         const jointConfig = new OIMO.SphericalJointConfig();
         jointConfig.init(base, tip, new OIMO.Vec3(0, 0, 0));
-        jointConfig.springDamper = new OIMO.SpringDamper().setSpring(0, 0);
+        jointConfig.springDamper = new OIMO.SpringDamper().setSpring(1, 0.6);
         jointConfig.breakForce = 0;
         jointConfig.breakTorque = 0;
 
