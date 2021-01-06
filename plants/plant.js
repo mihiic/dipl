@@ -69,11 +69,6 @@ export class Plant extends SceneNode {
         document.title = 'Wind: ' + (-0.1).toFixed(2);
 
         if (this.skeleton) {
-            // let rigid = Engine.instance().world.getRigidBodyList();
-            // while (rigid) {
-            //     rigid.applyForceToCenter(new OIMO.Vec3(0, 9.81 / 60, 0));
-            //     rigid = rigid.getNext();
-            // }
             let joint = Engine.instance().world.getJointList();
             const rigid1 = joint.getRigidBody1();
             const rigid2 = joint.getRigidBody2();
@@ -112,7 +107,6 @@ export class Plant extends SceneNode {
             const angleDirection = Math.sign(upVector.cross(tipPosition).z);
             this.mesh.setSkeletonRotation(tipAngle * angleDirection);
         }
-        // this.setRotation([0, this.angle, 0]);
     }
 
     calculateSkeletonBoneMatrix() {
