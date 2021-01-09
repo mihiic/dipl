@@ -29,7 +29,7 @@ function advancedExample() {
 
     engine.setMainCamera(camera);
 
-    const root = new Example03();
+    const root = new Playground();
     root.init();
 
     engine.setRootScene(root);
@@ -59,9 +59,33 @@ function setActive(id) {
     active.className = 'toggle-item toggle-item-active';
 }
 
+function generate() {
+    const engine = Engine.instance();
+    engine.initializePhysicsWorld();
+
+    const root = new Playground();
+    root.init();
+
+    root.generatePlants(getGenerationParams());
+    engine.setRootScene(root);
+}
+
+function getGenerationParams() {
+    const params = {};
+    const keys = ['areaWidth', 'areaDepth', 'density', 'lod', 'plantType', 'plantHeight', 'elasticity'];
+
+    for (const key of keys) {
+        const el = document.getElementById(key);
+        params[key] = el.value;
+    }
+
+    return params;
+}
+
 main();
 
 // exports
 window.foliage = {};
 window.foliage.setSimulation = setSimulation;
 window.foliage.setGeneration = setGeneration;
+window.foliage.generate = generate;
