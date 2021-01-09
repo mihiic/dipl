@@ -125,7 +125,14 @@ export class Playground extends SceneNode {
     }
 
     waveSimulation() {
+        const factor = Math.PI * this.windSimulation.params.windFrequency;
 
+        for (const plant of this.plants) {
+            plant.setWind(
+                this.windSimulation.params.windDirection,
+                (1 + Math.sin(this.windSimulation.elapsed * factor)) * this.windSimulation.params.windStrength / 2
+            );
+        }
     }
 
     steadySimulation() {
