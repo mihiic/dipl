@@ -105,7 +105,6 @@ export class Playground extends SceneNode {
             this.windSimulation.params.lastTime = 0;
             this.windSimulation.params.currentCycle = true;
             this.windSimulation.params.currentCycleTime = 0;
-            console.log(this.windSimulation.params.cycleTime);
         }
 
         const elapsed = this.windSimulation.elapsed - this.windSimulation.params.lastTime;

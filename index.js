@@ -73,14 +73,12 @@ function setActive(id) {
 }
 
 function generate() {
-    console.log('wtf');
     const engine = Engine.instance();
     engine.initializePhysicsWorld();
 
     const root = new Playground();
     root.init();
 
-    console.log(getGenerationParams());
     root.generatePlants(getGenerationParams());
     engine.setRootScene(root);
 
@@ -127,7 +125,6 @@ function getWindParams() {
     }
 
     params['windType'] = simulationParams.type;
-    console.log(params);
     return params;
 }
 
