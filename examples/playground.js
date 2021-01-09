@@ -9,11 +9,25 @@ export class Playground extends SceneNode {
         super.init();
 
         this.plants = [];
+        this.windSimulation = {
+            type: null,
+            elapsed: 0,
+            params: null,
+            fn: null
+        };
+
         document.title = 'Foliage Simulation';
     }
 
     update(elapsed) {
         super.update(elapsed);
+
+        if (!this.windSimulation.type) {
+            return;
+        }
+
+        this.windSimulation.elapsed += elapsed;
+        this.getSimulationFunction(this.windSimulation.params.windType)
     }
 
     generatePlants(params) {
@@ -38,6 +52,7 @@ export class Playground extends SceneNode {
         }
 
         for (const plant of this.plants) {
+            // plant.setWind(30, 1);
             this.addChild(plant);
         }
 
@@ -59,7 +74,85 @@ export class Playground extends SceneNode {
     }
 
     simulateWind(params) {
-        console.log('simulate wind', params);
+        this.windSimulation.elapsed = 0;
+        this.windSimulation.type = params.windType;
+        this.windSimulation.params = params;
+
+        for (const plant of this.plants) {
+            plant.setWind(0, 0);
+        }
+    }
+
+    singleSimulation() {
+        if (this.windSimulation.elapsed > 0.2) {
+            for (const plant of this.plants) {
+                plant.setWind(0, 0);
+            }
+            return;
+        }
+
+        for (const plant of this.plants) {
+            plant.setWind(
+                this.windSimulation.params.windDirection,
+                this.windSimulation.params.windStrength
+            );
+        }
+    }
+
+    onAndOffSimulation() {
+        if (!this.windSimulation.params.cycleTime) {
+            this.windSimulation.params.cycleTime = 1 / this.windSimulation.params.windFrequency;
+            this.windSimulation.params.lastTime = 0;
+            this.windSimulation.params.currentCycle = true;
+            this.windSimulation.params.currentCycleTime = 0;
+            console.log(this.windSimulation.params.cycleTime);
+        }
+
+        const elapsed = this.windSimulation.elapsed - this.windSimulation.params.lastTime;
+        this.windSimulation.params.lastTime = this.windSimulation.elapsed;
+
+        this.windSimulation.params.currentCycleTime += elapsed;
+        if (this.windSimulation.params.currentCycleTime > this.windSimulation.params.cycleTime) {
+            this.windSimulation.params.currentCycleTime = 0;
+            this.windSimulation.params.currentCycle = !this.windSimulation.params.currentCycle;
+        }
+
+        for (const plant of this.plants) {
+            plant.setWind(
+                this.windSimulation.params.windDirection,
+                this.windSimulation.params.currentCycle ? this.windSimulation.params.windStrength : 0
+            );
+        }
+    }
+
+    waveSimulation() {
+
+    }
+
+    steadySimulation() {
+        for (const plant of this.plants) {
+            plant.setWind(
+                this.windSimulation.params.windDirection,
+                this.windSimulation.params.windStrength
+            );
+        }
+    }
+
+    getSimulationFunction(windType) {
+        switch (windType) {
+            case 'wind-single':
+                this.singleSimulation();
+                break;
+            case 'wind-steady':
+                this.steadySimulation();
+                break;
+            case 'wind-on-off':
+                this.onAndOffSimulation();
+                break;
+            case 'wind-wave':
+                this.waveSimulation();
+                break;
+        }
     }
 
     setCamera(params) {

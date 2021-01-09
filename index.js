@@ -83,6 +83,8 @@ function generate() {
     console.log(getGenerationParams());
     root.generatePlants(getGenerationParams());
     engine.setRootScene(root);
+
+    this.setSimulation();
 }
 
 function simulate() {
@@ -121,10 +123,11 @@ function getWindParams() {
 
     for (const key of keys) {
         const el = document.getElementById(key);
-        params[key] = el.value;
+        params[key] = +el.value;
     }
 
     params['windType'] = simulationParams.type;
+    console.log(params);
     return params;
 }
 
