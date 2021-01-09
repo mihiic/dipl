@@ -105,46 +105,36 @@
     </div>
     <div class="sidebar-content" id="simulation-form">
         <div class="form-group">
-            <label>Area width <span class="hint">(1 - 10)</span></label>
-            <input id="areaWidth" type="number" value="2">
+            <label>Wind strength <span class="hint">(1 - 10)</span></label>
+            <input id="windStrength" type="number" value="2">
         </div>
         <div class="form-group">
-            <label>Area depth <span class="hint">(1 - 10)</span></label>
-            <input id="areaDepth" type="number" value="2">
-        </div>
-
-        <div class="form-group">
-            <label>Density <span class="hint">(plants per unit of area)</span></label>
-            <input id="density" type="number" value="5">
+            <label>Wind direction<span class="hint">(0 - 360, in degress)</span></label>
+            <input id="windDirection" type="number" value="2">
         </div>
 
         <div class="form-group">
-            <label>Level of Detail <span class="hint">(4 - 32)</span></label>
-            <input id="lod" type="number" value="8">
-        </div>
-
-        <div class="form-group">
-            <label>Plant type</label>
-            <select id="plantType">
-                <option>Random</option>
-                <option>Typha</option>
-                <option>Leaf</option>
-                <option>Grass</option>
+            <label>Wind Type</label>
+            <select id="windType">
+                <option>Single</option>
+                <option>Steady</option>
+                <option>Sine</option>
+                <option>On and Off</option>
             </select>
         </div>
 
-        <div class="form-group">
-            <label>Plant height <span class="hint">(0.5 - 3, leave empty for dynamic)</span></label>
-            <input type="number" id="plantHeight">
-        </div>
+<!--        <div class="form-group">-->
+<!--            <label>Plant height <span class="hint">(0.5 - 3, leave empty for dynamic)</span></label>-->
+<!--            <input type="number" id="plantHeight">-->
+<!--        </div>-->
 
-        <div class="form-group">
-            <label>Plant elasticity <span class="hint">(0 - 1)</span></label>
-            <input type="number" value="0.5" id="elasticity">
-        </div>
+<!--        <div class="form-group">-->
+<!--            <label>Plant elasticity <span class="hint">(0 - 1)</span></label>-->
+<!--            <input type="number" value="0.5" id="elasticity">-->
+<!--        </div>-->
 
         <div class="main-button" onclick="foliage.generate()">
-            Generate
+            Simulate
         </div>
     </div>
 </div>
