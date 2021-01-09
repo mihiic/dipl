@@ -58,6 +58,9 @@ class EngineImplementation {
         const canvas = document.querySelector(canvasQuery);
         this.gl = canvas.getContext('webgl');
 
+        canvas.width = resolution[0];
+        canvas.height = resolution[1];
+
         this.gl.viewport(0, 0, resolution[0], resolution[1]);
 
         this.clearBit = this.gl.COLOR_BUFFER_BIT;

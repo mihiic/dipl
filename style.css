@@ -1,11 +1,131 @@
-body, html {
+body, html, canvas {
     border: 0;
     padding: 0;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    overflow: hidden;
 }
 
 canvas {
-    width: 600px;
-    height: 600px;
+    width: calc(100vw - 300px);
+    height: calc(100vh - 50px);
     display: block;
+    vertical-align: top;
+}
+
+.canvas-wrapper {
+    display: inline-block;
+    margin-left: -4px;
+    vertical-align: top;
+}
+
+.sidebar {
+    display: inline-block;
+    height: 100vh;
+    width: 300px;
+    background-color: #2E3532;
+}
+
+.control-bar {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 32px;
+    font-weight: 700;
+    width: 100%;
+    background-color: #7E9181;
+    height: 50px;
+}
+
+.title {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.version {
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.toggler {
+    padding-top: 30px;
+    width: 100%;
+}
+
+.toggle-item {
+    width: 48%;
+    text-align: center;
+    padding-bottom: 0.3rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.toggle-item-active {
+    font-weight: 700;
+    border-bottom: 2px solid #7E9181;
+}
+
+.sidebar-content {
+    padding: 1rem;
+}
+
+.hint {
+    font-size: 10px;
+    line-height: 18px;
+}
+
+input {
+    width: 100%;
+    background-color: #2E3532;
+    color: white;
+    border: none;
+    height: 2rem;
+    border-bottom: 2px solid #7E9181;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 2px solid #A0AAB2;
+}
+
+select {
+    width: 100%;
+    background-color: #2E3532;
+    color: white;
+    border: none;
+    height: 2rem;
+    border-bottom: 2px solid #7E9181;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+select:focus {
+    outline: none;
+    border-bottom: 2px solid #A0AAB2;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.main-button {
+    width: 100%;
+    height: 40px;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    background-color: #7E9181;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    /*position: absolute;*/
+    /*bottom: 0;*/
 }

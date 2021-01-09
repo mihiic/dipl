@@ -39,11 +39,118 @@
     </script>
 
     <script src="vendor/oimo.js"></script>
+    <script src="index.js" type="module"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <title>Mihael Medan - Diplomski</title>
 </head>
 <body>
-    <canvas id="main-canvas" width="600" height="600"></canvas>
-    <script src="index.js" type="module"></script>
+<div class="sidebar">
+    <div class="title">Procedural foliage generation and wind simulation</div>
+    <div class="version">v1.12</div>
+    <div class="toggler">
+        <div id="generation"
+             onclick="foliage.setGeneration()"
+             class="toggle-item">Generation
+        </div>
+        <div id="simulation"
+             onclick="foliage.setSimulation()"
+             class="toggle-item">Simulation
+        </div>
+    </div>
+    <div class="sidebar-content" id="generation-form" style="display: none">
+        <div class="form-group">
+            <label>Area width <span class="hint">(1 - 10)</span></label>
+            <input type="number" value="2">
+        </div>
+        <div class="form-group">
+            <label>Area depth <span class="hint">(1 - 10)</span></label>
+            <input type="number" value="2">
+        </div>
+
+        <div class="form-group">
+            <label>Density <span class="hint">(plants per unit of area)</span></label>
+            <input type="number" value="5">
+        </div>
+
+        <div class="form-group">
+            <label>Level of Detail <span class="hint">(4 - 32)</span></label>
+            <input type="number" value="8">
+        </div>
+
+        <div class="form-group">
+            <label>Plant type</label>
+            <select>
+                <option>Random</option>
+                <option>Typha</option>
+                <option>Leaf</option>
+                <option>Grass</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Plant height <span class="hint">(0.5 - 3, leave empty for dynamic)</span></label>
+            <input>
+        </div>
+
+        <div class="form-group">
+            <label>Plant elasticity <span class="hint">(0 - 1)</span></label>
+            <input type="number" value="0.5">
+        </div>
+
+        <div class="main-button">
+            Generate
+        </div>
+    </div>
+    <div class="sidebar-content" id="simulation-form">
+        <div class="form-group">
+            <label>Area width <span class="hint">(1 - 10)</span></label>
+            <input type="number" value="2">
+        </div>
+        <div class="form-group">
+            <label>Area depth <span class="hint">(1 - 10)</span></label>
+            <input type="number" value="2">
+        </div>
+
+        <div class="form-group">
+            <label>Density <span class="hint">(plants per unit of area)</span></label>
+            <input type="number" value="5">
+        </div>
+
+        <div class="form-group">
+            <label>Level of Detail <span class="hint">(4 - 32)</span></label>
+            <input type="number" value="8">
+        </div>
+
+        <div class="form-group">
+            <label>Plant type</label>
+            <select>
+                <option>Random</option>
+                <option>Typha</option>
+                <option>Leaf</option>
+                <option>Grass</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Plant height <span class="hint">(0.5 - 3, leave empty for dynamic)</span></label>
+            <input>
+        </div>
+
+        <div class="form-group">
+            <label>Plant elasticity <span class="hint">(0 - 1)</span></label>
+            <input type="number" value="0.5">
+        </div>
+
+        <div class="main-button">
+            Generate
+        </div>
+    </div>
+</div>
+<div class="canvas-wrapper">
+    <div class="control-bar"></div>
+    <canvas id="main-canvas"></canvas>
+</div>
 </body>
 </html>

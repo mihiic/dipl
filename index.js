@@ -3,12 +3,13 @@ import {Engine} from "./engine/engine.js";
 import {Example01} from "./examples/example01.js";
 import {Example02} from "./examples/example02.js";
 import {Example03} from "./examples/example03.js";
+import {Playground} from "./examples/playground.js";
 
 function main() {
     const engine = Engine.instance();
     engine.initialize(
         '#main-canvas',
-        [600, 600],
+        [window.innerWidth - 300, window.innerHeight - 50],
         60, false, true,
         [0.85, 0.85, 0.85, 1]
     );
@@ -20,16 +21,47 @@ function advancedExample() {
     const engine = Engine.instance();
     engine.initializePhysicsWorld();
 
-    const camera = new Camera3D(Math.PI / 3, 1, 1, 1000);
+    const aspect = (window.innerWidth - 300) / (window.innerHeight - 50);
+
+    const camera = new Camera3D(Math.PI / 3, aspect, 1, 1000);
     camera.setPosition([0, 0, 4]);
     camera.setTarget([0, 0, 0]);
 
     engine.setMainCamera(camera);
 
-    const root = new Example01();
+    const root = new Example03();
     root.init();
 
     engine.setRootScene(root);
+
+    setGeneration();
+}
+
+function setSimulation() {
+    resetClasses();
+    setActive('simulation');
+}
+
+function setGeneration() {
+    resetClasses();
+    setActive('generation');
+}
+
+function resetClasses() {
+    const elements = document.getElementsByClassName('toggle-item');
+    for (const el of elements) {
+        el.className = 'toggle-item';
+    }
+}
+
+function setActive(id) {
+    const active = document.getElementById(id);
+    active.className = 'toggle-item toggle-item-active';
 }
 
 main();
+
+// exports
+window.foliage = {};
+window.foliage.setSimulation = setSimulation;
+window.foliage.setGeneration = setGeneration;

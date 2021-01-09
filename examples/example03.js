@@ -36,7 +36,7 @@ export class Example03 extends SceneNode {
         }
 
         for (const model of this.models) {
-            model.setWind(30, 10);
+        //     model.setWind(30, 10);
             this.addChild(model);
         }
 
