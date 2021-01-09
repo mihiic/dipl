@@ -59,7 +59,7 @@ export class Playground extends SceneNode {
     }
 
     simulateWind(params) {
-
+        console.log('simulate wind', params);
     }
 
     setCamera(params) {

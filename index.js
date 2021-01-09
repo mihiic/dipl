@@ -73,15 +73,22 @@ function setActive(id) {
 }
 
 function generate() {
-    console.log('sads');
+    console.log('wtf');
     const engine = Engine.instance();
     engine.initializePhysicsWorld();
 
     const root = new Playground();
     root.init();
 
+    console.log(getGenerationParams());
     root.generatePlants(getGenerationParams());
     engine.setRootScene(root);
+}
+
+function simulate() {
+    const engine = Engine.instance();
+    const scene = engine.root;
+    scene.simulateWind(getWindParams());
 }
 
 function setWindType(type) {
@@ -108,6 +115,19 @@ function getGenerationParams() {
     return params;
 }
 
+function getWindParams() {
+    const params = {};
+    const keys = ['windStrength', 'windDirection', 'windFrequency'];
+
+    for (const key of keys) {
+        const el = document.getElementById(key);
+        params[key] = el.value;
+    }
+
+    params['windType'] = simulationParams.type;
+    return params;
+}
+
 main();
 
 // exports
@@ -115,5 +135,6 @@ window.foliage = {};
 window.foliage.setSimulation = setSimulation;
 window.foliage.setGeneration = setGeneration;
 window.foliage.generate = generate;
+window.foliage.simulate = simulate;
 
 window.foliage.setWindType = setWindType;
