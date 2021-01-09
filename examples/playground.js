@@ -20,19 +20,6 @@ export class Playground extends SceneNode {
         const totalArea = params.areaWidth * params.areaDepth;
         const plantsNum = +totalArea * +params.density;
 
-        console.log(params);
-
-        // for (let i = 0; i < 4; i++) {
-        //     const leafModel = new Plant();
-        //     leafModel.setGenerationFunction(new LeafFunction());
-        //     leafModel.setPosition([i - 2 + 0.5, -1.5, 0.5]);
-        //     leafModel.setLod(params.lod);
-        //     leafModel.init();
-        //
-        //     leafModel.enablePhysics();
-        //     this.plants.push(leafModel);
-        // }
-
         for (let i = 0; i < plantsNum; i++) {
             const posX = Math.random() * params.areaWidth - params.areaWidth / 2;
             const posY = Math.random() * params.areaDepth - params.areaDepth / 2;
@@ -40,7 +27,7 @@ export class Playground extends SceneNode {
             const plant = new Plant();
             plant.setGenerationFunction(this.getGenerationFunction(params.plantType));
             if (params.plantHeight) {
-                plant.setHeight(params.plantHeight);
+                plant.setHeight(+params.plantHeight);
             }
             plant.setLod(+params.lod);
             plant.setPosition([posX, -1.5, posY]);
