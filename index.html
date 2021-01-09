@@ -59,29 +59,29 @@
              class="toggle-item">Simulation
         </div>
     </div>
-    <div class="sidebar-content" id="generation-form" style="display: none">
+    <div class="sidebar-content" id="generation-form">
         <div class="form-group">
             <label>Area width <span class="hint">(1 - 10)</span></label>
-            <input type="number" value="2">
+            <input id="areaWidth" type="number" value="2">
         </div>
         <div class="form-group">
             <label>Area depth <span class="hint">(1 - 10)</span></label>
-            <input type="number" value="2">
+            <input id="areaDepth" type="number" value="2">
         </div>
 
         <div class="form-group">
             <label>Density <span class="hint">(plants per unit of area)</span></label>
-            <input type="number" value="5">
+            <input id="density" type="number" value="5">
         </div>
 
         <div class="form-group">
             <label>Level of Detail <span class="hint">(4 - 32)</span></label>
-            <input type="number" value="8">
+            <input id="lod" type="number" value="8">
         </div>
 
         <div class="form-group">
             <label>Plant type</label>
-            <select>
+            <select id="plantType">
                 <option>Random</option>
                 <option>Typha</option>
                 <option>Leaf</option>
@@ -91,36 +91,54 @@
 
         <div class="form-group">
             <label>Plant height <span class="hint">(0.5 - 3, leave empty for dynamic)</span></label>
-            <input>
+            <input type="number" id="plantHeight">
         </div>
 
         <div class="form-group">
             <label>Plant elasticity <span class="hint">(0 - 1)</span></label>
-            <input type="number" value="0.5">
+            <input type="number" value="0.5" id="elasticity">
         </div>
 
-        <div class="main-button">
+        <div class="main-button" onclick="foliage.generate()">
             Generate
         </div>
     </div>
-    <div class="sidebar-content" id="simulation-form">
+    <div class="sidebar-content" id="simulation-form" style="display: none">
         <div class="form-group">
             <label>Wind strength <span class="hint">(1 - 10)</span></label>
             <input id="windStrength" type="number" value="2">
         </div>
         <div class="form-group">
-            <label>Wind direction<span class="hint">(0 - 360, in degress)</span></label>
+            <label>Wind direction <span class="hint">(0 - 360, in degress)</span></label>
             <input id="windDirection" type="number" value="2">
         </div>
 
         <div class="form-group">
             <label>Wind Type</label>
-            <select id="windType">
-                <option>Single</option>
-                <option>Steady</option>
-                <option>Sine</option>
-                <option>On and Off</option>
-            </select>
+            <div class="wind-types">
+                <div id="wind-single" onclick="foliage.setWindType('wind-single')" class="wind-type wind-type-active">
+                    <img class="fill" src="assets/windTypes/single-blow.png">
+                    <div>Single Blow</div>
+                </div>
+                <div id="wind-steady" onclick="foliage.setWindType('wind-steady')" class="wind-type">
+                    <img class="fill" src="assets/windTypes/steady.png">
+                    <div>Steady</div>
+                </div>
+                <div id="wind-on-off" onclick="foliage.setWindType('wind-on-off')" class="wind-type">
+                    <img class="fill" src="assets/windTypes/on-off.png">
+                    <div>On and Off</div>
+                </div>
+                <div id="wind-wave" onclick="foliage.setWindType('wind-wave')" class="wind-type">
+                    <img class="fill" src="assets/windTypes/sine-wave.png">
+                    <div>Wave</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Frequency</label>
+            <span class="hint">(times per second from top to top, applies only for on/off and wave winds)</span>
+            <input id="windFrequency" type="number" value="2">
         </div>
 
 <!--        <div class="form-group">-->
@@ -133,7 +151,7 @@
 <!--            <input type="number" value="0.5" id="elasticity">-->
 <!--        </div>-->
 
-        <div class="main-button" onclick="foliage.generate()">
+        <div class="main-button">
             Simulate
         </div>
     </div>

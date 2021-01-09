@@ -5,6 +5,10 @@ import {Example02} from "./examples/example02.js";
 import {Example03} from "./examples/example03.js";
 import {Playground} from "./examples/playground.js";
 
+const simulationParams = {
+    type: 'wind-single'
+};
+
 function main() {
     const engine = Engine.instance();
     engine.initialize(
@@ -52,14 +56,24 @@ function resetClasses() {
     for (const el of elements) {
         el.className = 'toggle-item';
     }
+
+    let form = document.getElementById('generation-form');
+    form.style.display = 'none';
+
+    form = document.getElementById('simulation-form');
+    form.style.display = 'none';
 }
 
 function setActive(id) {
     const active = document.getElementById(id);
     active.className = 'toggle-item toggle-item-active';
+
+    const form = document.getElementById(id + '-form');
+    form.style.display = 'block';
 }
 
 function generate() {
+    console.log('sads');
     const engine = Engine.instance();
     engine.initializePhysicsWorld();
 
@@ -68,6 +82,18 @@ function generate() {
 
     root.generatePlants(getGenerationParams());
     engine.setRootScene(root);
+}
+
+function setWindType(type) {
+    const elements = document.getElementsByClassName('wind-type');
+    for (const el of elements) {
+        el.className = 'wind-type';
+        if (el.id === type) {
+            el.className = 'wind-type wind-type-active';
+        }
+    }
+
+    simulationParams.type = type;
 }
 
 function getGenerationParams() {
@@ -89,3 +115,5 @@ window.foliage = {};
 window.foliage.setSimulation = setSimulation;
 window.foliage.setGeneration = setGeneration;
 window.foliage.generate = generate;
+
+window.foliage.setWindType = setWindType;

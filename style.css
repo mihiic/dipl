@@ -129,3 +129,20 @@ select:focus {
     /*position: absolute;*/
     /*bottom: 0;*/
 }
+
+.wind-types {
+    width: 100%;
+}
+
+.wind-type {
+    padding: 0.5rem;
+    width: 40%;
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.wind-type-active {
+    background-color: rgba(0, 0, 0, 0.5);
+}
