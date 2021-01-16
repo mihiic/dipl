@@ -9,48 +9,55 @@
 \contentsline {section}{\numberline {2.5}Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke}{2}%
 \contentsline {chapter}{\numberline {3}Simulacijski model}{3}%
 \contentsline {section}{\numberline {3.1}Fizički model ponašanja biljke}{3}%
-\contentsline {section}{\numberline {3.2}Programski model fizičkog ponašanja}{3}%
-\contentsline {section}{\numberline {3.3}Programska implementacija fizičkog modela}{3}%
-\contentsline {section}{\numberline {3.4}Implementacije fizičkog ponašanja složenih biljaka}{3}%
-\contentsline {chapter}{\numberline {4}Simulacija ponašanja generiranog modela}{4}%
-\contentsline {section}{\numberline {4.1}Povezivanje fizičkog modela sa generiranim prikazom modela}{4}%
-\contentsline {section}{\numberline {4.2}Programska implementacija modela}{4}%
-\contentsline {section}{\numberline {4.3}Utjecaj parametara na simulaciju}{4}%
-\contentsline {chapter}{\numberline {5}Ocjena rezultata}{5}%
-\contentsline {section}{\numberline {5.1}Realističnost prikaza}{5}%
-\contentsline {paragraph}{}{5}%
-\contentsline {paragraph}{}{5}%
-\contentsline {paragraph}{}{6}%
-\contentsline {paragraph}{}{6}%
-\contentsline {paragraph}{}{6}%
-\contentsline {subsection}{\numberline {5.1.1}Mogućnosti poboljšanja}{6}%
-\contentsline {paragraph}{}{6}%
-\contentsline {paragraph}{}{6}%
-\contentsline {paragraph}{}{7}%
-\contentsline {paragraph}{}{7}%
-\contentsline {paragraph}{}{7}%
-\contentsline {section}{\numberline {5.2}Realističnost fizičke simulacije}{7}%
-\contentsline {paragraph}{}{7}%
+\contentsline {paragraph}{}{3}%
+\contentsline {paragraph}{}{4}%
+\contentsline {paragraph}{}{4}%
+\contentsline {section}{\numberline {3.2}Programski model fizičkog ponašanja}{4}%
+\contentsline {paragraph}{}{4}%
+\contentsline {paragraph}{}{4}%
+\contentsline {paragraph}{}{4}%
+\contentsline {paragraph}{}{4}%
+\contentsline {section}{\numberline {3.3}Programska implementacija fizičkog modela}{5}%
+\contentsline {section}{\numberline {3.4}Implementacije fizičkog ponašanja složenih biljaka}{5}%
+\contentsline {chapter}{\numberline {4}Simulacija ponašanja generiranog modela}{6}%
+\contentsline {section}{\numberline {4.1}Povezivanje fizičkog modela sa generiranim prikazom modela}{6}%
+\contentsline {section}{\numberline {4.2}Programska implementacija modela}{6}%
+\contentsline {section}{\numberline {4.3}Utjecaj parametara na simulaciju}{6}%
+\contentsline {chapter}{\numberline {5}Ocjena rezultata}{7}%
+\contentsline {section}{\numberline {5.1}Realističnost prikaza}{7}%
 \contentsline {paragraph}{}{7}%
 \contentsline {paragraph}{}{7}%
 \contentsline {paragraph}{}{8}%
 \contentsline {paragraph}{}{8}%
-\contentsline {subsection}{\numberline {5.2.1}Poboljšanje realističnosti simulacije}{9}%
+\contentsline {paragraph}{}{8}%
+\contentsline {subsection}{\numberline {5.1.1}Mogućnosti poboljšanja}{8}%
+\contentsline {paragraph}{}{8}%
+\contentsline {paragraph}{}{8}%
 \contentsline {paragraph}{}{9}%
 \contentsline {paragraph}{}{9}%
-\contentsline {section}{\numberline {5.3}Brzina izvođenja}{9}%
 \contentsline {paragraph}{}{9}%
-\contentsline {subsection}{\numberline {5.3.1}Pristupi poboljšanju brzine izvođenja}{10}%
+\contentsline {section}{\numberline {5.2}Realističnost fizičke simulacije}{9}%
+\contentsline {paragraph}{}{9}%
+\contentsline {paragraph}{}{9}%
+\contentsline {paragraph}{}{9}%
 \contentsline {paragraph}{}{10}%
-\contentsline {subsubsection}{Paralelno izvođenje fizičke simulacije}{10}%
 \contentsline {paragraph}{}{10}%
-\contentsline {paragraph}{}{10}%
-\contentsline {subsubsection}{Smanjenje rezolucije simulacije i zaglađivanje rezultata}{11}%
+\contentsline {subsection}{\numberline {5.2.1}Poboljšanje realističnosti simulacije}{11}%
 \contentsline {paragraph}{}{11}%
 \contentsline {paragraph}{}{11}%
+\contentsline {section}{\numberline {5.3}Brzina izvođenja}{11}%
 \contentsline {paragraph}{}{11}%
-\contentsline {subsubsection}{Izračunavanje sličnosti modela i grupiranje izračuna}{12}%
+\contentsline {subsection}{\numberline {5.3.1}Pristupi poboljšanju brzine izvođenja}{12}%
+\contentsline {paragraph}{}{12}%
+\contentsline {subsubsection}{Paralelno izvođenje fizičke simulacije}{12}%
 \contentsline {paragraph}{}{12}%
 \contentsline {paragraph}{}{12}%
-\contentsline {chapter}{\numberline {6}Zaključak}{13}%
-\contentsline {chapter}{Popis slika}{14}%
+\contentsline {subsubsection}{Smanjenje rezolucije simulacije i zaglađivanje rezultata}{13}%
+\contentsline {paragraph}{}{13}%
+\contentsline {paragraph}{}{13}%
+\contentsline {paragraph}{}{13}%
+\contentsline {subsubsection}{Izračunavanje sličnosti modela i grupiranje izračuna}{14}%
+\contentsline {paragraph}{}{14}%
+\contentsline {paragraph}{}{14}%
+\contentsline {chapter}{\numberline {6}Zaključak}{15}%
+\contentsline {chapter}{Popis slika}{16}%

@@ -24,44 +24,78 @@ Uvod rada. Nakon uvoda dolaze poglavlja u kojima se obrađuje tema.
 \chapter{Generiranje modela trave i niskog raslinja}
 \section{Osnovni pristup generiranju modela}
 
-
 \section{Generiranje točaka i poligona modela biljaka}
-Tocke i poligoni
 
 \subsection{Generiranje modela uz različitu razinu detalja}
-LOD
 
 \section{Povezivanje generiranih podataka i njihov prikaz}
-Povezivanje i prikaz
 
 \section{Programska implementacija generiranja i prikaza}
-Tehnicka implementacija
 
 \section{Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke}
-Primjer
 
 \chapter{Simulacijski model}
 \section{Fizički model ponašanja biljke}
-Kako bi se biljka kretala hehe
+\paragraph{}
+Osnovne sile koje utječu na ponašanje biljke su sila teža, unutrašnji otpor 
+biljke i vanjski utjecaji. Sila teža konstantnim intenzitetom gura sve dijelove 
+biljke prema dolje. Vanjski utjecaji poput vjetra, djeluju u svim smjerovima 
+različitim intenzitetima na različite dijelove biljke. Te unutrašnji otpor 
+biljke, koji uvijek dijeluje u suprotnom smjeru od preostale dvije sile. Na 
+slici \ref{fig:31-1} su slikovito prikazane kumulativne sile koje u nekom 
+trenutku djeluju na biljku.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/31-1}
+	\caption{Prikaz sila koje djeluju na biljku}
+	\label{fig:31-1}
+\end{figure}
+
+\paragraph{}
+Usred djelovanja te tri sile, biljka u svakom trenutku pokušava doći u stanje gdje se te tri sile poništavaju. Svako gibanje biljke prouzrokovano je promjenom vanjskih utjecaja kojima se biljka pokuša prilagoditi kako bi ukupna sila koja djeluje na biljku bila nula.
+
+\paragraph{}
+Čak i naizgled jednostavan problem kao što je simuliranje ponašanja biljke je u svojoj 
+naravi izrazito kompleksan. Sila teža djeluje na svaki mikroskopsi dio biljke. Na isti način
+djeluju i vanjske sile. Vanjske sile i sila teže u biljci uzrokuju napetosti i kompresije 
+koje uzrokuju silu otpora biljke. To sve se događa na mikroskopskoj razini na svakom dijelu 
+površine biljke. Savršena simlacija ovakvog sustava bila bi izrazito računalno zahtjevna.
 
 \section{Programski model fizičkog ponašanja}
-Pojednostavljenje na jointove etc
+\paragraph{}
+Zbog računalne zahtjevnosti i problema preciznog definiranja svih sila, potrebno je pronaći
+matematički model koji bi rezultirao istim (ili barem vrlo sličnim) ponašanjem, a imao bi 
+mnogo manju računalnu složenost i bio bi jednostavniji za definirati.
+
+\paragraph{}
+U računalnom programiranju se fizičke interakcije obično modeliraju preko tri osnovna  
+građevna bloka. Tijela, ograničenja i sile. Tijela su geometrijski oblici u tro-
+dimenzijskom prostoru koja zauzimaju volumen i podložna su dijelovanju sila. Ograničenja 
+su skup pravila koja određuju kako se neka dva tijela mogu ponašati relativno jedno prema 
+drugom. Sile dijeluju na tijela i uzrokuju promjene koje se tada na temelju ograničenja 
+rješavaju.
+
+\paragraph{}
+Primjer tijela je kocka u trodimenzijskom prostoru. Primjer sile je sila teža koja djeluje 
+konstantnim intenzitetom prema negativnoj y osi. Primjer ograničenja je ako se volumen 
+jednog tijela nađe unutar volumena drugog tijela, na oba tijela se primjenjuje sila u smjeru 
+suprotnom od središta mase drugog tijela. Ovo ograničenje je naivni pristup riješavanju 
+kolizija između tijela.
+
+\paragraph{}
+Stvarnu simulaciju jednostavne biljke možemo vrlo dobro aproksimirati korištenjem svega dva tijela, jednog ograničenja i jedne sile koja dijeluje na jedno od tijela.
 
 \section{Programska implementacija fizičkog modela}
-EZ
 
 \section{Implementacije fizičkog ponašanja složenih biljaka}
-drva buraz e
 
 \chapter{Simulacija ponašanja generiranog modela}
 \section{Povezivanje fizičkog modela sa generiranim prikazom modela}
-skinning, buffers, bones
 
 \section{Programska implementacija modela}
-spajanje
 
 \section{Utjecaj parametara na simulaciju}
-wind, elasticity
 
 \chapter{Ocjena rezultata}
 \section{Realističnost prikaza}
