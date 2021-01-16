@@ -9,10 +9,12 @@ class EngineImplementation {
         frameRate = 60,
         faceCulling = true,
         depthTest = true,
-        clearColor=[0.95, 0.95, 0.95, 1]
+        clearColor=[1, 1, 1, 0]
     ) {
         this.initializeContext(canvasQuery, resolution, faceCulling, depthTest, clearColor);
         this.initializeUpdateCycle(frameRate);
+
+        this.clearColor = clearColor;
     }
 
     // update logic
@@ -74,10 +76,10 @@ class EngineImplementation {
         }
 
         this.gl.clearColor(
-            clearColor[0],
-            clearColor[1],
-            clearColor[2],
-            clearColor[3] !== undefined ? clearColor[3] : 1 // default to opaque
+            1,
+            1,
+            1,
+            0 // default to opaque
         );
     }
 

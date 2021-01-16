@@ -15,7 +15,7 @@ function main() {
         '#main-canvas',
         [window.innerWidth - 300, window.innerHeight - 50],
         60, false, true,
-        [0.85, 0.85, 0.85, 1]
+        [1, 1, 1, 0]
     );
 
     advancedExample();
@@ -33,7 +33,7 @@ function advancedExample() {
 
     engine.setMainCamera(camera);
 
-    const root = new Playground();
+    const root = new Example01();
     root.init();
 
     engine.setRootScene(root);

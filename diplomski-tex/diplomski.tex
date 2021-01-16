@@ -40,12 +40,6 @@ Tehnicka implementacija
 \section{Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke}
 Primjer
 
-\section{Dodavanje proizvoljnih atributa generiranim modelima}
-Primjer
-
-\section{Implementacija generiranja složenijih biljaka}
-Wish do, would do, not :)
-
 \chapter{Simulacijski model}
 \section{Fizički model ponašanja biljke}
 Kako bi se biljka kretala hehe
@@ -73,7 +67,13 @@ wind, elasticity
 \section{Realističnost prikaza}
 \paragraph{}
 Realističnost prikaza nije bila primarna zadaća ovog rada. Generirane biljke ne 
-izgledaju osobito prirodno bez obzira na razinu detalja kojom su generirane.
+izgledaju osobito prirodno bez obzira na razinu detalja kojom su generirane. Primjer generiranih biljaka vidljiv je na slici \ref{fig:51-1}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/51-1}
+	\caption{Prikaz modela u različitoj razini detalja}
+	\label{fig:51-1}
+\end{figure}
 \paragraph{}
 Prvi razlog je primjena konstantnog sjenčanja poligona. U ovakvom načinu 
 sjenčanja, normale za pojedine vrhove računamo kao normalu površine (poligona)
@@ -83,6 +83,7 @@ vidljivu granicu između pojedinih površina. Takav način prikaza, osim što je
 vrlo brz u izvođenju, znatno je olakšao razvoj prezentiranog programskog 
 rješenja jer daje programeru jasan uvid u poziciju pojedinih vrhova na ekranu
 i njihovo ponašanje. 
+
 \paragraph{}
 Bez obzira na prednosti u razvoju koje ovakav pristup implicira, prikazani 
 modeli izgledaju umjetno i izrazito su pravilni. Pravilnost modela je najveći
@@ -162,6 +163,12 @@ frekvencijom. Visoke biljke imaju veću tromost i rade veće oscilacije oko toč
 konvergencije vjetra i otpora biljke prilikom naleta vjetra. Kad vjetar 
 prestane, naprave manje oscilacija oko centra ravnoteže prije nego vjetar 
 ponovno počne.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{img/52-1}
+	\caption{Katično ponasanje niske biljke prilikom vjetra u valovima}
+	\label{fig:52-1}
+\end{figure}
 \paragraph{}
 Kad je simulacija vjetra realistična (takva da vjetar dolazi i prolazi u 
 valovima - postepeno raste u snazi, i nakon toga postepeno opada u snazi) 
@@ -170,34 +177,109 @@ osciliraju prema središtu između točaka centra ravnoteže otpora biljke, i
 konvergentne točke sile vjetra, ravnoteže i unutarnjeg otpora biljke. Niske 
 biljke kod ovakvog vjetra djeluju kaotično i osciliraju velikom frekvencijom i 
 amplitudom, sa središtem oscilacije koji vidno varira između konvergentne točke 
-i centra ravnoteže biljke.
+i centra ravnoteže biljke. Razlika u ponašanju je vidljiva na slikama \ref{fig:52-1} i \ref{fig:52-2}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{img/52-2}
+	\caption{Stabilno ponasanje visoke biljke prilikom vjetra u valovima}
+	\label{fig:52-2}
+\end{figure}
 
 \subsection{Poboljšanje realističnosti simulacije}
-better
+\paragraph{}
+Još realističnija simulacija se može postići dodavanjem većeg broja zglobova u
+fizički kostur biljke. Dodavanjem većeg broja zglobova dobili bi mogućnost 
+simulacije pregiba u stabljci biljke. U prirodi kod jednostavnih biljaka ovaj 
+fenomen nije uvijek jasno vidljiv, ali možemo ga uočiti kad je vjetar u 
+rezonantnoj frekvenciji sa stabljkom biljke.
+\paragraph{}
+Dodatnu kontrolu možemo postići dodavanjem težina pojedinim zglobovima. Tako da 
+na neke dijelove kostura vjetar ima jači utjecaj nego na druge. Primjer takve 
+biljke je zvončić, kod kojeg je utjecaj vjetra puno jasnije vidljiv na cvijetu 
+nego na stabljci biljke.
 
-\section{Ocjena brzine izvođenja}
+\section{Brzina izvođenja}
 \paragraph{}
 Brzina izvođenja linearno opada s brojem simuliranih biljaka. Najveći utjecaj na 
 brzinu izvođenja ima fizička simulacija. Generiranje biljaka se odvija na samom 
 početku i nema nikakvog utjecaja na brzinu izvođenja nakon početnog perioda 
 generiranja. Iscrtavanje je zbog jednostavnosti prikaza vrlo jeftino i usporava
-izvođenje tek na velikom broju biljaka ili na vrlo visokoj razini detalja.
+izvođenje tek na velikom broju biljaka ili na vrlo visokoj razini detalja. Graf trajanja vremenkog koraka vidljiv je na \ref{fig:53-1}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.95\textwidth]{img/53-1}
+	\caption{Trajanje vremenskog koraka u ovisnosti o broju biljaka u simulaciji}
+	\label{fig:53-1}
+\end{figure}
 
 \subsection{Pristupi poboljšanju brzine izvođenja}
 \paragraph{}
 Fizička simulacija ima najveći utjecaj na brzinu izvođenja pa su prijedlozi za 
 ubrzanje programskog rješenja fokusirani na taj dio.
 \subsubsection{Paralelno izvođenje fizičke simulacije}
-paralelism
+\paragraph{}
+Trenutna programska implementacija u obzir uzima i kolizije samih biljaka. 
+Fizička simulacija se odvija slijedno za svaku od biljaka i eventualni dodir 
+nakon simulacije neke od narednih biljaka moće imati utjecaj na onu prvu. Ako
+ne marimo za interakciju između samih biljaka i odlučimo je zanemariti, 
+jednostavan način za ubrzanje fizičke simulacije je paralelizam. Na \ref{fig:531-1} je prikazan dijagram slijednog i paralelnog izvođenja (na dvije dretve) i vidljivo je da paralelni primjer završava u dva koraka dok slijedni algoritam završava u jednom koraku.
 
-\subsubsection{Smanjenje rezolucije simulacije i interpolacija rezultata}
-nice
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{img/531-1}
+	\caption{Dijagram slijednog i paralelnog izvođenja}
+	\label{fig:531-1}
+\end{figure}
+\paragraph{}
+Na ovaj način svaka biljka (ili grupa biljaka) može imati svoj fizički procesor 
+koji će se brinuti o njezinoj simulaciji i cijeli proces se završava u manje 
+koraka.
 
+\subsubsection{Smanjenje rezolucije simulacije i zaglađivanje rezultata}
+\paragraph{}
+Brzinu izvođenja možemo i povećati na način da ne ažuriramo fizičku simulaciju 
+biljke u svakom koraku. Kod ovakvog pristupa stanje svake biljke izračunavamo 
+nakon nekoliko koraka umjesto na svakom, a rezultate u međukoracima zagladimo.
+U primjeru \ref{fig:531-2} vidimo slijed simulacije jedne biljke kroz vremenske 
+korake. Prilikom simulacije trebamo osigurati da je vremenski razmak za koji 
+simuliramo točno onoliko koraka koliko će trajati do sljedeće simulacije i to 
+uzrokuje smanjenje reyolucije simulacije. Ako bi vremenski korak simulacije 
+ostao jednak kao da simuliramo biljku u svakom simulacija bi se odvijala 
+usporeno.
+\paragraph{}
+Bitno je ostvariti da se nikad istovremeno ne simuliraju i zaglađuju svi modeli 
+nego da je postupak naizmjeničan. Za primjer sa dvije biljke, dok se jedna 
+biljka simulira druga se zaglađuje i obratno.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/531-2}
+	\caption{Dijagram simulacije sa zaglađivanjem}
+	\label{fig:531-2}
+\end{figure}
+\paragraph{}
+Problem kod ovakvog pristupa je kašnjenje prikaza nad stvarnim stanjem fizičke 
+simulacije. Fizička simulacija je uvijek barem jedan korak ispred prikaza. Ovo 
+može uzrokovati naizgledno podrhtavanje ukoliko želimo zadržati simulaciju 
+interakcija između biljaka, a biljka se pomaknula nakon što je dobivena zadnja 
+točka za interpolaciju. Ako ne marimo za interakciju između biljaka, ovaj 
+problem možemo zanemariti. Iako će animacija i dalje kasniti za stvarnim 
+fizičkim stanjem, promatraču to neće biti vidljivo.
 \subsubsection{Izračunavanje sličnosti modela i grupiranje izračuna}
-bad
+\paragraph{}
+Ukoliko nam nije bitna interakcija između biljaka i želimo drastično smanjiti utjecaj fizičke simulacije na brzinu izvođenja možemo izdvojiti prototipne biljke iz simulacije i simulirati samo njih. Sve ostale biljke, ovisno o sličnosti će koristiti podatke simulacije te biljke kao svoje. Primjer takvog sustava vidljiv je na slici \ref{fig:531-3}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/531-3}
+	\caption{Dijagram simulacije sa zaglađivanjem}
+	\label{fig:531-3}
+\end{figure}
+\paragraph{}
+Na ovaj način potrebno je simulirati samo nekoliko biljaka umjesto svih ali ovakav pristup će rezultirati time da simulacija izgleda nerealistično jer će sličnosti između ponašanja biljaka biti identične u isto vrijeme i na istim uvjetima što narušava dojam realizma. Potencijalno rješenje ovog problema je da kod nekih biljaka unesemo kašnjenje nad prototipnom biljkom. Na taj način smo eliminirali problem dojma da se sve ponavlja, ali smo uveli problem da simulacija ne djeluje toliko responzivno.
 
 \chapter{Zaključak}
 ma moze se sve buraz kad se oce
+
+\listoffigures
 
 \bibliography{literatura}
 \bibliographystyle{fer}
