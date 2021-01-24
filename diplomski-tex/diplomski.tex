@@ -55,7 +55,38 @@
 \tableofcontents
 
 \chapter{Uvod}
-Uvod rada. Nakon uvoda dolaze poglavlja u kojima se obrađuje tema.
+\paragraph{}
+Proceduralno generiranje 3D modela je izrazito široko područje s velikim brojem različitih 
+pristupa rješavanju tog problema ovisno o primjeni. Generiranje modela se u novije vrijeme 
+sve češće radi skeniranjem stvarnih objekata. Ovakav način generiranja modela daje 
+impresivne rezultate, ali takvi rezultati su često izrazito kompleksni s jako puno 
+geometrije i neupotrebljivi su u interaktivnim sustavima poput video igara. 
+
+\paragraph{}
+U video igrama je potreban minimalan broj detalja kako bi brzina izvođenja aplikacije bila 
+što veća, ali dovoljno velik da daje dojam stvarnosti. Današnje igre sve više teže prema 
+otvorenom svijetu (engl. \textit{open-world}). Kod takvih igara igraču je prepuštena potpuna 
+sloboda kretanja na velikim površinama. Sa željom da povećaju brzinu izvođenja, programeri 
+koriste tehniku iscrtavanja prikaza sa različitom razinom detalja. Kod ovakvog pristupa, 
+objekti koji su daleko od kamere koriste modele sa izrazito malo datalja, a kod objekata 
+koji su bliže kameri koriste detaljne modele. Budući da su modeli koji su udaljeni od kamere 
+na ekranu mali, igrač ne može vidjeti gubitak detalja i dojam stvarnosti mu ostaje velik.
+
+\paragraph{}
+Još jedan od problema koji se susreće kod igara s otvorenim svijetom je vegetacija. Pojedine 
+lokacije igrinog svijeta imaju potpuno različite vegetacije. Ovo iziskuje vrlo velik napor 
+od umjetnika koji moraju modelirati različite vegetacije za različite lokacije. Osim velikog 
+broja različitih biljaka, zbog tehnike iscrtavanja u različitoj razini detalja često je za 
+isti model potrebno napraviti nekoliko različitih modela sa različitom razinom detalja, što 
+dodatno rezultira vremenom potrebnim za izradu igre. Igre su interaktivni sustav i statični 
+objekti koji su u stvarnom svijetu dinamički razbijaju osjećaj stvarnosti. Zbog toga je sve 
+te modele potrebno i animirati.
+
+\paragraph{}
+Kroz ovaj rad istražena je tehnika generiranja modela vegetacije u različitim razinama 
+detalja. Osim generiranja modela, istražen je i način simulacije vjetra kako bi se i taj dio 
+mogao automatizirati i time skratiti vrijeme razvoja igara.
+
 
 \chapter{Generiranje modela trave i niskog raslinja}
 \section{Osnovni pristup generiranju modela}
@@ -65,6 +96,12 @@ Uvod rada. Nakon uvoda dolaze poglavlja u kojima se obrađuje tema.
 \subsection{Generiranje modela uz različitu razinu detalja}
 
 \section{Povezivanje generiranih podataka i njihov prikaz}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{img/21-5}
+	\caption{Prikaz sučelja za generiranje biljaka}
+	\label{fig:21-5}
+\end{figure}
 
 \section{Programska implementacija generiranja i prikaza}
 
@@ -381,21 +418,199 @@ simulateMovement() {
 
 \paragraph{}
 Nakon završene simulacije vjetra računamo silu koja objašnjava ponašanje biljke na 
-vjetru. Sila je detaljno objašnjena u poglavlju \ref{physics_model}. Funkcija \verb#forceFactor# računa iznos sile kojom djelujemo, a opisana je formulama \ref{eq:32-1} i \ref{eq:32-2}.
+vjetru. Sila je detaljno objašnjena u poglavlju \ref{physics_model}. Funkcija 
+\verb#forceFactor# računa iznos sile kojom djelujemo, a opisana je formulama \ref{eq:32-1} i 
+\ref{eq:32-2}.
 
 \chapter{Simulacija ponašanja generiranog modela}
-\section{Povezivanje fizičkog modela sa generiranim prikazom modela}
-Do sada su definirana dva sustava.
+\section{Povezivanje fizičkog modela i modela prikaza}
+\paragraph{}
+Do sada su definirana dva odvojena sustava, sustav fizičke simulacije i sustav prikaza. 
+Fizički sustav je definiran preko dva tijela i jednog zgloba koji imaju odnose roditelj-
+dijete. Tijelo koje ima ulogu korijena biljke je roditelj, tijelo koje simulira vrh biljke 
+je dijete tog tijela, a ograničenje koje ih povezuje je veza između njih. U računalnoj 
+grafici postoji sličan koncept zapisa poze nekog složenog sustava. Takav način 
+hijerarhijskog zapisa naziva kostur (engl. \textit{skeleton}), u kojem su pohranjeni podaci 
+o djeci - kostima (engl. \textit{bones}).
+
+\paragraph{}
+Fizički sustav opisan u cijelini 3 možemo opisati kosturom od dvije kosti. Prva kost 
+nema roditelja, pozicionirana je na referentnoj točki fizičkog sustava i ima 
+konstantnu rotaciju koja uvijek gleda prema pozitivnoj y osi (prema gore). Druga kost 
+je dijete prve kosti i rotirana je na način da uvijek gleda u smjeru vektora između tijela 1 
+i tijela 2.
+
+\paragraph{}
+Nakon definiranja kostura, potrebno je definirati način na koji će se grafički model 
+mijenjati prema promjenama pozicija i rotacija kostiju. Ovaj postupak se zove omatanje 
+(engl. \textit{skinning}). Omatanje se vizualno može objasniti kao dodavanje utjecaja kosti 
+na pojedine točke u prostoru, na način da je kost uvijek bude unutar volumena koje te točke 
+zatvaraju. Primjer ilustracije omatane mreže točaka prikazan je na slici \ref{fig:41-1}.
+
+\paragraph{}
+Svaka kost je definirana preko matrice. U matrici su podaci o poziciji kosti te njenoj 
+orijentaciji. Način na koji točka unutar prikaza poprima te karakteristike je jednostavnim 
+množenjem pozicije točke sa matricom kosti.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{img/41-1}
+	\caption{Ilustracija omotane mreže točaka oko kosti}
+	\label{fig:41-1}
+\end{figure}
+
+\paragraph{}
+Kod savršenog omatanja utjecaj na jednu točki ima samo jedna kost. U praksi, kao i u 
+prikazanom rješenju to nije uvijek slučaj. Korištenjem savršenog omatanja dobili bi biljku 
+koja se u korijenu uvijek rotira prema smjeru vjetra. Takva biljka bila bi ravna i ne bi 
+djelovala prirodno. 
+
+\paragraph{}
+Način na koji se rješava taj problem je dodavanjem težina utjecaja kosti na pojedinu točku u 
+modelu. Težina je vektor decimalnih brojeva između jedan i nula, gdje jedinica označava 
+potpun utjecaj neke kosti na točku, a nula označava da ta kost nema nikakav utjecaj na 
+točku.
+
+\paragraph{}
+U primjeru simuliranja biljke na vjetru, točke koje su bliže korijenu su pod manjim 
+utjecajem kosti koja uzrokuje rotaciju od točaka koje su bliže vrhu. Rezultat takve 
+raspodjele težina jasno je vidljiv na slici \ref{fig:32-1}.
+
+\paragraph{}
+Zbog jednostavnosti problema, način na koji su težine raspodijeljene je linearan s obzirom 
+na visinu biljke. Točke na samom dnu biljke imaju težinu prema rotirajućoj kosti nula, a 
+prema statičnoj kosti jedan. Rastom visine, odnosno y vrijednosti pozicije pojedine točke, 
+težina kojom statična kost utječe na točku opada, a težina kojom rotirajuća kost utječe 
+raste. Izračun težine za pojedinu točku prikazan je formulom \ref{eq:41-1}.
+
+\begin{equation}
+w = vertexHeight / plantHeight
+\label{eq:41-1}
+\end{equation}
 
 \section{Programska implementacija modela}
+\paragraph{}
+Izračun pozicije točke u prostoru pod utjecajem kosti izvršava se na grafičkoj kartici. Prošireni program sjenčanja s omatanjem prikazan je u isječku \ref{code42-1}.
 
-\section{Utjecaj parametara na simulaciju}
+\paragraph{}
+\begin{lstlisting}[language=Javascript,label=code42-1,caption=Proširenja programa za sjenčanje omatanjem]
+...
+attribute vec4 a_weights;
+
+...
+uniform mat4 u_bone;
+
+void main() {
+	float counterWeight = 1.0 - a_weights[0];
+	gl_Position = u_worldViewProjection * (
+		u_bone * a_position * a_weights[0] +
+		a_position * counterWeight
+	);
+	
+	...
+}
+\end{lstlisting}
+
+\paragraph{}
+Kost korijena biljke je konstantna pa ju zbog jednostavnosti ne šaljemo prema grafičkoj 
+kartici. 
+
+\paragraph{}
+\verb#a_weights# je vektor utjecaja kostiju na točku u prostoru. Koristimo samo prvu 
+vrijednost iz vektora jer imamo samo jednu kost koja vrši animaciju. Korištenje vektora je 
+zadržano zbog potencijalnih nadogradnji u budućnosti. Također, korištenje vektora ne utječe 
+na performanse jer se prema grafičkoj kartici šalje samo jedan podatak, a ostala tri su 
+pretpostavljene vrijednosti. Ovakav vektor u teoriji podržava 4 različite kosti.
+
+\paragraph{}
+\verb#u_bone# je matrica rotirajuće kosti u prikazu. U glavnom dijelu programa izračunava se 
+protu-težina. Odnosno, koliko utjecaja na točku u prostoru ima statična kost. Statična kost 
+je matrica identiteta i njenim množenjem pozicije točke u prostoru ne dobivamo nikakvu 
+razliku pa je to množenje u programu za sjenčanje izostavljeno.
+
+\paragraph{}
+Kada bi statična kost mijenjala svoju poziciju ili rotaciju, nju bi također morali poslati 
+prema grafičkoj kartici i izračun pozicija točke bi izgledao kao što je prikazano u isječku 
+koda \ref{code42-2}.
+
+\paragraph{}
+\begin{lstlisting}[language=Javascript,label=code42-2,caption=Prošireno računanje pozicije točke na dvije kosti]
+gl_Position = u_worldViewProjection * (
+	u_bone_1 * a_position * a_weights[0] +
+	u_bone_2 * a_position * a_weights[1]
+);
+\end{lstlisting}
+
+\paragraph{}
+Kako bi grafička kartica ispravno izračunala pozicije točaka, potrebno joj je u svakoj 
+iteraciji poslati matricu rotirajuće kosti. Slanje matrice prema grafičkoj kartici prikazano je isječkom koda \ref{code42-3}.
+
+\paragraph{}
+\begin{lstlisting}[language=Javascript,label=code42-3,caption=Slanje dodatnih informacija prema grafičkoj kartici]
+let boneMatrix = mat4.xRotation(angles[0]);
+boneMatrix = mat4.zRotate(boneMatrix, angles[2]);
+
+const uBone = this.gl.getUniformLocation(
+	this.program, shaderBinding
+);
+
+this.gl.uniformMatrix4fv(
+	uBone,
+	false,
+	boneMatrix
+);
+\end{lstlisting}
+\paragraph{}
+
+\section{Različiti parametri simulacije}
+\paragraph{}
+Za bolju ocjenu rezultata potrebno je testirati više različitih parametara simulacije i 
+usporediti njihov utjecaj na simulaciju sa ponašanjem u stvarnom svijetu.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/43-0}
+	\caption{Funkcija udara vjetra}
+	\label{fig:43-0}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/43-1}
+	\caption{Funkcija konstantog puhanja vjetra}
+	\label{fig:43-1}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/43-2}
+	\caption{Funkcija vjetra u udarima}
+	\label{fig:43-2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/43-3}
+	\caption{Funkcija vjetra u valovima}
+	\label{fig:43-3}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{img/43-4}
+	\caption{Prikaz sučelja za simuliranje vjetra}
+	\label{fig:43-4}
+\end{figure}
+
+\paragraph{}
+Utjecaj paramatara na simulaciju opisan je u poglavlju \ref{physics_model_eval}.
 
 \chapter{Ocjena rezultata}
 \section{Realističnost prikaza}
 \paragraph{}
 Realističnost prikaza nije bila primarna zadaća ovog rada. Generirane biljke ne 
-izgledaju osobito prirodno bez obzira na razinu detalja kojom su generirane. Primjer generiranih biljaka vidljiv je na slici \ref{fig:51-1}.
+izgledaju osobito prirodno bez obzira na razinu detalja kojom su generirane. Primjer 
+generiranih biljaka vidljiv je na slici \ref{fig:51-1}.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{img/51-1}
@@ -469,7 +684,7 @@ popratnih sustava koje je potrebno razviti uključuju: sustav ukrasnih čestica,
 sustav efekata nakon iscrtavanja (engl. \textit{post-processing effects}) i 
 druge. 
 
-\section{Realističnost fizičke simulacije}
+\section{Realističnost fizičke simulacije} \label{physics_model_eval}
 \paragraph{}
 Bez obzira na jednostavnost implementacije fizičke simulacije i snažne
 pretpostavke uključene u nju, fizička simulacija daje zadovoljavajuće rezultate.
@@ -618,6 +833,22 @@ prototipnom biljkom. Na taj način smo eliminirali problem dojma da se sve ponav
 uveli problem da simulacija ne djeluje toliko responzivno.
 
 \chapter{Zaključak}
+\paragraph{}
+Generiranje i simulacija trave i niskog raslinja je moguća, ali i takav način izrade 
+modela iziskuje veliku količinu vremena. Nakon početnog uloženog vremena, proces same izrade 
+je ubrzan ali zahtjeva daljnji razvoj infrastrukture jer je za svaku novu karakteristiku 
+neke biljke potrebno vrijeme kako bi se ona matematički opisala i razvila. Rezultati 
+dobiveni ovom tehnikom mogu izgledati siromašno i potrebno je uložiti dodatan trud kako bi 
+se takvi modeli efektivno iskoristili.
+
+\paragraph{}
+Ovakav model generiranja i simuliranja modela bi ipak, uz neka poboljšanja, mogao biti 
+isplativ u izrazito velikim igrama ili kao rješenje koje bi se koristilo u više igara. 
+Ulaganjem vremena u ovakav sustav generiranja modela moguće je dostignuti razinu gdje je 
+gotovo svaku biljku moguće vrlo jednostavno opisati sa par pravila. Model simulacije vjetra 
+koji je istražen je jednostavan i uz dodatne optimizacije bi se efektivno mogao koristiti u 
+igrama, čak i sa ručno modeliranim modelima biljaka.
+
 
 \listoffigures
 
@@ -628,17 +859,32 @@ uveli problem da simulacija ne djeluje toliko responzivno.
 \bibliographystyle{fer}
 
 \begin{sazetak}
-Sažetak na hrvatskom jeziku.
+Proceduralno generiranje modela trave i niskog raslinja te simulacija njihovog ponašanja na 
+različitim atomosferskim utjecajima je kompleksan matematički problem. Promatranjem izgleda 
+biljaka i njihovog ponašanja moguće je uočiti pravilnosti. Korištenjem tih pravilnosti kao 
+pretpostavki u izgradnji modela prikaza i fizičkog modela simulacije, moguće je vrlo 
+jednostavnim matematičkim konstrukcijama doći do modela koji vjerno opisuje stvarno 
+ponašanje. U ovom radu su istražene i implementirane tehnike za generiranje 3D modela trave 
+i niskog raslinja. Ponuđen je razvojni okvir za izradu proizvoljnih 3D modela te osnovni 
+sustav simulacije vjetra. Ocjenjeni su i prezentirani rezultati. Istražene su neke 
+mogućnosti za nastavak istraživanja.
 
-\kljucnerijeci{Ključne riječi, odvojene zarezima.}
+\kljucnerijeci{proceduralno generiranje, simulacija vjetra, omatanje modela, fizička simulacija}
 \end{sazetak}
 
 % TODO: Navedite naslov na engleskom jeziku.
 \engtitle{Procedural generation of grass and low vegetation}
 \begin{abstract}
-Abstract.
+Procedural generation of grass and low vegetation models, with simulated behavior under 
+different atmospheric conditions is a complex mathematical problem. By observing plants it 
+is possible to deduct some regularities about their appearance and behavior. Using those 
+regularities as assumptions while building graphics and physics model it is possible to 
+achieve level of realism with just simple mathematical constructions. This paper researched 
+and implemented some of the techniques used for generating 3D models of grass and low 
+vegetation. It offers a framework for creating a wide range of different plants and basic 
+system for wind simulation. Results were measured and are presented. Paper explored some of the possibilities for the continuation of research.
 
-\keywords{Keywords.}
+\keywords{procedural generation, wind simulation, model skinning, physics simulation}
 \end{abstract}
 
 \end{document}
