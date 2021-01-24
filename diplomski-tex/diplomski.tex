@@ -78,13 +78,14 @@ biljke i vanjski utjecaji. Sila teža konstantnim intenzitetom gura sve dijelove
 biljke prema dolje. Vanjski utjecaji poput vjetra, djeluju u svim smjerovima 
 različitim intenzitetima na različite dijelove biljke. Te unutrašnji otpor 
 biljke, koji uvijek djeluje u suprotnom smjeru od preostale dvije sile. Na 
-slici \ref{fig:31-1} su slikovito prikazane kumulativne sile koje u nekom 
-trenutku djeluju na biljku.
+slici \ref{fig:31-1} su slikovito prikazane sile koje djeluju na svaki mikroskopski malen 
+dio biljke. Važno je napomenuti da su za tenziju i kompresiju prikazane sile koje one 
+uzrokuju, a ne smjer kompresije odnosno tenzije.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{img/31-1}
-	\caption{Prikaz sila koje djeluju na biljku (WIP slika)}
+	\includegraphics[width=0.75\textwidth]{img/31-1}
+	\caption{Prikaz sila koje djeluju na biljku}
 	\label{fig:31-1}
 \end{figure}
 
@@ -306,6 +307,15 @@ Vrh biljke umjesto kocke ima kuglu. Iako neprecizno, kugla dobro opisuje ponaša
 interakcije vrha biljaka i pogodno je za brzinu izvođenja.
 
 \paragraph{}
+Definicija kuglastog zgloba u OimoPhysics pokretaču također je jednostavna. Sastoji se od
+jednog konfiguracijskog objekta koji opisuje sva svojstva ovog ograničenja.
+Taj konfiguracijski razred je \verb#SphericalJointConfig#. \verb#init# metodi ovog 
+konfiguracijskog objekta predajemo tijela na koja će se ovo ograničenje primjenjivati. U 
+prezentiranom rješenju to su tijela \verb#base# i \verb#tip#. Osim tijela na koja se 
+ograničenje primjenjuje potrebno je definirati i referentnu točku za to ograničenje. Kod 
+simulacije se vrh biljke rotira oko korijena biljke, pa poziciju korijena biljke uzimamo kao 
+referentnu točku.
+\paragraph{}
 
 \begin{lstlisting}[language=Javascript,label=code33-4,caption=Postavljanje kuglastog zgloba]
 const jointConfig = new OIMO.SphericalJointConfig();
@@ -318,9 +328,64 @@ const joint = new OIMO.SphericalJoint(jointConfig);
 this.world.addJoint(joint);
 \end{lstlisting}
 
+\paragraph{}
+U ostatku konfiguracije definiran je i prigušivač opruge. Prigušivač opruge simulira 
+ograničenje kao oprugu umjesto čvrstu vezu između tijela. U prezentiranom rješenju postavke
+prigušivača su postavljene na nulu. Ovakve postavke postavljaju ograničenje kao čvrstu vezu
+između dva tijela. Biljke možemo zamisliti kao opruge pa ovakav izbor djeluje nelogično. 
+Odabir baš takvih parametara rezultat je ručne implementacije vrlo sličnog ponašanja biljke.
+Korištenje oba sustava za simulaciju elastičnosti rezultira fizičkim nekonzistencijama u 
+ponašanju biljke.
+
+\paragraph{}
+Parametri \verb#breakForce# i \verb#breakTorque# opisuju silu i obrtni moment pod kojim bi
+ograničenje popustilo, odnosno prestalo raditi. Vrijednost nula u konfiguraciji signalizira
+fizičkom pokretaču da je ograničenje konstantno, odnosno da neće prestati vrijediti bez 
+obzira na sile koje djeluju na tijela. Cijelovito postavljanje vrijednosti ograničenja 
+kuglastog zgloba prikazano je isječkom koda \ref{code33-4}.
+
+\paragraph{}
+Nakon početnog postavljanja kostura biljke potrebno je definirati ponašanje biljke u 
+simulaciji. Definicija ponašanja prikazana je u isječku koda \ref{code33-5}. U simulaciji
+prolazimo kroz sve kuglaste zglobove u kosturu biljke i izvršavamo simulaciju za svaki od 
+njih. U jednostavnim primjerima postoji samo jedan zglob za svaku od biljaka, ali na ovaj 
+način je sačuvana mogućnost simuliranja mnogo složenijih konfiguracija.
+
+\paragraph{}
+Na početku jedne iteracije simulacije uzimamo tijela na koja je primjenjeno ograničenje
+kuglastog zgloba. Na drugo tijelo (vrh biljke) primjenjujemo silu vjetra. Sila vjetra 
+je vektor neke duljine u 3D prostoru. Duljina vektora odgovara snazi koju vjetar ima u nekom 
+trenutku. Nakon primjene sile vjetra, na tijelo se primjenjuje izrazito mala sila koja 
+djeluje suprotno od vektora brzine tijela. Tijelo zbog te sile konstantno usporava i 
+time riješava problem beskonačne simulacije čak i za vrlo male i kratkotrajne početne sile.
+
+\paragraph{}
+\begin{lstlisting}[language=Javascript,label=code33-5,caption=Fizička simulacija ponašanja biljke.]
+simulateMovement() {
+	for (const joint of this.skeleton.joints) {
+		const rigid1 = joint.getRigidBody1();
+		const rigid2 = joint.getRigidBody2();
+
+		this.applyWind(rigid2);
+		this.applyInnerFriction(rigid2);
+
+		// we need relative position of joint
+		const pos1 = rigid1.getPosition();
+		const pos2 = pos1.sub(rigid2.getPosition());
+
+		const force = Math.abs(this.forceFactor(pos2));
+		rigid2.applyForceToCenter(new OIMO.Vec3(0, force, 0));
+	}
+}
+\end{lstlisting}
+
+\paragraph{}
+Nakon završene simulacije vjetra računamo silu koja objašnjava ponašanje biljke na 
+vjetru. Sila je detaljno objašnjena u poglavlju \ref{physics_model}. Funkcija \verb#forceFactor# računa iznos sile kojom djelujemo, a opisana je formulama \ref{eq:32-1} i \ref{eq:32-2}.
 
 \chapter{Simulacija ponašanja generiranog modela}
 \section{Povezivanje fizičkog modela sa generiranim prikazom modela}
+Do sada su definirana dva sustava.
 
 \section{Programska implementacija modela}
 

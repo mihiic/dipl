@@ -33,46 +33,52 @@
 \contentsline {paragraph}{}{9}%
 \contentsline {paragraph}{}{9}%
 \contentsline {paragraph}{}{9}%
-\contentsline {chapter}{\numberline {4}Simulacija ponašanja generiranog modela}{11}%
-\contentsline {section}{\numberline {4.1}Povezivanje fizičkog modela sa generiranim prikazom modela}{11}%
-\contentsline {section}{\numberline {4.2}Programska implementacija modela}{11}%
-\contentsline {section}{\numberline {4.3}Utjecaj parametara na simulaciju}{11}%
-\contentsline {chapter}{\numberline {5}Ocjena rezultata}{12}%
-\contentsline {section}{\numberline {5.1}Realističnost prikaza}{12}%
-\contentsline {paragraph}{}{12}%
-\contentsline {paragraph}{}{12}%
-\contentsline {paragraph}{}{13}%
-\contentsline {paragraph}{}{13}%
-\contentsline {paragraph}{}{13}%
-\contentsline {subsection}{\numberline {5.1.1}Mogućnosti poboljšanja}{13}%
+\contentsline {paragraph}{}{9}%
+\contentsline {paragraph}{}{10}%
+\contentsline {paragraph}{}{10}%
+\contentsline {paragraph}{}{10}%
+\contentsline {paragraph}{}{11}%
+\contentsline {paragraph}{}{11}%
+\contentsline {chapter}{\numberline {4}Simulacija ponašanja generiranog modela}{12}%
+\contentsline {section}{\numberline {4.1}Povezivanje fizičkog modela sa generiranim prikazom modela}{12}%
+\contentsline {section}{\numberline {4.2}Programska implementacija modela}{12}%
+\contentsline {section}{\numberline {4.3}Utjecaj parametara na simulaciju}{12}%
+\contentsline {chapter}{\numberline {5}Ocjena rezultata}{13}%
+\contentsline {section}{\numberline {5.1}Realističnost prikaza}{13}%
 \contentsline {paragraph}{}{13}%
 \contentsline {paragraph}{}{13}%
 \contentsline {paragraph}{}{14}%
 \contentsline {paragraph}{}{14}%
 \contentsline {paragraph}{}{14}%
-\contentsline {section}{\numberline {5.2}Realističnost fizičke simulacije}{14}%
-\contentsline {paragraph}{}{14}%
+\contentsline {subsection}{\numberline {5.1.1}Mogućnosti poboljšanja}{14}%
 \contentsline {paragraph}{}{14}%
 \contentsline {paragraph}{}{14}%
 \contentsline {paragraph}{}{15}%
 \contentsline {paragraph}{}{15}%
-\contentsline {subsection}{\numberline {5.2.1}Poboljšanje realističnosti simulacije}{16}%
+\contentsline {paragraph}{}{15}%
+\contentsline {section}{\numberline {5.2}Realističnost fizičke simulacije}{15}%
+\contentsline {paragraph}{}{15}%
+\contentsline {paragraph}{}{15}%
+\contentsline {paragraph}{}{15}%
 \contentsline {paragraph}{}{16}%
 \contentsline {paragraph}{}{16}%
-\contentsline {section}{\numberline {5.3}Brzina izvođenja}{16}%
-\contentsline {paragraph}{}{16}%
-\contentsline {subsection}{\numberline {5.3.1}Pristupi poboljšanju brzine izvođenja}{17}%
-\contentsline {paragraph}{}{17}%
-\contentsline {subsubsection}{Paralelno izvođenje fizičke simulacije}{17}%
+\contentsline {subsection}{\numberline {5.2.1}Poboljšanje realističnosti simulacije}{17}%
 \contentsline {paragraph}{}{17}%
 \contentsline {paragraph}{}{17}%
-\contentsline {subsubsection}{Smanjenje rezolucije simulacije i zaglađivanje rezultata}{18}%
+\contentsline {section}{\numberline {5.3}Brzina izvođenja}{17}%
+\contentsline {paragraph}{}{17}%
+\contentsline {subsection}{\numberline {5.3.1}Pristupi poboljšanju brzine izvođenja}{18}%
+\contentsline {paragraph}{}{18}%
+\contentsline {subsubsection}{Paralelno izvođenje fizičke simulacije}{18}%
 \contentsline {paragraph}{}{18}%
 \contentsline {paragraph}{}{18}%
-\contentsline {paragraph}{}{18}%
-\contentsline {subsubsection}{Izračunavanje sličnosti modela i grupiranje izračuna}{19}%
+\contentsline {subsubsection}{Smanjenje rezolucije simulacije i zaglađivanje rezultata}{19}%
 \contentsline {paragraph}{}{19}%
 \contentsline {paragraph}{}{19}%
-\contentsline {chapter}{\numberline {6}Zaključak}{20}%
-\contentsline {chapter}{Popis slika}{21}%
-\contentsline {chapter}{Popis isječaka koda}{22}%
+\contentsline {paragraph}{}{19}%
+\contentsline {subsubsection}{Izračunavanje sličnosti modela i grupiranje izračuna}{20}%
+\contentsline {paragraph}{}{20}%
+\contentsline {paragraph}{}{20}%
+\contentsline {chapter}{\numberline {6}Zaključak}{21}%
+\contentsline {chapter}{Popis slika}{22}%
+\contentsline {chapter}{Popis isječaka koda}{23}%

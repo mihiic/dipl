@@ -83,8 +83,8 @@ export class Plant extends SceneNode {
 
             rot = [this.calculateAngleX(pos2), 0, this.calculateAngleZ(pos2)];
 
-            const difference = Math.abs(this.forceAngle(pos2));
-            rigid2.applyForceToCenter(new OIMO.Vec3(0, difference / 2, 0));
+            const force = Math.abs(this.forceFactor(pos2));
+            rigid2.applyForceToCenter(new OIMO.Vec3(0, force / 2, 0));
         }
 
         return rot;
@@ -109,7 +109,7 @@ export class Plant extends SceneNode {
         );
     }
 
-    forceAngle(pos) {
+    forceFactor(pos) {
         if (Math.abs(pos.x) < 0.01 && Math.abs(pos.z) < 0.01) {
             return 0;
         }
