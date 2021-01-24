@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.16)  16 JAN 2021 18:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.16)  24 JAN 2021 09:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -308,30 +308,55 @@ File: pppdftex.def 2020/01/28 v0.5q Pdfpages driver for pdfTeX (AM)
 \c@AM@survey=\count272
 \AM@templatesizebox=\box49
 )
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count273
+\lst@gtempboxa=\box50
+\lst@token=\toks27
+\lst@length=\count274
+\lst@currlwidth=\dimen181
+\lst@column=\count275
+\lst@pos=\count276
+\lst@lostspace=\dimen182
+\lst@width=\dimen183
+\lst@newlines=\count277
+\lst@lineno=\count278
+\lst@maxwidth=\dimen184
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
+\c@lstnumber=\count279
+\lst@skipnumbers=\count280
+\lst@framebox=\box51
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2019/09/10 1.8c listings configuration
+))
+Package: listings 2019/09/10 1.8c (Carsten Heinz)
+
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count273
-\l__pdf_internal_box=\box50
+\l__kernel_color_stack_int=\count281
+\l__pdf_internal_box=\box52
 )
 (./diplomski.aux)
 \openout1 = `diplomski.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 5.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 41
+.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
@@ -371,17 +396,17 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count274
-\scratchdimen=\dimen181
-\scratchbox=\box51
-\nofMPsegments=\count275
-\nofMParguments=\count276
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count277
-\MPscratchDim=\dimen182
-\MPnumerator=\count278
-\makeMPintoPDFobject=\count279
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count282
+\scratchdimen=\dimen185
+\scratchbox=\box53
+\nofMPsegments=\count283
+\nofMParguments=\count284
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count285
+\MPscratchDim=\dimen186
+\MPnumerator=\count286
+\makeMPintoPDFobject=\count287
+\everyMPtoPDFconversion=\toks29
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -392,8 +417,9 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box52
+\AtBeginShipoutBox=\box54
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
@@ -403,19 +429,20 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 13
+\c@lstlisting=\count288
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 49
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 49.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 49.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -426,32 +453,32 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <hr_0036487393_56.pdf, id=8, 597.23125pt x 845.1575pt>
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf>
-Package pdftex.def Info: hr_0036487393_56.pdf  used on input line 15.
+Package pdftex.def Info: hr_0036487393_56.pdf  used on input line 51.
 (pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf>
-Package pdftex.def Info: hr_0036487393_56.pdf  used on input line 15.
+Package pdftex.def Info: hr_0036487393_56.pdf  used on input line 51.
 (pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
 <hr_0036487393_56.pdf, id=11, page=1, 597.23125pt x 845.1575pt>
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf, page 1>
-Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 15.
+Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
 (pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf, page 1>
-Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 15.
+Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
 (pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf, page 1>
-Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 15.
+Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
 (pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf, page 1>
-Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 15.
+Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
 (pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf, page 1>
-Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 15.
+Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
 (pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
  [1 <./hr_0036487393_56.pdf>] [3]
 (./diplomski.toc
@@ -479,99 +506,129 @@ Poglavlje 3.
 <img/31-1.png, id=48, 385.44pt x 385.44pt>
 File: img/31-1.png Graphic file (type png)
 <use img/31-1.png>
-Package pdftex.def Info: img/31-1.png  used on input line 50.
+Package pdftex.def Info: img/31-1.png  used on input line 86.
 (pdftex.def)             Requested size: 330.05322pt x 330.05453pt.
 [3
 
  <./img/31-1.png>]
-Overfull \hbox (2.56572pt too wide) in paragraph at lines 91--91
-[]\T1/ptm/b/n/17.28 Implementacije fi-zi£-kog po-na-²a-nja slo-ºe-nih bi-ljaka 
+<img/32-1.png, id=54, 385.44pt x 385.44pt>
+File: img/32-1.png Graphic file (type png)
+<use img/32-1.png>
+Package pdftex.def Info: img/32-1.png  used on input line 131.
+(pdftex.def)             Requested size: 330.05322pt x 330.05453pt.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4] [5 <./img/32-1.png>]
+<img/32-2.png, id=66, 305.57642pt x 399.84163pt>
+File: img/32-2.png Graphic file (type png)
+<use img/32-2.png>
+Package pdftex.def Info: img/32-2.png  used on input line 166.
+(pdftex.def)             Requested size: 206.28249pt x 269.92415pt.
+ [6 <./img/32-2.png>]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 21
+3.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Overfull \hbox (8.5217pt too wide) in paragraph at lines 218--226
+ [] \T1/ptm/m/n/12 Prvi pa-ra-me-tar kod ini-ci-ja-li-za-cije je iz-bor al-go-r
+itma rje-²a-va£a ko-li-zija (engl.  \T1/ptm/m/it/12 collision-
  []
 
-[4] [5]
+[7] [8] [9] [10]
 Poglavlje 4.
-[6
+[11
 
 ]
 Poglavlje 5.
-<img/51-1.png, id=63, 784.9325pt x 592.2125pt>
+<img/51-1.png, id=90, 784.9325pt x 592.2125pt>
 File: img/51-1.png Graphic file (type png)
 <use img/51-1.png>
-Package pdftex.def Info: img/51-1.png  used on input line 107.
+Package pdftex.def Info: img/51-1.png  used on input line 336.
 (pdftex.def)             Requested size: 330.05322pt x 249.01671pt.
-[7
+[12
 
- <./img/51-1.png>] [8]
-<img/52-1.png, id=72, 92.9874pt x 80.2197pt>
+ <./img/51-1.png>] [13]
+<img/52-1.png, id=98, 92.9874pt x 80.2197pt>
 File: img/52-1.png Graphic file (type png)
 <use img/52-1.png>
-Package pdftex.def Info: img/52-1.png  used on input line 202.
+Package pdftex.def Info: img/52-1.png  used on input line 431.
 (pdftex.def)             Requested size: 165.02347pt x 142.3683pt.
- [9]
-<img/52-2.png, id=77, 107.6823pt x 96.1191pt>
+ [14]
+<img/52-2.png, id=103, 107.6823pt x 96.1191pt>
 File: img/52-2.png Graphic file (type png)
 <use img/52-2.png>
-Package pdftex.def Info: img/52-2.png  used on input line 217.
+Package pdftex.def Info: img/52-2.png  used on input line 446.
 (pdftex.def)             Requested size: 165.02347pt x 147.31543pt.
- [10 <./img/52-1.png> <./img/52-2.png>]
-<img/53-1.png, id=83, 596.2275pt x 362.35374pt>
+ [15 <./img/52-1.png> <./img/52-2.png>]
+<img/53-1.png, id=109, 596.2275pt x 362.35374pt>
 File: img/53-1.png Graphic file (type png)
 <use img/53-1.png>
-Package pdftex.def Info: img/53-1.png  used on input line 244.
+Package pdftex.def Info: img/53-1.png  used on input line 475.
 (pdftex.def)             Requested size: 391.93546pt x 238.19768pt.
- [11 <./img/53-1.png>]
-<img/531-1.png, id=88, 351.3125pt x 346.29375pt>
+ [16 <./img/53-1.png>]
+<img/531-1.png, id=114, 351.3125pt x 346.29375pt>
 File: img/531-1.png Graphic file (type png)
 <use img/531-1.png>
-Package pdftex.def Info: img/531-1.png  used on input line 263.
+Package pdftex.def Info: img/531-1.png  used on input line 496.
 (pdftex.def)             Requested size: 288.79422pt x 284.6919pt.
- [12 <./img/531-1.png>]
-<img/531-2.png, id=93, 233.87375pt x 320.19624pt>
+ [17 <./img/531-1.png>]
+<img/531-2.png, id=119, 233.87375pt x 320.19624pt>
 File: img/531-2.png Graphic file (type png)
 <use img/531-2.png>
-Package pdftex.def Info: img/531-2.png  used on input line 289.
+Package pdftex.def Info: img/531-2.png  used on input line 522.
 (pdftex.def)             Requested size: 206.28249pt x 282.43314pt.
- [13 <./img/531-2.png>]
-<img/531-3.png, id=98, 261.97874pt x 242.9075pt>
+ [18 <./img/531-2.png>]
+<img/531-3.png, id=124, 261.97874pt x 242.9075pt>
 File: img/531-3.png Graphic file (type png)
 <use img/531-3.png>
-Package pdftex.def Info: img/531-3.png  used on input line 306.
+Package pdftex.def Info: img/531-3.png  used on input line 542.
 (pdftex.def)             Requested size: 206.28249pt x 191.27213pt.
- [14 <./img/531-3.png>]
+ [19 <./img/531-3.png>]
 Poglavlje 6.
-[15
+[20
 
 ] (./diplomski.lof)
 \tf@lof=\write4
 \openout4 = `diplomski.lof'.
 
+ [21
+
+] (./diplomski.lol)
+\tf@lol=\write5
+\openout5 = `diplomski.lol'.
+
 
 No file diplomski.bbl.
-[16
+[22
 
-] [17] (./diplomski.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+] [23] (./diplomski.aux) ) 
 Here is how much of TeX's memory you used:
- 7360 strings out of 482600
- 104668 string characters out of 5949960
- 361188 words of memory out of 5000000
- 22261 multiletter control sequences out of 15000+600000
- 583965 words of font info for 83 fonts, out of 8000000 for 9000
+ 9108 strings out of 482600
+ 127474 string characters out of 5949960
+ 415787 words of memory out of 5000000
+ 23983 multiletter control sequences out of 15000+600000
+ 588550 words of font info for 91 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 49i,18n,46p,543b,437s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
-8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on diplomski.pdf (22 pages, 171786 bytes).
+ 49i,18n,46p,270b,1707s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8
+r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
+vr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on diplomski.pdf (28 pages, 278086 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
+ 180 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

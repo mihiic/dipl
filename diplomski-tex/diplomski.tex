@@ -1,6 +1,42 @@
 \documentclass[times, utf8, diplomski]{fer}
 \usepackage{booktabs}
 \usepackage[final]{pdfpages}
+\usepackage{listings}
+\usepackage{keyval}
+
+\lstdefinelanguage{Javascript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, let, const},
+  keywordstyle=\color{black}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{black}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{black}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{white},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+\renewcommand\lstlistingname{Isječak koda}
+\renewcommand\lstlistlistingname{Popis isječaka koda}
 
 \begin{document}
 
@@ -41,28 +77,31 @@ Osnovne sile koje utječu na ponašanje biljke su sila teža, unutrašnji otpor
 biljke i vanjski utjecaji. Sila teža konstantnim intenzitetom gura sve dijelove 
 biljke prema dolje. Vanjski utjecaji poput vjetra, djeluju u svim smjerovima 
 različitim intenzitetima na različite dijelove biljke. Te unutrašnji otpor 
-biljke, koji uvijek dijeluje u suprotnom smjeru od preostale dvije sile. Na 
+biljke, koji uvijek djeluje u suprotnom smjeru od preostale dvije sile. Na 
 slici \ref{fig:31-1} su slikovito prikazane kumulativne sile koje u nekom 
 trenutku djeluju na biljku.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{img/31-1}
-	\caption{Prikaz sila koje djeluju na biljku}
+	\caption{Prikaz sila koje djeluju na biljku (WIP slika)}
 	\label{fig:31-1}
 \end{figure}
 
 \paragraph{}
-Usred djelovanja te tri sile, biljka u svakom trenutku pokušava doći u stanje gdje se te tri sile poništavaju. Svako gibanje biljke prouzrokovano je promjenom vanjskih utjecaja kojima se biljka pokuša prilagoditi kako bi ukupna sila koja djeluje na biljku bila nula.
+Usred djelovanja te tri sile, biljka u svakom trenutku pokušava doći u stanje gdje se te tri 
+sile poništavaju. Svako gibanje biljke prouzrokovano je promjenom vanjskih utjecaja kojima 
+se biljka pokuša prilagoditi kako bi ukupna sila koja djeluje na biljku bila nula.
 
 \paragraph{}
 Čak i naizgled jednostavan problem kao što je simuliranje ponašanja biljke je u svojoj 
-naravi izrazito kompleksan. Sila teža djeluje na svaki mikroskopsi dio biljke. Na isti način
-djeluju i vanjske sile. Vanjske sile i sila teže u biljci uzrokuju napetosti i kompresije 
-koje uzrokuju silu otpora biljke. To sve se događa na mikroskopskoj razini na svakom dijelu 
-površine biljke. Savršena simlacija ovakvog sustava bila bi izrazito računalno zahtjevna.
+naravi izrazito kompleksan. Sila teža djeluje na svaki mikroskopski dio biljke. Na isti 
+način djeluju i vanjske sile. Vanjske sile i sila teže u biljci uzrokuju napetosti i 
+kompresije koje uzrokuju silu otpora biljke. To sve se događa na mikroskopskoj razini na 
+svakom dijelu površine biljke. Savršena simulacija ovakvog sustava bila bi izrazito  
+računalno zahtjevna.
 
-\section{Programski model fizičkog ponašanja}
+\section{Programski model fizičkog ponašanja} \label{physics_model}
 \paragraph{}
 Zbog računalne zahtjevnosti i problema preciznog definiranja svih sila, potrebno je pronaći
 matematički model koji bi rezultirao istim (ili barem vrlo sličnim) ponašanjem, a imao bi 
@@ -71,24 +110,214 @@ mnogo manju računalnu složenost i bio bi jednostavniji za definirati.
 \paragraph{}
 U računalnom programiranju se fizičke interakcije obično modeliraju preko tri osnovna  
 građevna bloka. Tijela, ograničenja i sile. Tijela su geometrijski oblici u tro-
-dimenzijskom prostoru koja zauzimaju volumen i podložna su dijelovanju sila. Ograničenja 
+dimenzijskom prostoru koja zauzimaju volumen i podložna su djelovanju sila. Ograničenja 
 su skup pravila koja određuju kako se neka dva tijela mogu ponašati relativno jedno prema 
-drugom. Sile dijeluju na tijela i uzrokuju promjene koje se tada na temelju ograničenja 
+drugom. Sile djeluju na tijela i uzrokuju promjene koje se tada na temelju ograničenja 
 rješavaju.
 
 \paragraph{}
 Primjer tijela je kocka u trodimenzijskom prostoru. Primjer sile je sila teža koja djeluje 
 konstantnim intenzitetom prema negativnoj y osi. Primjer ograničenja je ako se volumen 
 jednog tijela nađe unutar volumena drugog tijela, na oba tijela se primjenjuje sila u smjeru 
-suprotnom od središta mase drugog tijela. Ovo ograničenje je naivni pristup riješavanju 
+suprotnom od središta mase drugog tijela. Ovo ograničenje je naivni pristup rješavanju 
 kolizija između tijela.
 
 \paragraph{}
-Stvarnu simulaciju jednostavne biljke možemo vrlo dobro aproksimirati korištenjem svega dva tijela, jednog ograničenja i jedne sile koja dijeluje na jedno od tijela.
+Stvarnu simulaciju jednostavne biljke možemo vrlo dobro aproksimirati korištenjem svega dva 
+tijela, jednog ograničenja i jedne sile koja djeluje na jedno od tijela. Ovaj jednostavni model prikazan je slikom \ref{fig:32-1}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/32-1}
+	\caption{Ilustracija prikaza fizickog modela stvarnog gibanja}
+	\label{fig:32-1}
+\end{figure}
+
+\paragraph{}
+Tijelo 1 u fizickom modelu pretstavlja korijen biljke i u simulaciji je u cijelosti 
+staticno. Tijelo 2 pretstavlja vrh biljke i dinamičko je, odnosno može reagirati na utjecaj
+sila. Ta dva tijela spojena su kuglastim zglobom. Kuglasti zglob je ograničenje na tijelo 2 
+koje dozvoljava tijelu da se slobodno giba i rotira u prostoru oko bilo koje osi pod uvjetom 
+da je uvijek jednako udaljeno od tijela 1.
+
+\paragraph{}
+Na tijelo 2 također djeluje sila F koja je svojim smjerom obrnuta od smjera sile teže, a 
+njezin iznos je određen kutom otklona od neutralne pozicije. Neutralna pozicija ima tijelo 2 
+direktno iznad tijela 1 i u takvom slučaju je faktor $\mu$ jednak 0.
+
+\paragraph{}
+Računanje otklona $\theta$ u tro dimenzijskom prostoru radimo kao omjer duljine 
+stranica trokuta. Jedna od stranica je projekcija pozicije tijela 2 na ravninu 
+xz, a druga stranica je visina tijela 2 iznad te ravnine. Zbog kuglastog zgloba 
+očekujemo da je duljina vektora pozicije tijela 2 od ishodišta uvijek jednaka, 
+normalizacijom pozicije tijela 2, duljina projekcije na xz ravninu ima 
+vrijednost $cos$ kuta $\theta'$. Zanimljiva informacija nam je otklon od y osi, koristimo 
+$sin(\theta')$ te vrijednost kako bi dobili suprotan kut ($\pi / 2 - \theta'$). U takvom 
+slučaju nam je dovoljna informacija uzeti y vrijednost normalizirane pozicije i možemo 
+precizno izračunati otklon. Računaje kuta otklona prikazano je formulom \ref{eq:32-1}.
+
+\begin{equation}
+\theta = asin(normalized(position).y)
+\label{eq:32-1}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/32-2}
+	\caption{Prikaz izračuna kuta otklona}
+	\label{fig:32-2}
+\end{figure}
+
+
+\paragraph{}
+Nakon izračuna kuta otklona, računanje sile koja djeluje na tijelo 2 je sada jednostavno i 
+prikazano formulom \ref{eq:32-2}. Računanje sile je također proporcionalno sa sinusom kuta 
+na intervalu između 0 i 90 stupnjeva. Sila koja djeluje na tijelo kod otklona većeg od 90 
+stupnjeva veća je od sile koja djeluje na tijelo na otklonu manjem od 90 stupnjeva. Kod 
+jednostavnog modela s jednim zglobom ovo je nerealan slučaj jer se tijelo 2 ne može naći u  
+takvoj poziciji (tijelo 2 bi tada bilo ispod tijela 1, i prošlo bi kroz površinu poda), ali 
+ga je bitno spomenuti zbog skaliranja na model sa većim brojem zglobova.
+
+\begin{equation}
+\vec{F} = sin(\theta) * (1 + elasticity) * \vec{G} * -1
+\label{eq:32-2}
+\end{equation}
+
+\paragraph{}
+Rezultirajuća sila $\vec{F}$ djeluje u negativnom y smjeru (suprotno od smjera sile teže).
+Takav smjer je rezultat faktora $\vec{G} * -1$. U formuli se javlja i faktor $(1 + 
+elasticity)$. Njegova zadaća je osigurati da biljke koje imaju veći faktor elastičnosti 
+stoje bliže centru ravnoteže čak i kod malih otklona od središta. Primjer biljke koja ima 
+velik faktor elastičnosti je rogoz, koji stoji potpuno uspravno u neutralnoj poziciji. 
+Primjer male elastičnosti biljke je zvončić, koji nema dovoljno sile kako bi se vratio u 
+neutralni (uspravni) položaj. Ime faktora je elastičnost jer odgovara na pitanje kolikom 
+silom će se biljka pokušati vratiti u neutralni položaj nakon što je otklonjena od centra 
+ravnteže.
 
 \section{Programska implementacija fizičkog modela}
+\paragraph{}
+Fizički pokretač korišten u prezentiranom rješenju je OimoPhysics. Taj pokretač je napisan
+u programskom jeziku Haxe i preveden u programski jezik Javascript. Izbor ovog fizičkog 
+pokretača prvenstveno je potaknut njegovom relativnom jednostavnošću i njegovom mogućnosti 
+izvršavanja direktnog izvođenja unutar preglednika. Zbog jednostavnastavnog modela kojeg 
+simuliramo, nije predana velika težina performansama koje zbog izvođenja u interpretiranom
+jeziku mogu negativno utjecati na brzinu izvođenja programskog rješenja.
 
-\section{Implementacije fizičkog ponašanja složenih biljaka}
+\paragraph{}
+Osnova svakog fizičkog pokretača je svijet simulacije (engl. \textit{world}) koji sadržava 
+sve osnovne gradivne blokove fizičke simulacije objašnjene u sekciji \ref{physics_model}.
+Svijet implicitno definira ograničenja za rješavanje kolizija između objekata. Inicijalno
+postavljanje vrijednosti svijeta u OimoPhysics pokretaču je iznimno jednostavno i prikazano je isječkom koda \ref{code33-1}.
+\paragraph{}
+
+\begin{lstlisting}[language=Javascript,caption=Postavljanje simulacijskog svijeta, label=code33-1]
+const world = new OIMO.World(1, new Vec3(0, -9.81, 0))
+\end{lstlisting}
+
+\paragraph{}
+Prvi parametar kod inicijalizacije je izbor algoritma rješavača kolizija (engl. \
+\textit{collision-solver}. Različiti algoritmi pridaju različite važnosti pojedinim 
+elementima simulacije. Za znanstvene radove izabrali bi algoritam koji manju pažnju pridaje
+brzini izvođenja simulacije, a veću pažnju točnosti same simulacije. Za igre i ostale 
+sustave koji se izvršavaju u stvarnom vremenu, manje nam je bitna točnost, a bitnija je 
+brzina izvođenja. Algoritmi unutar OimoPhysics pokretača su označeni od 0 do 2, gdje 
+vrijednost implicira kolika se težina pridaje točnosti simulacije. U prezentiranom radu
+korištena je postavka 1, koja postiže balansirani odnos između točnosti i brzine izvođenja.
+
+\paragraph{}
+Nakon kreiranja simulacijskog svijeta dodajemo fizički kostur svakoj biljci. Fizički kostur 
+biljke sastoji se od 3 dijela. tijela 1 koje je nepomično i opisuje korijen biljke, tijela 2 
+koje je vrh biljke i podložno je utjecaju sila te kuglastog zgloba koji povezuje tijelo 1 i
+tijelo 2.
+
+\paragraph{}
+Tijelo u simulacijskom svijetu opisano je s dva konfiguracijska objekta. Svaki 
+konfiguracijski objekt objašnjava zaseban dio simulacije. Prvi konfiguracijski objekt su
+općenita svojstva tijela poput njegove inijcijalne pozicije u simulacijskom svijetu i vrsta
+ponašanja tijela. Konfiguracijski razred za općenita svojstva tijela u OimoPhysics pokretaču 
+je \verb#RigidBodyConfig#. U korištenom fizičkom pokretaču postoje tri vrste
+ponašanja tijela - statično, dinamički i kinematičko. Na statična tijela ne utječe sila i 
+ne mijenjaju svoju poziciju i rotaciju čak ni prilikom kolizije s drugim tijelima. Na 
+dinamička tijela utječe sila i ona se ponašaju kao svi objekti u stvarnom svijetu - prilikom 
+kolizije se odbijaju i rotiraju, a prilikom djelovanja sile ubrzavaju ili usporavaju u 
+smjeru sile. Dinamička tijela reagiraju na koliziju sa statičnim i kinematičkim tijelima. 
+Kinematička tijela ne reagiraju na kolizije, ali reagiraju na sile i njihovim utjecajem mogu 
+mijenjati svoju poziciju i rotaciju.
+\paragraph{}
+
+\begin{lstlisting}[language=Javascript, caption=Postavljanje tijela korijena biljke i njegovih svojstava,label=code33-2]
+const origin = new OIMO.Vec3(
+	plant.pos[0], plant.pos[1], plant.pos[2]
+);
+
+const baseConfig = new OIMO.RigidBodyConfig();
+baseConfig.position = origin;
+baseConfig.type = OIMO.RigidBodyType.STATIC;
+
+let shapeConfig = new OIMO.ShapeConfig();
+shapeConfig.geometry = new OIMO.BoxGeometry(
+	new OIMO.Vec3(0.1, 0.1, 0.1)
+);
+
+const base = new OIMO.RigidBody(baseConfig);
+base.addShape(new OIMO.Shape(shapeConfig));
+
+this.world.addRigidBody(base);
+\end{lstlisting}
+
+\paragraph{}
+Za tijelo koje simulira korijen biljke pozicija tijela odgovara poziciji tijela u 3D 
+prikazu. Vrsta tog tijela je statična. Ne mijenja svoju poziciju i na rotira se. Ovakvo
+ponašanje prati ponašanje stvarnih biljaka u normalnim atmosferskim uvjetima.
+
+\paragraph{}
+Drugi konfiguracijski razred je \verb#ShapeConfig#. \verb#ShapeConfig# opsije geometriju 
+modela u 3D prostoru. U fizičkim pokretačima uobičajeno je pojednostaviti geometriju modela
+što je više moguće kako bi brzina izvođenja bila što veća. Iz tog razloga su geometrije 
+tijela obično jednostavni geometrijski oblici poput kvadra, kugle, piramide i stošca.
+Složeniji oblici mogu se dobiti dodavanjem dodatnih jednostavnih oblika na tijelo.
+
+\paragraph{}
+Tijelo koje simulira korijen biljke je statično i nema interakciju s ostalim tijelima, pa je
+u prezenitranom rješenju opisan samo kao mala kocka na dnu biljke. Postavljanje svojstava 
+tijela korijena biljke i njegove geometrije prikazano je u isječku koda \ref{code33-2}.
+
+\paragraph{}
+Tijelo koje simulira vrh biljke iako složenije, također ima vrlo jednostavan proces 
+postavljanja početnih vrijednosti. Pozicija tijela je točno iznad tijela korijena biljke na
+y vrijednosti koja odgovara visini biljke. Vrsta ovog tijela je dinamičko, jer osim 
+reagiranja na sile vjetra reagira i kod potencijalnih interakcija s ostalim biljkama. 
+Promjene koje sadrži postavljanje početnih vrijednosti tijela vrha biljke u odnosu na tijelo 
+korijena prikazan je isječkom koda \ref{code33-3}.
+
+\begin{lstlisting}[language=Javascript,label=code33-3,caption=Postavljanje tijela vrha biljke]
+...
+tipConfig.position = origin.add(new OIMO.Vec3(0, plant.height, 0));
+tipConfig.type = OIMO.RigidBodyType.DYNAMIC;
+
+...
+shapeConfig.geometry = new OIMO.SphereGeometry(
+	plant.collisionRadius
+);
+\end{lstlisting}
+
+\paragraph{}
+Vrh biljke umjesto kocke ima kuglu. Iako neprecizno, kugla dobro opisuje ponašanje 	
+interakcije vrha biljaka i pogodno je za brzinu izvođenja.
+
+\paragraph{}
+
+\begin{lstlisting}[language=Javascript,label=code33-4,caption=Postavljanje kuglastog zgloba]
+const jointConfig = new OIMO.SphericalJointConfig();
+jointConfig.init(base, tip, baseConfig.position);
+jointConfig.springDamper = new OIMO.SpringDamper().setSpring(0, 0);
+jointConfig.breakForce = 0;
+jointConfig.breakTorque = 0;
+
+const joint = new OIMO.SphericalJoint(jointConfig);
+this.world.addJoint(joint);
+\end{lstlisting}
+
 
 \chapter{Simulacija ponašanja generiranog modela}
 \section{Povezivanje fizičkog modela sa generiranim prikazom modela}
@@ -188,7 +417,8 @@ energiju za nastavak daljnjeg osciliranja. Niske biljke rade kraće zamahe ali
 većom frekvencijom.
 \paragraph{}
 Kod konstantnog puhanja, biljke osciliraju prema točki konvergencije sile 
-puhanja, sile teže i sila otpora unutar stabljke. Visoke biljke očekivano imaju veću amplitudu i manju frekvenciju oko te točke od niskih biljaka.
+puhanja, sile teže i sila otpora unutar stabljke. Visoke biljke očekivano imaju veću 
+amplitudu i manju frekvenciju oko te točke od niskih biljaka.
 \paragraph{}
 Puhanje s naletima vjetra također daje realistične rezultate. Niske biljke u 
 naletu vjetra se brzo poravnavaju prema točki konvergencije i osciliraju oko 
@@ -238,7 +468,9 @@ Brzina izvođenja linearno opada s brojem simuliranih biljaka. Najveći utjecaj 
 brzinu izvođenja ima fizička simulacija. Generiranje biljaka se odvija na samom 
 početku i nema nikakvog utjecaja na brzinu izvođenja nakon početnog perioda 
 generiranja. Iscrtavanje je zbog jednostavnosti prikaza vrlo jeftino i usporava
-izvođenje tek na velikom broju biljaka ili na vrlo visokoj razini detalja. Graf trajanja vremenkog koraka vidljiv je na \ref{fig:53-1}.
+izvođenje tek na velikom broju biljaka ili na vrlo visokoj razini detalja. Graf trajanja 
+vremenkog koraka vidljiv je na \ref{fig:53-1}.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.95\textwidth]{img/53-1}
@@ -256,7 +488,9 @@ Trenutna programska implementacija u obzir uzima i kolizije samih biljaka.
 Fizička simulacija se odvija slijedno za svaku od biljaka i eventualni dodir 
 nakon simulacije neke od narednih biljaka moće imati utjecaj na onu prvu. Ako
 ne marimo za interakciju između samih biljaka i odlučimo je zanemariti, 
-jednostavan način za ubrzanje fizičke simulacije je paralelizam. Na \ref{fig:531-1} je prikazan dijagram slijednog i paralelnog izvođenja (na dvije dretve) i vidljivo je da paralelni primjer završava u dva koraka dok slijedni algoritam završava u jednom koraku.
+jednostavan način za ubrzanje fizičke simulacije je paralelizam. Na \ref{fig:531-1} je 
+prikazan dijagram slijednog i paralelnog izvođenja (na dvije dretve) i vidljivo je da 
+paralelni primjer završava u dva koraka dok slijedni algoritam završava u jednom koraku.
 
 \begin{figure}[h]
 	\centering
@@ -300,7 +534,10 @@ problem možemo zanemariti. Iako će animacija i dalje kasniti za stvarnim
 fizičkim stanjem, promatraču to neće biti vidljivo.
 \subsubsection{Izračunavanje sličnosti modela i grupiranje izračuna}
 \paragraph{}
-Ukoliko nam nije bitna interakcija između biljaka i želimo drastično smanjiti utjecaj fizičke simulacije na brzinu izvođenja možemo izdvojiti prototipne biljke iz simulacije i simulirati samo njih. Sve ostale biljke, ovisno o sličnosti će koristiti podatke simulacije te biljke kao svoje. Primjer takvog sustava vidljiv je na slici \ref{fig:531-3}
+Ukoliko nam nije bitna interakcija između biljaka i želimo drastično smanjiti utjecaj 
+fizičke simulacije na brzinu izvođenja možemo izdvojiti prototipne biljke iz simulacije i 
+simulirati samo njih. Sve ostale biljke, ovisno o sličnosti će koristiti podatke simulacije 
+te biljke kao svoje. Primjer takvog sustava vidljiv je na slici \ref{fig:531-3}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{img/531-3}
@@ -308,12 +545,19 @@ Ukoliko nam nije bitna interakcija između biljaka i želimo drastično smanjiti
 	\label{fig:531-3}
 \end{figure}
 \paragraph{}
-Na ovaj način potrebno je simulirati samo nekoliko biljaka umjesto svih ali ovakav pristup će rezultirati time da simulacija izgleda nerealistično jer će sličnosti između ponašanja biljaka biti identične u isto vrijeme i na istim uvjetima što narušava dojam realizma. Potencijalno rješenje ovog problema je da kod nekih biljaka unesemo kašnjenje nad prototipnom biljkom. Na taj način smo eliminirali problem dojma da se sve ponavlja, ali smo uveli problem da simulacija ne djeluje toliko responzivno.
+Na ovaj način potrebno je simulirati samo nekoliko biljaka umjesto svih ali ovakav pristup 
+će rezultirati time da simulacija izgleda nerealistično jer će sličnosti između ponašanja 
+biljaka biti identične u isto vrijeme i na istim uvjetima što narušava dojam realizma. 
+Potencijalno rješenje ovog problema je da kod nekih biljaka unesemo kašnjenje nad 
+prototipnom biljkom. Na taj način smo eliminirali problem dojma da se sve ponavlja, ali smo 
+uveli problem da simulacija ne djeluje toliko responzivno.
 
 \chapter{Zaključak}
-ma moze se sve buraz kad se oce
 
 \listoffigures
+
+\lstlistoflistings
+\addcontentsline{toc}{chapter}{Popis isječaka koda}
 
 \bibliography{literatura}
 \bibliographystyle{fer}
