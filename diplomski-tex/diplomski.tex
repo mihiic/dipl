@@ -131,7 +131,127 @@ kod i shaderi
 
 \section{Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke}
 \paragraph{}
-tutorial
+Generiranje biljke prezentiranim rješenjem je jednostavno. Potrebno je definirati svega 
+nekoliko svojstava. Oblik baze, visinu biljke, širinu na pojedinim dijelovima te opcijanalno 
+boju na dijelovima biljke. Slika \ref{fig:21-1} prikazuje završeni model tulipana 
+objašnjenog u ovom primjeru.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/25-1}
+	\caption{Prikaz završenog modela tulipana}
+	\label{fig:21-1}
+\end{figure}
+
+\paragraph{}
+Prije opisa biljke potrebno je osigurati apstraktna svojstva biljke naslijeđivanjem razreda
+$BaseGenerationFunction$. Postupak je vidljiv u isječku koda \ref{code25-1}.
+
+\begin{lstlisting}[language=Javascript,caption=Naslijeđivanje razreda BaseGenerationFunction,label=code25-1]
+import {BaseGenerationFunction} from "base-generation-function.js";
+export class TulipFunction extends BaseGenerationFunction {
+}
+\end{lstlisting}
+
+\paragraph{}
+Nakon naslijeđivanja, potrebno je generirati osnovni oblik biljke. Osnovni oblik biljke 
+možemo zamisliti kao presjek biljke i horizontalne ravnine. U slučaju tulipana to je krug.
+Skup točaka koje reprezentiraju krug možemo izračunati kretanjem po jediničnoj kružnici, i 
+na svakom pomaku trigonometrijskim funkcijama $sin$ i $cos$ izračunati koordinate na 
+trenutnom koraku. Koordinatu y fiksiramo na 0 za dobivanje točaka u istoj horizontalnoj 
+ravnini. Isječak koda \ref{code25-2} prikazuje taj postupak. Opis baznog oblika vrši se u 
+metodi $getBaseShape$. Metoda $getBaseShape$ prima parametar $lod$ koji opisuje u kojoj 
+razini detalja generiramo biljku.
+
+\paragraph{}
+\begin{lstlisting}[language=Javascript,caption=Generiranje osnovnog oblika biljke,label=code25-2]
+getBaseShape(lod) {
+		if (!lod || lod < 4) {
+		lod = 4;
+	}
+
+	const vertices = [];
+	let i = 0;
+	while (i < lod) {
+		const offset = i / lod;
+		vertices.push([
+			-Math.cos(offset * Math.PI * 2) * 0.3,
+			0,
+			Math.sin(offset * Math.PI * 2) * 0.3
+		]);
+
+		i++;
+	}
+
+	return vertices;
+}
+\end{lstlisting}
+
+\paragraph{}
+Nakon generiranja osnovnog oblika, potrebno je definirati pretpostavljenu visinu biljke.
+U ovom primjeru je ta visina nasumična između 1.2 i 2.2 jedinica u trodimenzijskom 
+prostoru. Isječak koda \ref{code25-3} prikazuje definiranje pretpostavljene visine biljke.
+\paragraph{}
+\begin{lstlisting}[language=Javascript,caption=Generiranje visine biljke,label=code25-3]
+generateHeight() {
+	return Math.random() + 1.2;
+}
+\end{lstlisting}
+\paragraph{}
+Slika \ref{fig:25-2} pokazuje rezultat generiranja sa definiranim osnovnim oblikom i 
+pretpostavljenom visinom.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/25-2}
+	\caption{Rezultat generiranja osnovnog oblika i pretpostavljene visine}
+	\label{fig:25-2}
+\end{figure}
+
+\paragraph{}
+Nakon opisa osnovna dva svojsta, potrebno je definirati zakrivljenost modela. Zakrivljenost 
+modela se postavlja u metodi $calculateCurvePoint$. Metoda $calculateCurvePoint$ prima 
+parametar $offset$ koji nam govori za koju visinu biljke tražimo širinu. Parametar $offset$ 
+je vrijednost između 0 i 1, gdje 0 simbolizira dno biljke, a 1 simbolizira vrh biljke.
+Tulipan je biljka tanke stabljike i zvonolikog cvijeta. Za tanku stabljiku vraćamo 
+vrijednost širine 0.1, a zvono modeliramo sa pola periode spljoštene sinusoide i bazne 
+širine na koju dodajemo amplitudu takve sinusoide. Isječak koda \ref{code25-3} pokazuje opis 
+biljke tulipana, a slika \ref{fig:25-3} rezultat pokretanja nakon opisa oblika.
+\paragraph{}
+\begin{lstlisting}[language=Javascript,caption=Postavljanje oblika biljke u ovisnosti o visinu od tla,label=code25-3]
+calculateCurvePoint(offset) {
+	if (offset < 0.75) {
+		return 0.1;
+	}
+
+	const flowerOffset = (offset - 0.75) / 0.3 * Math.PI;
+	return 0.5 + Math.sin(flowerOffset) / 3;
+}
+\end{lstlisting}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.2\textwidth]{img/25-3}
+	\caption{Rezultat generiranja sa definiranim oblikom biljke}
+	\label{fig:25-3}
+\end{figure}
+\paragraph{}
+Dodavanje boje se odvija na sličan način kao definiranje oblika. Dodavanje boje definira se 
+u metodi $calculateColorAtPoint$ koja također prima parametar $offset$. Tulipan ima zelenu 
+stabiljku i cvijet neke boje. U primjeru je korištena crvena boja cvijeta. Isječak koda 
+\ref{code25-4} prikazuje postavljanje boje, a rezultat generiranja i prikazan je na slici 
+\ref{fig:21-1}.
+
+\begin{lstlisting}[language=Javascript,caption=Dodavanje boja modelu,label=code25-4]
+calculateColorAtPoint(offset) {
+	if (offset < 0.75) {
+		return [0.2, 0.85, 0.2, 1];
+	}
+
+	return [0.8, 0.1, 0.1, 1];
+}
+\end{lstlisting}
+
 
 \chapter{Simulacijski model}
 \section{Fizički model ponašanja biljke}

@@ -28,8 +28,9 @@ export class TulipFunction extends BaseGenerationFunction {
         return vertices;
     }
 
+
     generateHeight() {
-        return 1.2 + Math.random() * 1.5;
+        return 1.2;
     }
 
     calculateColorAtPoint(offset) {
