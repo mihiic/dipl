@@ -1,15 +1,13 @@
 import {BaseGenerationFunction} from "../base-generation-function.js";
 
-export class TyphaFunction extends BaseGenerationFunction {
+export class TulipFunction extends BaseGenerationFunction {
     calculateCurvePoint(offset) {
-        if (offset < 0.7) {
+        if (offset < 0.75) {
             return 0.1;
         }
-        if (offset > 0.98) {
-            return 0;
-        }
 
-        return 0.5;
+        const flowerOffset = (offset - 0.75) / 0.3 * Math.PI;
+        return 0.5 + Math.sin(flowerOffset) / 3;
     }
 
     getBaseShape(lod) {
@@ -35,10 +33,10 @@ export class TyphaFunction extends BaseGenerationFunction {
     }
 
     calculateColorAtPoint(offset) {
-        if (offset < 0.6) {
-            return [0.5, 0.5, 0, 1];
+        if (offset < 0.75) {
+            return [0.2, 0.85, 0.2, 1];
         }
 
-        return [54 / 256, 35 / 255, 18 / 256, 1];
+        return [0.8, 0.1, 0.1, 1];
     }
 }

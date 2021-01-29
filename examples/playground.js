@@ -4,6 +4,7 @@ import {TyphaFunction} from "../plants/generation/functions/typha-fn.js";
 import {Plant} from "../plants/plant.js";
 import {Engine} from "../engine/engine.js";
 import {GrassFunction} from "../plants/generation/functions/grass-fn.js";
+import {TulipFunction} from "../plants/generation/functions/tulip-fn.js";
 
 export class Playground extends SceneNode {
     init() {
@@ -61,7 +62,7 @@ export class Playground extends SceneNode {
     }
 
     getGenerationFunction(fn) {
-        const plants = [new LeafFunction(), new TyphaFunction(), new GrassFunction()];
+        const plants = [new LeafFunction(), new TyphaFunction(), new GrassFunction(), new TulipFunction()];
         if (fn === 'Random') {
             return plants[Math.floor(Math.random() * plants.length)];
         }
@@ -73,6 +74,8 @@ export class Playground extends SceneNode {
                 return new LeafFunction();
             case 'Grass':
                 return new GrassFunction();
+            case 'Tulip':
+                return new TulipFunction();
             default:
                 return plants[Math.floor(Math.random() * plants.length)];
         }

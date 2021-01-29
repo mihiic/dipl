@@ -17,4 +17,8 @@ export class LeafFunction extends BaseGenerationFunction {
     generateHeight() {
         return 0.5 + Math.random();
     }
+
+    calculateColorAtPoint(offset) {
+        return [0.2, 0.85, 0.2, 1];
+    }
 }

@@ -4,7 +4,7 @@ export class BaseGenerationFunction {
     }
 
     calculateColorAtPoint(offset) {
-        return [0.2, 0.85, 0.2, 1];
+        return [0.5, 0.5, 0, 1];
     }
 
     generateBaseVertices(lod) {
