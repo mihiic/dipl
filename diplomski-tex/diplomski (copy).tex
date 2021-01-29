@@ -90,32 +90,10 @@ mogao automatizirati i time skratiti vrijeme razvoja igara.
 
 \chapter{Generiranje modela trave i niskog raslinja}
 \section{Osnovni pristup generiranju modela}
-\paragraph{}
-Grafička programska sučelja (engl. \textit{graphics application programming interface}) su 
-kolekcija bibloteka korištena za interakciju sa grafičkom karticom u svrhu postizanja
-sklopovski ubrzanog iscrtavanja (engl. \textit{hardware-accelerated rendering}).
-
-\paragraph{}
-Grafička kartica, iako izrazito brza. Samo rasterizacija. Shaderi. Slanje podataka ručno.
-
-\paragraph{}
-Podaci su točke, normale, primjer jednostavnog shadera.
-
-\paragraph{}
-Renderiranje trokuta od točaka. Stripe vs Fan
-
-\paragraph{}
-Generiranje vs modeliranje.
 
 \section{Generiranje točaka i poligona modela biljaka}
-\paragraph{}
-definicija biljke
-
-\paragraph{}
-
 
 \subsection{Generiranje modela uz različitu razinu detalja}
-height subsections, base model
 
 \section{Povezivanje generiranih podataka i njihov prikaz}
 \begin{figure}[h]
@@ -126,12 +104,8 @@ height subsections, base model
 \end{figure}
 
 \section{Programska implementacija generiranja i prikaza}
-\paragraph{}
-kod i shaderi
 
 \section{Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke}
-\paragraph{}
-tutorial
 
 \chapter{Simulacijski model}
 \section{Fizički model ponašanja biljke}
@@ -243,13 +217,13 @@ takvoj poziciji (tijelo 2 bi tada bilo ispod tijela 1, i prošlo bi kroz površi
 ga je bitno spomenuti zbog skaliranja na model s većim brojem zglobova.
 
 \begin{equation}
-\vec{F} = sin(\theta) \cdot (1 + elasticity) \cdot \vec{G} \cdot (-1)
+\vec{F} = sin(\theta) * (1 + elasticity) * \vec{G} * -1
 \label{eq:32-2}
 \end{equation}
 
 \paragraph{}
 Rezultirajuća sila $\vec{F}$ djeluje u negativnom y smjeru (suprotno od smjera sile teže).
-Takav smjer je rezultat faktora $\vec{G} \cdot (-1)$. U formuli se javlja i faktor $(1 + 
+Takav smjer je rezultat faktora $\vec{G} * -1$. U formuli se javlja i faktor $(1 + 
 elasticity)$. Njegova zadaća je osigurati da biljke koje imaju veći faktor elastičnosti 
 stoje bliže centru ravnoteže čak i kod malih otklona od središta. Primjer biljke koja ima 
 velik faktor elastičnosti je rogoz, koji stoji potpuno uspravno u neutralnoj poziciji. 
@@ -257,40 +231,6 @@ Primjer male elastičnosti biljke je zvončić, koji nema dovoljno sile kako bi 
 neutralni (uspravni) položaj. Ime faktora je elastičnost jer odgovara na pitanje kolikom 
 silom će se biljka pokušati vratiti u neutralni položaj nakon što je otklonjena od centra 
 ravnoteže.
-
-\subsection{Usporedba sila programskog i fizičkog modela}
-\paragraph{}
-Zbrajanjem svih komponenata sila po cijeloj površini biljke dobivamo jednu 
-reprezentativnu silu koja dijeluje na biljku. Tu reprezentativnu silu možemo razdvojiti na 
-tri komponente - horizontalnu, vertikalnu i silu na tangenti kružnice oko centra rotacije. 
-Horizontalna sila je razlika između sile vjetra i horizontalne komponente unutrašnje sile 
-otpora biljke koja se opire toj sili vjetra. Vertikalna sila je razlika između sile teže 
-koja djeluje na biljku i vertikalne komponente unutarnje sile otpora biljke koja se odupire 
-sili teži. Treća komponenta sile je sila tangencijalna na centar rotacije biljke. 
-Tangencijalna sila je prividna sila koja pokušava vratiti biljku u početni položaj. Na slici 
-\ref{fig:321-1} prikazane su sume sila koje djeluju na biljku.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{img/321-1}
-	\caption{Komponente rezultatne sile koje djeluju na gornji dio biljke}
-	\label{fig:321-1}
-\end{figure}
-
-\paragraph{}
-U programskom modelu fizičkog ponašanja biljke imamo samo jednu aktivnu silu koja je 
-zadužena za simuliranje ponašanja unatrašnjeg otpora. Iako ta sila ima isključivo vertikalni 
-smjer, fizički model i dalje pokazuje horizontalno ponašanje. Razlog ponašanja koje prati 
-fizičko ponašanje čak i slučaju kada ne simuliramo sve sile je ograničenje kuglastog zgloba.
-Kuglasti zglob implicitno primjenjuje silu preko svojih pravila. Primjenom sile prema gore, 
-tijelo koje reprezentira vrh biljke pokušava se gibati prema gore, gibanjem prema gore 
-udaljava se od tijela korijena biljke. Kuglasti zglob osigurava jednako udaljenost između 
-tijela pomicanjem tijela vrha biljke u horizontalnom smjeru.
-
-\paragraph{}
-Fizički pokretač ne djeluje silom da bi pomaknuo tijelo u horizontalnom smjeru, već mijenja 
-poziciju direktno. Ali čak i takvo rješenje daje uvjeriljivu simulaciju.
-
 
 \section{Programska implementacija fizičkog modela}
 \paragraph{}
@@ -625,76 +565,41 @@ this.gl.uniformMatrix4fv(
 \section{Različiti parametri simulacije}
 \paragraph{}
 Za bolju ocjenu rezultata potrebno je testirati više različitih parametara simulacije i 
-usporediti njihov utjecaj na simulaciju s ponašanjem u stvarnom svijetu. U simulaciji možemo 
-utjecati na snagu vjetra, smjer vjetra, vrstu puhanja vjetra i za neke vrste puhanja možemo 
-mijenjati frekvenciju puhanja. Prikaz sučelja za podešavanje parametara simulacije prikazan 
-je na slici \ref{fig:43-4}.
+usporediti njihov utjecaj na simulaciju s ponašanjem u stvarnom svijetu.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/43-0}
+	\caption{Funkcija udara vjetra}
+	\label{fig:43-0}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/43-1}
+	\caption{Funkcija konstantog puhanja vjetra}
+	\label{fig:43-1}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/43-2}
+	\caption{Funkcija vjetra u udarima}
+	\label{fig:43-2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/43-3}
+	\caption{Funkcija vjetra u valovima}
+	\label{fig:43-3}
+\end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{img/43-4}
 	\caption{Prikaz sučelja za simuliranje vjetra}
 	\label{fig:43-4}
-\end{figure}
-
-\paragraph{}
-Snaga vjetra objašnjava kojim intenzitetom djelujemo na tijelo vrha biljke u jedinici 
-vremena. Jedinica vremena u fizičkom pokretaču se naziva korak i traje 32 ms. Snaga vjetra 
-10 odgovara sili od 10 N. 
-
-\paragraph{}
-Smjer vjetra je predstavljen kutem iz kojeg dolazi u odnosu na biljku. Vjetar pod kutem 0 
-stupnjeva djeluje od negativne prema pozitivnoj z osi. Vjetar pod kutem 90 stupnjeva djeluje 
-od negativne x osi prema pozitivnoj x osi.
-
-\paragraph{}
-U simulaciji postoje 4 vrste vjetra. Udar vjetra puše kratko vrijeme u jednom smjeru i nakon 
-toga je njegovo puhanje gotovo. Graf snage puhanja kod udara vjetra prikazan je na slici 
-\ref{fig:43-0}.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{img/43-0}
-	\caption{Funkcija udara vjetra uz parametar snage 1}
-	\label{fig:43-0}
-\end{figure}
-
-\paragraph{}
-Konstantno puhanje djeluje istim inzetitetom u jednom smjeru bez prestanka. Graf konstantnog 
-puhanja prikazan je na slici \ref{fig:43-1}. Konstantno puhanje i udar vjetra su jednostavne 
-simulacije korištene u razvoju i ne simuliraju dobro stvarnu pojavu vjetra.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{img/43-1}
-	\caption{Funkcija konstantog puhanja vjetra uz parametar snage 1}
-	\label{fig:43-1}
-\end{figure}
-
-\paragraph{}
-Puhanje u naletima vjetra jedan je od dinamičkih načina puhanja. Ovaj vjetar naivno modelira 
-vjetre poput udara bure. Naivno modelira jer radi pretpostavku da vjetar potpuno stane 
-između svakog udara. Na ovaj model utječe i parametar frekvencije. Na slici \ref{fig:43-2} 
-prikazan je graf jednog takvog vjetra.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{img/43-2}
-	\caption{Funkcija vjetra u udarima uz parametar snage 1 i frekvencije 0.5}
-	\label{fig:43-2}
-\end{figure}
-
-\paragraph{}
-Puhanje u valovima najrealističnija je simulacija vjetra. U ovakvom načinu vjetar polako 
-puše sve većom snagom oko nazivne snage i kada dostigne dvostruku nazivnu snagu krene lagano 
-opadati. Ovo je modelirano sinusoidom oko nazivne snage vjetra s amplitudom snage vjetra.
-Na ovaj model također utječe parametar frekvencije.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{img/43-3}
-	\caption{Funkcija vjetra u valovima uz parametar snage 1 i frekvencije 0.16}
-	\label{fig:43-3}
 \end{figure}
 
 \paragraph{}

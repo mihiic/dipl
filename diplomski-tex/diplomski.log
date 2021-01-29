@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.16)  24 JAN 2021 15:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.16)  28 JAN 2021 08:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -482,7 +482,7 @@ Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
 (pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
  [1 <./hr_0036487393_56.pdf>] [3]
 (./diplomski.toc
-Overfull \hbox (1.14377pt too wide) in paragraph at lines 13--13
+Overfull \hbox (1.14377pt too wide) in paragraph at lines 19--19
  [][] []\T1/ptm/m/n/12 Primjer ko-ri-²te-nja ra-zvi-je-nog pro-grama za ge-ne-r
 i-ra-nje jed-nos-tavne pro- 
  []
@@ -502,11 +502,8 @@ Poglavlje 2.
 <img/21-5.png, id=45, 877.2775pt x 654.445pt>
 File: img/21-5.png Graphic file (type png)
 <use img/21-5.png>
-Package pdftex.def Info: img/21-5.png  used on input line 101.
+Package pdftex.def Info: img/21-5.png  used on input line 123.
 (pdftex.def)             Requested size: 412.56497pt x 307.77893pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [2
 
 ] [3 <./img/21-5.png>]
@@ -514,7 +511,7 @@ Poglavlje 3.
 <img/31-1.png, id=55, 385.44pt x 385.44pt>
 File: img/31-1.png Graphic file (type png)
 <use img/31-1.png>
-Package pdftex.def Info: img/31-1.png  used on input line 124.
+Package pdftex.def Info: img/31-1.png  used on input line 150.
 (pdftex.def)             Requested size: 309.42372pt x 309.42282pt.
 [4
 
@@ -522,7 +519,7 @@ Package pdftex.def Info: img/31-1.png  used on input line 124.
 <img/32-1.png, id=60, 385.44pt x 385.44pt>
 File: img/32-1.png Graphic file (type png)
 <use img/32-1.png>
-Package pdftex.def Info: img/32-1.png  used on input line 169.
+Package pdftex.def Info: img/32-1.png  used on input line 195.
 (pdftex.def)             Requested size: 330.05322pt x 330.05453pt.
 
 
@@ -532,124 +529,120 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <img/32-2.png, id=72, 305.57642pt x 399.84163pt>
 File: img/32-2.png Graphic file (type png)
 <use img/32-2.png>
-Package pdftex.def Info: img/32-2.png  used on input line 204.
+Package pdftex.def Info: img/32-2.png  used on input line 230.
 (pdftex.def)             Requested size: 206.28249pt x 269.92415pt.
  [7 <./img/32-2.png>]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 25
+<img/321-1.png, id=77, 385.44pt x 385.44pt>
+File: img/321-1.png Graphic file (type png)
+<use img/321-1.png>
+Package pdftex.def Info: img/321-1.png  used on input line 275.
+(pdftex.def)             Requested size: 288.79422pt x 288.79109pt.
+ [8 <./img/321-1.png>]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 31
 1.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Overfull \hbox (8.5217pt too wide) in paragraph at lines 256--264
+Overfull \hbox (8.5217pt too wide) in paragraph at lines 316--324
  [] \T1/ptm/m/n/12 Prvi pa-ra-me-tar kod ini-ci-ja-li-za-cije je iz-bor al-go-r
 itma rje-²a-va£a ko-li-zija (engl.  \T1/ptm/m/it/12 collision-
  []
 
-[8] [9] [10] [11] [12]
+[9] [10] [11] [12] [13]
 Poglavlje 4.
-<img/41-1.png, id=95, 240.9pt x 240.9pt>
+<img/41-1.png, id=100, 240.9pt x 240.9pt>
 File: img/41-1.png Graphic file (type png)
 <use img/41-1.png>
-Package pdftex.def Info: img/41-1.png  used on input line 457.
+Package pdftex.def Info: img/41-1.png  used on input line 517.
 (pdftex.def)             Requested size: 288.79422pt x 288.82123pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13
+[14
 
-] [14 <./img/41-1.png>] [15]
-<img/43-0.png, id=107, 595.22375pt x 365.365pt>
-File: img/43-0.png Graphic file (type png)
-<use img/43-0.png>
-Package pdftex.def Info: img/43-0.png  used on input line 572.
-(pdftex.def)             Requested size: 330.05322pt x 202.596pt.
- [16]
-<img/43-1.png, id=111, 595.22375pt x 360.34625pt>
-File: img/43-1.png Graphic file (type png)
-<use img/43-1.png>
-Package pdftex.def Info: img/43-1.png  used on input line 579.
-(pdftex.def)             Requested size: 330.05322pt x 199.81308pt.
-<img/43-2.png, id=112, 595.22375pt x 363.3575pt>
-File: img/43-2.png Graphic file (type png)
-<use img/43-2.png>
-Package pdftex.def Info: img/43-2.png  used on input line 586.
-(pdftex.def)             Requested size: 330.05322pt x 201.48282pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<img/43-3.png, id=113, 598.235pt x 360.34625pt>
-File: img/43-3.png Graphic file (type png)
-<use img/43-3.png>
-Package pdftex.def Info: img/43-3.png  used on input line 593.
-(pdftex.def)             Requested size: 330.05322pt x 198.80687pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<img/43-4.png, id=114, 646.415pt x 594.22pt>
+] [15 <./img/41-1.png>] [16] [17]
+<img/43-4.png, id=115, 646.415pt x 594.22pt>
 File: img/43-4.png Graphic file (type png)
 <use img/43-4.png>
-Package pdftex.def Info: img/43-4.png  used on input line 600.
+Package pdftex.def Info: img/43-4.png  used on input line 635.
 (pdftex.def)             Requested size: 412.56497pt x 379.24773pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[17 <./img/43-0.png> <./img/43-1.png>] [18 <./img/43-2.png> <./img/43-3.png>]
-[19 <./img/43-4.png>]
+ [18 <./img/43-4.png>]
+<img/43-0.png, id=120, 595.22375pt x 365.365pt>
+File: img/43-0.png Graphic file (type png)
+<use img/43-0.png>
+Package pdftex.def Info: img/43-0.png  used on input line 657.
+(pdftex.def)             Requested size: 330.05322pt x 202.596pt.
+<img/43-1.png, id=121, 595.22375pt x 360.34625pt>
+File: img/43-1.png Graphic file (type png)
+<use img/43-1.png>
+Package pdftex.def Info: img/43-1.png  used on input line 669.
+(pdftex.def)             Requested size: 330.05322pt x 199.81308pt.
+ [19 <./img/43-0.png> <./img/43-1.png>]
+<img/43-2.png, id=127, 595.22375pt x 363.3575pt>
+File: img/43-2.png Graphic file (type png)
+<use img/43-2.png>
+Package pdftex.def Info: img/43-2.png  used on input line 682.
+(pdftex.def)             Requested size: 330.05322pt x 201.48282pt.
+<img/43-3.png, id=128, 598.235pt x 360.34625pt>
+File: img/43-3.png Graphic file (type png)
+<use img/43-3.png>
+Package pdftex.def Info: img/43-3.png  used on input line 695.
+(pdftex.def)             Requested size: 330.05322pt x 198.80687pt.
+ [20 <./img/43-2.png> <./img/43-3.png>] [21]
 Poglavlje 5.
-<img/51-1.png, id=129, 784.9325pt x 592.2125pt>
+<img/51-1.png, id=138, 784.9325pt x 592.2125pt>
 File: img/51-1.png Graphic file (type png)
 <use img/51-1.png>
-Package pdftex.def Info: img/51-1.png  used on input line 616.
+Package pdftex.def Info: img/51-1.png  used on input line 711.
 (pdftex.def)             Requested size: 330.05322pt x 249.01671pt.
-[20
+[22
 
- <./img/51-1.png>] [21]
-<img/52-1.png, id=138, 92.9874pt x 80.2197pt>
+ <./img/51-1.png>] [23]
+<img/52-1.png, id=146, 92.9874pt x 80.2197pt>
 File: img/52-1.png Graphic file (type png)
 <use img/52-1.png>
-Package pdftex.def Info: img/52-1.png  used on input line 712.
+Package pdftex.def Info: img/52-1.png  used on input line 807.
 (pdftex.def)             Requested size: 165.02347pt x 142.3683pt.
- [22]
-<img/52-2.png, id=142, 107.6823pt x 96.1191pt>
+ [24]
+<img/52-2.png, id=150, 107.6823pt x 96.1191pt>
 File: img/52-2.png Graphic file (type png)
 <use img/52-2.png>
-Package pdftex.def Info: img/52-2.png  used on input line 727.
+Package pdftex.def Info: img/52-2.png  used on input line 822.
 (pdftex.def)             Requested size: 165.02347pt x 147.31543pt.
- [23 <./img/52-1.png> <./img/52-2.png>]
-<img/53-1.png, id=148, 596.2275pt x 362.35374pt>
+ [25 <./img/52-1.png> <./img/52-2.png>]
+<img/53-1.png, id=156, 596.2275pt x 362.35374pt>
 File: img/53-1.png Graphic file (type png)
 <use img/53-1.png>
-Package pdftex.def Info: img/53-1.png  used on input line 756.
+Package pdftex.def Info: img/53-1.png  used on input line 851.
 (pdftex.def)             Requested size: 391.93546pt x 238.19768pt.
- [24 <./img/53-1.png>]
-<img/531-1.png, id=153, 351.3125pt x 346.29375pt>
+ [26 <./img/53-1.png>]
+<img/531-1.png, id=162, 351.3125pt x 346.29375pt>
 File: img/531-1.png Graphic file (type png)
 <use img/531-1.png>
-Package pdftex.def Info: img/531-1.png  used on input line 777.
+Package pdftex.def Info: img/531-1.png  used on input line 872.
 (pdftex.def)             Requested size: 288.79422pt x 284.6919pt.
- [25 <./img/531-1.png>]
-<img/531-2.png, id=158, 233.87375pt x 320.19624pt>
+ [27 <./img/531-1.png>]
+<img/531-2.png, id=167, 233.87375pt x 320.19624pt>
 File: img/531-2.png Graphic file (type png)
 <use img/531-2.png>
-Package pdftex.def Info: img/531-2.png  used on input line 803.
+Package pdftex.def Info: img/531-2.png  used on input line 898.
 (pdftex.def)             Requested size: 206.28249pt x 282.43314pt.
- [26 <./img/531-2.png>]
-<img/531-3.png, id=164, 261.97874pt x 242.9075pt>
+ [28 <./img/531-2.png>]
+<img/531-3.png, id=172, 261.97874pt x 242.9075pt>
 File: img/531-3.png Graphic file (type png)
 <use img/531-3.png>
-Package pdftex.def Info: img/531-3.png  used on input line 823.
+Package pdftex.def Info: img/531-3.png  used on input line 918.
 (pdftex.def)             Requested size: 206.28249pt x 191.27213pt.
- [27 <./img/531-3.png>]
+ [29 <./img/531-3.png>]
 Poglavlje 6.
-[28
+[30
 
 ] (./diplomski.lof)
 \tf@lof=\write4
 \openout4 = `diplomski.lof'.
 
- [29
+ [31
 
 ] (./diplomski.lol)
 \tf@lol=\write5
@@ -657,17 +650,17 @@ Poglavlje 6.
 
 
 No file diplomski.bbl.
-[30
+[32
 
-] [31] (./diplomski.aux) ) 
+] [33] (./diplomski.aux) ) 
 Here is how much of TeX's memory you used:
- 9222 strings out of 482600
- 128966 string characters out of 5949960
- 415931 words of memory out of 5000000
- 24090 multiletter control sequences out of 15000+600000
+ 9231 strings out of 482600
+ 129092 string characters out of 5949960
+ 414942 words of memory out of 5000000
+ 24098 multiletter control sequences out of 15000+600000
  588550 words of font info for 91 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 49i,18n,46p,270b,1212s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,18n,46p,270b,1709s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8
 r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/s
@@ -679,10 +672,10 @@ nts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 vr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on diplomski.pdf (36 pages, 551703 bytes).
+Output written on diplomski.pdf (38 pages, 577401 bytes).
 PDF statistics:
- 219 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
+ 230 PDF objects out of 1000 (max. 8388607)
+ 133 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

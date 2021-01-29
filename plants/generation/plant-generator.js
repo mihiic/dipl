@@ -64,6 +64,7 @@ export class PlantGenerator {
             }
         }
 
+        this.lastGeneratedVertices = vertices;
         const vertexData = [];
         for (const vertex of vertices) {
             for (const dataPoint of vertex) {
@@ -102,5 +103,21 @@ export class PlantGenerator {
         }
 
         return weights;
+    }
+
+    calculateColors(height) {
+        const colors = [];
+        for (const vertex of this.lastGeneratedVertices) {
+            const y = vertex[1];
+
+            const color = this.fn.calculateColorAtPoint(y / height);
+            // for (let i = 0; i < 3; i++) {
+            for (const c of color) {
+                colors.push(c);
+            }
+            // }
+        }
+
+        return colors;
     }
 }

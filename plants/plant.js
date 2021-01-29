@@ -27,12 +27,14 @@ export class Plant extends SceneNode {
         }
 
         this.vertices = plantGenerator.getVertices(this.height, this.lod);
+        this.colors = plantGenerator.calculateColors(this.height);
 
         // mesh properties
         this.mesh = new Mesh(gl, this.program, this);
         this.mesh.setVertices(this.vertices);
         this.mesh.setNormals();
-        this.mesh.setColor([0.2, 0.85, 0.2, 1]);
+        this.mesh.setColor(this.colors);
+        // this.mesh.setColor([0.2, 0.85, 0.2, 1]);
         this.mesh.setReverseLightDirection(vec3.normalize([0.5, 0.7, 1]));
         this.mesh.setSkeletonWeights(plantGenerator.calculateSkeletonWeights());
 

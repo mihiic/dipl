@@ -7,12 +7,12 @@
         varying vec3 v_normal;
         uniform vec3 u_reverseLightDirection;
 
-        uniform vec4 u_color;
+        varying vec4 v_color;
 
         void main() {
             vec3 normal = normalize(v_normal);
             float light = max(dot(normal, u_reverseLightDirection), 0.1);
-            gl_FragColor = u_color;
+            gl_FragColor = v_color;
             gl_FragColor.rgb *= light;
         }
     </script>
@@ -21,12 +21,14 @@
         attribute vec4 a_position;
         attribute vec3 a_normal;
         attribute vec4 a_weights;
+        attribute vec4 a_color;
 
         uniform mat4 u_worldViewProjection;
         uniform mat4 u_worldInverseTranspose;
         uniform mat4 u_bone;
 
         varying vec3 v_normal;
+        varying vec4 v_color;
 
         void main() {
             float counterWeight = 1.0 - a_weights[0];
@@ -35,6 +37,7 @@
             a_position * counterWeight
             );
             v_normal = mat3(u_worldInverseTranspose) * a_normal;
+            v_color = a_color;
         }
     </script>
 

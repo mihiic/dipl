@@ -32,9 +32,10 @@ export class Mesh {
     update() {
     }
 
-    setColor(color) {
-        this.setUniform('u_color', 'uniform4fv', color);
-    }
+    // setColor(color) {
+        // obsolete
+        // this.setUniform('u_color', 'uniform4fv', color);
+    // }
 
     setSkeletonWeights(weights) {
         if (!this.attributes['a_weights']) {
@@ -99,6 +100,14 @@ export class Mesh {
         }
 
         this.fillAttributeBuffer('a_position', vertices);
+    }
+
+    setColor(colors) {
+        if (!this.attributes['a_color']) {
+            this.createAttributeBuffer('a_color', 4);
+        }
+
+        this.fillAttributeBuffer('a_color', colors);
     }
 
     setNormals(normals) {

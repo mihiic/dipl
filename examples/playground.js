@@ -3,6 +3,7 @@ import {LeafFunction} from "../plants/generation/functions/leaf-fn.js";
 import {TyphaFunction} from "../plants/generation/functions/typha-fn.js";
 import {Plant} from "../plants/plant.js";
 import {Engine} from "../engine/engine.js";
+import {GrassFunction} from "../plants/generation/functions/grass-fn.js";
 
 export class Playground extends SceneNode {
     init() {
@@ -60,8 +61,8 @@ export class Playground extends SceneNode {
     }
 
     getGenerationFunction(fn) {
-        const plants = [new LeafFunction(), new TyphaFunction()];
-        if (fn === 'Random' || fn === 'Grass') {
+        const plants = [new LeafFunction(), new TyphaFunction(), new GrassFunction()];
+        if (fn === 'Random') {
             return plants[Math.floor(Math.random() * plants.length)];
         }
 
@@ -70,7 +71,13 @@ export class Playground extends SceneNode {
                 return new TyphaFunction();
             case 'Leaf':
                 return new LeafFunction();
+            case 'Grass':
+                return new GrassFunction();
+            default:
+                return plants[Math.floor(Math.random() * plants.length)];
         }
+
+
     }
 
     simulateWind(params) {

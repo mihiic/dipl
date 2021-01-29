@@ -33,4 +33,12 @@ export class TyphaFunction extends BaseGenerationFunction {
     generateHeight() {
         return 1.2 + Math.random() * 1.5;
     }
+
+    calculateColorAtPoint(offset) {
+        if (offset < 0.7) {
+            return [0.2, 0.85, 0.2, 1];
+        }
+
+        return [54 / 256, 35 / 255, 18 / 256, 1];
+    }
 }
