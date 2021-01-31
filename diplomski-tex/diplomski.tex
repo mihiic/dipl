@@ -154,7 +154,7 @@ gledišta su popunjena. Proces je potrebno ponoviti na različitim visinama toč
 kako bi se popunila i lica koja omeđuju model s gornje i donje strane.
 
 
-\section{Generiranje točaka i lica modela biljaka}
+\section{Generiranje točaka i lica modela biljaka} \label{plant_gen}
 \paragraph{}
 Generiranje točaka biljaka vrši se ekstrapolacijom osnovnog oblika biljke na različite 
 visine. Osnovni oblik biljke je presjek biljke sa horizontalnom ravninom. Za primjer 
@@ -235,6 +235,155 @@ ilustrirano je slikom \ref{fig:221-2}, a implementacija tog primjera prikazana j
 
 \section{Programska implementacija generiranja i prikaza}
 \paragraph{}
+U programskoj implementaciji generiranje modela razdvojeno je u dva dijela. Prvi dio, prikazan u isječku koda \ref{code24-1}, je generiranje gradivnih točaka modela. Gradivne točke modela su svojevrsni kostur samog modela. Funkcija koja vrši generiranje gradivnih točaka kao parametre uzima visinu biljke i razinu detalja za generiranje. Iz opisne funkcije biljke uzima se osnovni oblik. Na temelju visine biljke i razine detalja izračunat je inkrement visine kod generiranja te korak između dvije razine.
+
+\paragraph{}
+Program prolazi kroz sve segmente biljke i dodaje dodatan osnovni oblik na visini povezanoj s trenutnim segmentom. Prsten osnovnog oblika se skalira vrijednošću za taj visinski faktor. Vrijednost skaliranja definirana je u funkciji generiranja biljke. Primjer konstruiranja funkcije generiranja biljke opisan je u poglavlju \ref{usage_tutorial}.
+
+\paragraph{}
+\begin{lstlisting}[language=Javascript,caption=Generiranje gradivnih točaka modela biljke,label=code24-1]
+generateVertices(height, lod) {
+	let vertices = [];
+	let baseShape = fn.getBaseShape(lod);
+	if (!height) {
+		height = fn.generateHeight();
+	}
+
+	const constructionVertices = [];
+	for (const v of baseShape) {
+		constructionVertices.push(v.map(a => a * fn.calculateCurvePoint(0)));
+	}
+
+	const heightIncrement = height / lod;
+	const offsetStep = 1 / lod;
+
+	let currentHeight = heightIncrement;
+	let currentOffset = offsetStep;
+
+	for (let i = 1; i < lod + 1; i++) {
+		const newBaseShape = [];
+		for (const v of baseShape) {
+			newBaseShape.push(
+				v.map(a => a * fn.calculateCurvePoint(currentOffset))
+			);
+		}
+
+		for (const v of newBaseShape) {
+			v[1] = currentHeight;
+			constructionVertices.push(v);
+		}
+
+		currentHeight += heightIncrement;
+		currentOffset += offsetStep;
+	}
+}
+\end{lstlisting}
+
+\paragraph{}
+Nakon generiranja gradivnih blokova algoritam prelazi na sljedeći korak. U drugom koraku, prikazanom u isječku koda \ref{code24-2}, algoritam radi šetnju oko modela postupkom opisanim u \ref{plant_gen} za svaki visinski segment biljke. Važno je napomenuti da šetnja oko modela samo vizualno tumačenje koda koji se zapravo izvršava.
+
+\paragraph{}
+\begin{lstlisting}[language=Javascript,caption=Generiranje lica od gradivnih točaka,label=code24-2]
+const vertices = [];
+for (let level = 0; level < lod + 1; level++) {
+    for (let i = 0; i < baseShape.length; i++) {
+        const next = i + 1 < baseShape.length ? i + 1 : 0;
+        const rectVertices = [
+            constructionVertices[baseShape.length * level + i],
+            constructionVertices[baseShape.length * level + i + baseShape.length],
+            constructionVertices[baseShape.length * level + next],
+            constructionVertices[baseShape.length * level + next + baseShape.length]
+        ]
+
+        vertices.push(
+            rectVertices[0],
+            rectVertices[2],
+            rectVertices[1],
+            rectVertices[1],
+            rectVertices[2],
+            rectVertices[3],
+        )
+    }
+}
+\end{lstlisting}
+
+\paragraph{}
+Nakon generiranja svih potrebnih podataka, potrebno ih je poslati na grafičku karticu kako bi se ti podaci mogli iscrtati. Slanje podataka na grafičku karticu otvara se otvaranjem kanala (engl. \textit{buffer}). Isječak koda \ref{code:24-3} prikazuje način povezivanja kanala sa atributima u programu za sjenčanje. Isječak koda za kreiranje kanala je identičan za sve vrste podataka koje šaljemo na grafičku karticu i razlikuje se samo u parametrima.
+
+\begin{lstlisting}[language=Javascript,caption=Kreiranje kanala za slanje podataka prema grafičkoj kartici ,label=code24-3]
+createAttributeBuffer(shaderBinding, size, type) {
+    if (!type) {
+        type = this.gl.FLOAT;
+    }
+    
+    const buffer = this.gl.createBuffer();
+    this.gl.bindBuffer(this.gl.ARRAY_BUFFER, buffer);
+    
+    this.attributes[shaderBinding] = {
+        buffer: buffer,
+        attribLocation: this.gl.getAttribLocation(this.program, shaderBinding),
+        currentData: [],
+        numComponents: size,
+        type: type
+    };
+    
+    const attr = this.attributes[shaderBinding];
+    this.gl.enableVertexAttribArray(attr.attribLocation);
+    this.gl.vertexAttribPointer(
+        attr.attribLocation,
+        attr.numComponents,
+        attr.type,
+        false,
+        0,
+        0
+    );
+}
+\end{lstlisting}
+
+\paragraph{}
+Program za sjenčanje kojem šaljemo podatke sastoji se od dva dijela. Programa za sjenčanje točaka (engl. vertex shader) i programa za sjenčanje slikovnih elemenata (engl. fragment shader). Program za sjenčanje točaka se izvršava za svaku točku u prostoru, a program za sjenčanje slikovnih elemenata za svaki slikovni element prikaza. Na početku svakog dijela programa definiramo atribute, uniformne elemente i varirajuće elemente. Atributi su svojstva neke točke u prostoru poput pozicije, boje i normale. Uniformni elementi su jednaki u jednom iscrtavanju za sve točke odnosno slikovne elemente. Varirajući elementi svoju vrijednost dobivaju interpolacijom između točaka koji čine lice od kuda im i naziv. Svaki slikovni element ima svoju jedinstvenu vrijednost varirajućih elemenata.
+
+\paragraph{}
+Isječak koda \ref{code24-2} prikazuje primjer jednostavnog programa za sjenčanje točaka korištenog u prezentiranom rješenju. U nastavku rada ovaj program je nadograđen mogučnošću animacije.
+
+\paragraph{}
+\begin{lstlisting}[language=Javascript,caption=Program za sjenčanje točaka,label=code24-4]
+attribute vec4 a_position;
+attribute vec3 a_normal;
+attribute vec4 a_color;
+
+uniform mat4 u_worldViewProjection;
+uniform mat4 u_worldInverseTranspose;
+uniform mat4 u_bone;
+
+varying vec3 v_normal;
+varying vec4 v_color;
+
+void main() {
+    gl_Position = u_worldViewProjection * a_position(
+    v_normal = mat3(u_worldInverseTranspose) * a_normal;
+    v_color = a_color;
+}
+\end{lstlisting}
+
+\paragraph{}
+Izvršavanjem programa za sjenčanje točaka nad svim točkama prelazimo na sjenčanje slikovnih elemenata. Program za sjenčanje slikovnih elemenata ima sličnu strukturu kao i program za sjenčanje točaka. U isječku koda \ref{code24-5} prikazan je jednostavan program za sjenčanje slikovnih elemenata koji pomoću normale slikovnog elementa računa njegovu osvijetljenost i primjenjuje je uz boju slikovnog elementa.
+
+\paragraph{}
+\begin{lstlisting}[language=Javascript,caption=Program za sjenčanje slikovnih elemenata,label=code24-5]
+precision mediump float;
+varying vec3 v_normal;
+uniform vec3 u_reverseLightDirection;
+
+varying vec4 v_color;
+
+void main() {
+    vec3 normal = normalize(v_normal);
+    float light = max(dot(normal, u_reverseLightDirection), 0.1);
+    gl_FragColor = v_color;
+    gl_FragColor.rgb *= light;
+}
+\end{lstlisting}
 
 
 \section{Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke} \label{usage_tutorial}

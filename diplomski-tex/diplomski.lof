@@ -9,27 +9,27 @@
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Korisničko sučelje za generiranje modela biljaka\relax }}{6}%
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Generirane biljke sa različitim brojem vertikalnih segmenata\relax }}{7}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Prikaz ovisnosti baze kruga o razini detalja prikaza\relax }}{7}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Prikaz završenog modela tulipana\relax }}{8}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Rezultat generiranja osnovnog oblika i pretpostavljene visine\relax }}{10}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Rezultat generiranja sa definiranim oblikom biljke\relax }}{10}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Prikaz završenog modela tulipana\relax }}{12}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Rezultat generiranja osnovnog oblika i pretpostavljene visine\relax }}{14}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Rezultat generiranja sa definiranim oblikom biljke\relax }}{15}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Prikaz sila koje djeluju na biljku\relax }}{12}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Ilustracija prikaza fizičkog modela stvarnog gibanja\relax }}{14}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Prikaz izračuna kuta otklona\relax }}{15}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Komponente rezultatne sile koje djeluju na gornji dio biljke\relax }}{16}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Prikaz sila koje djeluju na biljku\relax }}{16}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ilustracija prikaza fizičkog modela stvarnog gibanja\relax }}{18}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Prikaz izračuna kuta otklona\relax }}{19}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Komponente rezultatne sile koje djeluju na gornji dio biljke\relax }}{20}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Ilustracija omotane mreže točaka oko kosti\relax }}{23}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Prikaz sučelja za simuliranje vjetra\relax }}{26}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Funkcija udara vjetra uz parametar snage 1\relax }}{27}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Funkcija konstantog puhanja vjetra uz parametar snage 1\relax }}{27}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Funkcija vjetra u udarima uz parametar snage 1 i frekvencije 0.5\relax }}{28}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Funkcija vjetra u valovima uz parametar snage 1 i frekvencije 0.16\relax }}{28}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Ilustracija omotane mreže točaka oko kosti\relax }}{27}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Prikaz sučelja za simuliranje vjetra\relax }}{30}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Funkcija udara vjetra uz parametar snage 1\relax }}{31}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Funkcija konstantog puhanja vjetra uz parametar snage 1\relax }}{31}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Funkcija vjetra u udarima uz parametar snage 1 i frekvencije 0.5\relax }}{32}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Funkcija vjetra u valovima uz parametar snage 1 i frekvencije 0.16\relax }}{32}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Prikaz modela u različitoj razini detalja\relax }}{30}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Kaotično ponašanje niske biljke prilikom vjetra u valovima\relax }}{33}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Stabilno ponašanje visoke biljke prilikom vjetra u valovima\relax }}{33}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Trajanje vremenskog koraka u ovisnosti o broju biljaka u simulaciji\relax }}{34}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Dijagram slijednog i paralelnog izvođenja\relax }}{35}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Dijagram simulacije sa zaglađivanjem\relax }}{36}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Dijagram simulacije sa grupiranjem\relax }}{37}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Prikaz modela u različitoj razini detalja\relax }}{34}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Kaotično ponašanje niske biljke prilikom vjetra u valovima\relax }}{37}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Stabilno ponašanje visoke biljke prilikom vjetra u valovima\relax }}{37}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Trajanje vremenskog koraka u ovisnosti o broju biljaka u simulaciji\relax }}{38}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Dijagram slijednog i paralelnog izvođenja\relax }}{39}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Dijagram simulacije sa zaglađivanjem\relax }}{40}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Dijagram simulacije sa grupiranjem\relax }}{41}%
 \addvspace {10\p@ }
