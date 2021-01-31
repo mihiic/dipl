@@ -4,6 +4,7 @@
 \usepackage{listings}
 \usepackage{keyval}
 
+
 \lstdefinelanguage{Javascript}{
   keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, let, const},
   keywordstyle=\color{black}\bfseries,
@@ -38,8 +39,9 @@
 \renewcommand\lstlistingname{Isječak koda}
 \renewcommand\lstlistlistingname{Popis isječaka koda}
 
-\begin{document}
+\nocite{*}
 
+\begin{document}
 % TODO: Navedite broj rada.
 \thesisnumber{2345}
 
@@ -89,58 +91,164 @@ mogao automatizirati i time skratiti vrijeme razvoja igara.
 
 
 \chapter{Generiranje modela trave i niskog raslinja}
-\section{Osnovni pristup generiranju modela}
+\section{Osnovni pristup generiranju modela} \label{generation_basics}
 \paragraph{}
 Grafička programska sučelja (engl. \textit{graphics application programming interface}) su 
-kolekcija bibloteka korištena za interakciju sa grafičkom karticom u svrhu postizanja
-sklopovski ubrzanog iscrtavanja (engl. \textit{hardware-accelerated rendering}).
+skup bibloteka korištena za interakciju sa grafičkom karticom u svrhu postizanja
+sklopovski ubrzanog iscrtavanja (engl. \textit{hardware-accelerated rendering}). Najpoznatija grafička programska sučelja su OpenGL, DirectX, Vulkan te verzija OpenGL-a 
+napisana za korištenje na webu - WebGL.
 
 \paragraph{}
-Grafička kartica, iako izrazito brza. Samo rasterizacija. Shaderi. Slanje podataka ručno.
+Grafička programska sučelja omogućuju pristup resursima grafičke kartice. Grafička 
+procesorska jedinica višestruko je brža od centralne procesorske jedinice u operacijama 
+koje su potrebne za rasterizaciju prikaza. Rasterizacija je postupak transformacije 
+podataka grafičkih primitiva u virtualnom prostoru u reprezentaciju pomoću slikovnih 
+elemenata (engl. \textit{pixels}). Postupak rasterizacije se većim dijelom svodi na 
+operacije nad matricama i vektorima. Instrukcije grafičkoj procesorskoj jedinici kako 
+rasterizirati prikaz opisuju se u programu za sjenčanje. Program za sjenčanje (engl. 
+\textit{shader}) se izvršava na grafičkoj kartici.
 
 \paragraph{}
-Podaci su točke, normale, primjer jednostavnog shadera.
+Izvršavanje takvih programa na grafičkoj kartici je izrazito brzo ali je i jako ograničeno 
+u opsegu zadaća koje takav program može izvoditi. Zbog toga se za sve ostale zadaće osim 
+rasterizacija koristi centralna procesorska jedinica, a grafička kartica izvodi samo 
+rasterizaciju. Centralna procesorska jedinica se mora brinuti o zadaćama poput pripreme i 
+slanja podataka prema grafičkoj kartici, alokaciji i čišćenju memorije te obradi 
+korisničkih ulaza.
 
 \paragraph{}
-Renderiranje trokuta od točaka. Stripe vs Fan
+Podaci koje centralna procesorska jedinica mora pripremiti i poslati na obradu grafičkoj 
+kartici uključuju pozicije točaka, popis lica koje te točke modeliraju, normale tih lica, 
+pozicije i intenziteta svijetla, informacije o načinu mapiranja tekstura na model (engl. 
+\textit{UV texture maps}), podatke o statusu animacije i druge opcionalne naprednije 
+parametre.
 
-\paragraph{}
-Generiranje vs modeliranje.
-
-\section{Generiranje točaka i poligona modela biljaka}
-\paragraph{}
-definicija biljke
-
-\paragraph{}
-
-
-\subsection{Generiranje modela uz različitu razinu detalja}
-height subsections, base model
-
-\section{Povezivanje generiranih podataka i njihov prikaz}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{img/21-5}
-	\caption{Prikaz sučelja za generiranje biljaka}
-	\label{fig:21-5}
+	\includegraphics[width=0.6\textwidth]{img/21-1}
+	\caption{Ilustracija redoslijeda točaka u smjeru kazaljke na satu i u smjeru obrnutom od kazaljke na satu}
+	\label{fig:21-1}
+\end{figure}
+
+\paragraph{}
+Za generiranje modela u 3D prostoru koji će se uspješno rasterizirati potrebno je osigurati 
+da su točke koje tvore lica poredane u smjeru kazaljke na satu zbog optimizacija prilikom
+rasteriziranja. Slika \ref{fig:21-1} prikazuje moguće redoslijede definiranja točaka koje 
+tvore lice s točkom u donjem lijevom kutu kao početnom točkom za definiranje lica. Zelena boja označava lice koje će se rasterizirati iz trenutnog kuta gledišta.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{img/21-2}
+	\caption{Šetnja oko modela za popunjavanje lica}
+	\label{fig:21-2}
+\end{figure}
+
+\paragraph{}
+Uzimajući u obzir redoslijed točaka unutar lica, potrebno je generirati sva lica 3D modela 
+kako bi svako lice bilo vidljivo iz kuta gledišta u kojem treba biti vidljivo. Jednostavan 
+način za vizualizaciju tog postupka prikazan je na slici \ref{fig:21-2}. Krenuvši od 
+početne točke generiramo samo ona lica koja bi bila vidljiva iz neke točke gledišta. 
+Rotiramo točku gledišta oko modela i dodajemo lica koja su vidljiva iz točke gledišta, a 
+nisu prije bila dodana. Nakon vraćanja u početni položaj, sva lica vidljiva iz kuta 
+gledišta su popunjena. Proces je potrebno ponoviti na različitim visinama točke gledišta 
+kako bi se popunila i lica koja omeđuju model s gornje i donje strane.
+
+
+\section{Generiranje točaka i lica modela biljaka}
+\paragraph{}
+Generiranje točaka biljaka vrši se ekstrapolacijom osnovnog oblika biljke na različite 
+visine. Osnovni oblik biljke je presjek biljke sa horizontalnom ravninom. Za primjer 
+trstike osnovni oblik je krug, a trave paralelogram. Slika \ref{fig:22-1} prikazuje 
+vizualizaciju dobivanja osnovnog oblika biljke za tulipan i travku.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/22-1}
+	\caption{Dobivanje osnovnog oblika biljke}
+	\label{fig:22-1}
+\end{figure}
+
+\paragraph{}
+Nakon postavljanja početnog oblika, točke osnovnog oblika se postavljaju kao korijen biljke 
+i dodaje se novi prsten osnovnog oblika na fiksnim intervalima visine. Svaki prsten ima 
+svoju određenu širinu oko centralne točke koja se dobiva iz opisne funkcije biljke. Konstruiranje opisne funkcije biljke opisano je u \ref{usage_tutorial}. Slika \ref{fig:22-2} prikazuje ekstrapolaciju točaka trave, kojima je osnovni oblik paralelogram.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{img/22-2}
+	\caption{Ekstrapolacija točaka trave}
+	\label{fig:22-2}
+\end{figure}
+
+\paragraph{}
+Generirane točke spajaju se u model dodavanjem lica. Dodavanje lica se vrši šetnjom gledišta oko generiranih točaka. Postupak dodavanja lica na generirane točke opisan je u poglavlju \ref{generation_basics}. Slika \ref{fig:22-3} prikazuje postupak omatanja u dvije različite iteracije. Tamnije obojana lica reprezentiraju lica koja gledaju u smjeru suprotnom od trenutnog gledišta.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/22-3}
+	\caption{Spajanje točaka u model kroz iteracije}
+	\label{fig:22-3}
+\end{figure}
+
+\paragraph{}
+Neke osnovne biljke i njihove generacijske funkcije uključene su u prezentirano rješenje i 
+mogu se generirati preko korisničkog sučelja. Korisničko sučelje za generiranje modela 
+biljaka prikazano je na slici \ref{fig:22-4}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/22-4}
+	\caption{Korisničko sučelje za generiranje modela biljaka}
+	\label{fig:22-4}
+\end{figure}
+
+\section{Generiranje modela uz različitu razinu detalja}
+\paragraph{}
+Različite razina za sve biljke detalja uvjetovane su brojem vertikalnih segmenata na koje je 
+biljka razdvojena po svojoj visini. Veći broj segmenata rezultira većom razinom detalja. 
+Razdvajanje biljaka po vertikalnim segmentima prikazano je na slici \ref{fig:221-1}. 
+Dodavanjem većeg broja segmenata biljka dobiva sve više točaka te na taj način objekt dobiva 
+i više detalja. Sijenčanje takvog modela rezultira postepenim prijelazom između boja. Kod 
+modela s malim brojem segmenata, promjene u intenzitetu osvjetljenja su mnogo izraženije što 
+je također vidljivo na slici \ref{fig:221-1}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{img/221-1}
+	\caption{Generirane biljke sa različitim brojem vertikalnih segmenata}
+	\label{fig:221-1}
+\end{figure}
+
+\paragraph{}
+Osim razine detalja po vertikalnim segmentima, moguće je osnovni oblik biljke uvjetovati po 
+količini detalja te time dobiti dodatne karakteristike kod prikaza s više detalja. Primjer 
+generiranja osnovnog oblika u većoj ili manjoj razini detalja za osnovni oblik kruga 
+ilustrirano je slikom \ref{fig:221-2}, a implementacija tog primjera prikazana je isječkom 
+\ref{code25-2}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{img/221-2}
+	\caption{Prikaz ovisnosti baze kruga o razini detalja prikaza}
+	\label{fig:221-2}
 \end{figure}
 
 \section{Programska implementacija generiranja i prikaza}
 \paragraph{}
-kod i shaderi
 
-\section{Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke}
+
+\section{Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke} \label{usage_tutorial}
 \paragraph{}
 Generiranje biljke prezentiranim rješenjem je jednostavno. Potrebno je definirati svega 
 nekoliko svojstava. Oblik baze, visinu biljke, širinu na pojedinim dijelovima te opcijanalno 
-boju na dijelovima biljke. Slika \ref{fig:21-1} prikazuje završeni model tulipana 
+boju na dijelovima biljke. Slika \ref{fig:25-1} prikazuje završeni model tulipana 
 objašnjenog u ovom primjeru.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{img/25-1}
 	\caption{Prikaz završenog modela tulipana}
-	\label{fig:21-1}
+	\label{fig:25-1}
 \end{figure}
 
 \paragraph{}
@@ -1036,7 +1144,7 @@ te biljke kao svoje. Primjer takvog sustava vidljiv je na slici \ref{fig:531-3}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{img/531-3}
-	\caption{Dijagram simulacije sa zaglađivanjem}
+	\caption{Dijagram simulacije sa grupiranjem}
 	\label{fig:531-3}
 \end{figure}
 \paragraph{}
@@ -1064,14 +1172,13 @@ gotovo svaku biljku moguće vrlo jednostavno opisati s par pravila. Model simula
 koji je istražen je jednostavan i uz dodatne optimizacije bi se efektivno mogao koristiti u 
 igrama, čak i sa ručno modeliranim modelima biljaka.
 
+\nocite{*}
+\bibliography{diplomski}
+\bibliographystyle{fer}
 
 \listoffigures
-
 \lstlistoflistings
 \addcontentsline{toc}{chapter}{Popis isječaka koda}
-
-\bibliography{literatura}
-\bibliographystyle{fer}
 
 \begin{sazetak}
 Proceduralno generiranje modela trave i niskog raslinja te simulacija njihovog ponašanja na 

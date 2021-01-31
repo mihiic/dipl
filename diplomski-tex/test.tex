@@ -1,0 +1,25 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper]{geometry}
+\usepackage{natbib}
+\usepackage{filecontents}
+\begin{filecontents}{\jobname.bib}
+   @book{Gnus,
+    author = {David A. Zoo},
+    title = {Gnats of the world},
+    publisher = {Epic},
+    Year = {2018},
+    }
+      @book{Gnats,
+    author = {David A. TheZoo},
+    title = {Gnus of the oceans},
+    publisher = {Epic},
+    Year = {2020},
+    }
+\end{filecontents}
+\begin{document}
+
+The first citation \citet{Gnus} and some text.
+Here I cite \citet{Gnus} for the second time.
+\bibliography{\jobname}
+\bibliographystyle{plainnat}
+\end{document}

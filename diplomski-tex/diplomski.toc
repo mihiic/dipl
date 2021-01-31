@@ -10,123 +10,128 @@
 \contentsline {paragraph}{}{2}%
 \contentsline {paragraph}{}{2}%
 \contentsline {paragraph}{}{2}%
-\contentsline {paragraph}{}{2}%
-\contentsline {section}{\numberline {2.2}Generiranje točaka i poligona modela biljaka}{2}%
-\contentsline {paragraph}{}{2}%
-\contentsline {paragraph}{}{2}%
-\contentsline {subsection}{\numberline {2.2.1}Generiranje modela uz različitu razinu detalja}{2}%
-\contentsline {section}{\numberline {2.3}Povezivanje generiranih podataka i njihov prikaz}{3}%
-\contentsline {section}{\numberline {2.4}Programska implementacija generiranja i prikaza}{3}%
 \contentsline {paragraph}{}{3}%
-\contentsline {section}{\numberline {2.5}Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke}{3}%
 \contentsline {paragraph}{}{3}%
+\contentsline {section}{\numberline {2.2}Generiranje točaka i lica modela biljaka}{4}%
+\contentsline {paragraph}{}{4}%
 \contentsline {paragraph}{}{4}%
 \contentsline {paragraph}{}{4}%
 \contentsline {paragraph}{}{5}%
-\contentsline {paragraph}{}{5}%
-\contentsline {paragraph}{}{5}%
+\contentsline {section}{\numberline {2.3}Generiranje modela uz različitu razinu detalja}{6}%
+\contentsline {paragraph}{}{6}%
+\contentsline {paragraph}{}{6}%
+\contentsline {section}{\numberline {2.4}Programska implementacija generiranja i prikaza}{7}%
 \contentsline {paragraph}{}{7}%
-\contentsline {chapter}{\numberline {3}Simulacijski model}{8}%
-\contentsline {section}{\numberline {3.1}Fizički model ponašanja biljke}{8}%
+\contentsline {section}{\numberline {2.5}Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke}{7}%
+\contentsline {paragraph}{}{7}%
+\contentsline {paragraph}{}{8}%
 \contentsline {paragraph}{}{8}%
 \contentsline {paragraph}{}{9}%
 \contentsline {paragraph}{}{9}%
-\contentsline {section}{\numberline {3.2}Programski model fizičkog ponašanja}{9}%
 \contentsline {paragraph}{}{9}%
-\contentsline {paragraph}{}{9}%
-\contentsline {paragraph}{}{9}%
-\contentsline {paragraph}{}{9}%
-\contentsline {paragraph}{}{10}%
-\contentsline {paragraph}{}{10}%
-\contentsline {paragraph}{}{10}%
 \contentsline {paragraph}{}{11}%
-\contentsline {paragraph}{}{11}%
-\contentsline {subsection}{\numberline {3.2.1}Usporedba sila programskog i fizičkog modela}{12}%
+\contentsline {chapter}{\numberline {3}Simulacijski model}{12}%
+\contentsline {section}{\numberline {3.1}Fizički model ponašanja biljke}{12}%
 \contentsline {paragraph}{}{12}%
 \contentsline {paragraph}{}{13}%
 \contentsline {paragraph}{}{13}%
-\contentsline {section}{\numberline {3.3}Programska implementacija fizičkog modela}{13}%
+\contentsline {section}{\numberline {3.2}Programski model fizičkog ponašanja}{13}%
+\contentsline {paragraph}{}{13}%
 \contentsline {paragraph}{}{13}%
 \contentsline {paragraph}{}{13}%
 \contentsline {paragraph}{}{13}%
 \contentsline {paragraph}{}{14}%
 \contentsline {paragraph}{}{14}%
+\contentsline {paragraph}{}{14}%
 \contentsline {paragraph}{}{15}%
 \contentsline {paragraph}{}{15}%
-\contentsline {paragraph}{}{15}%
-\contentsline {paragraph}{}{15}%
-\contentsline {paragraph}{}{16}%
-\contentsline {paragraph}{}{16}%
-\contentsline {paragraph}{}{16}%
+\contentsline {subsection}{\numberline {3.2.1}Usporedba sila programskog i fizičkog modela}{16}%
 \contentsline {paragraph}{}{16}%
 \contentsline {paragraph}{}{17}%
 \contentsline {paragraph}{}{17}%
+\contentsline {section}{\numberline {3.3}Programska implementacija fizičkog modela}{17}%
 \contentsline {paragraph}{}{17}%
-\contentsline {chapter}{\numberline {4}Simulacija ponašanja generiranog modela}{18}%
-\contentsline {section}{\numberline {4.1}Povezivanje fizičkog modela i modela prikaza}{18}%
-\contentsline {paragraph}{}{18}%
-\contentsline {paragraph}{}{18}%
+\contentsline {paragraph}{}{17}%
+\contentsline {paragraph}{}{17}%
 \contentsline {paragraph}{}{18}%
 \contentsline {paragraph}{}{18}%
 \contentsline {paragraph}{}{19}%
 \contentsline {paragraph}{}{19}%
 \contentsline {paragraph}{}{19}%
 \contentsline {paragraph}{}{19}%
-\contentsline {section}{\numberline {4.2}Programska implementacija modela}{20}%
+\contentsline {paragraph}{}{20}%
 \contentsline {paragraph}{}{20}%
 \contentsline {paragraph}{}{20}%
 \contentsline {paragraph}{}{20}%
 \contentsline {paragraph}{}{21}%
 \contentsline {paragraph}{}{21}%
 \contentsline {paragraph}{}{21}%
-\contentsline {paragraph}{}{21}%
-\contentsline {section}{\numberline {4.3}Različiti parametri simulacije}{22}%
+\contentsline {chapter}{\numberline {4}Simulacija ponašanja generiranog modela}{22}%
+\contentsline {section}{\numberline {4.1}Povezivanje fizičkog modela i modela prikaza}{22}%
+\contentsline {paragraph}{}{22}%
 \contentsline {paragraph}{}{22}%
 \contentsline {paragraph}{}{22}%
 \contentsline {paragraph}{}{22}%
 \contentsline {paragraph}{}{23}%
 \contentsline {paragraph}{}{23}%
+\contentsline {paragraph}{}{23}%
+\contentsline {paragraph}{}{23}%
+\contentsline {section}{\numberline {4.2}Programska implementacija modela}{24}%
+\contentsline {paragraph}{}{24}%
 \contentsline {paragraph}{}{24}%
 \contentsline {paragraph}{}{24}%
 \contentsline {paragraph}{}{25}%
-\contentsline {chapter}{\numberline {5}Ocjena rezultata}{26}%
-\contentsline {section}{\numberline {5.1}Realističnost prikaza}{26}%
+\contentsline {paragraph}{}{25}%
+\contentsline {paragraph}{}{25}%
+\contentsline {paragraph}{}{25}%
+\contentsline {section}{\numberline {4.3}Različiti parametri simulacije}{26}%
 \contentsline {paragraph}{}{26}%
 \contentsline {paragraph}{}{26}%
+\contentsline {paragraph}{}{26}%
 \contentsline {paragraph}{}{27}%
 \contentsline {paragraph}{}{27}%
-\contentsline {paragraph}{}{27}%
-\contentsline {subsection}{\numberline {5.1.1}Mogućnosti poboljšanja}{27}%
-\contentsline {paragraph}{}{27}%
-\contentsline {paragraph}{}{27}%
-\contentsline {paragraph}{}{28}%
-\contentsline {paragraph}{}{28}%
-\contentsline {paragraph}{}{28}%
-\contentsline {section}{\numberline {5.2}Realističnost fizičke simulacije}{28}%
-\contentsline {paragraph}{}{28}%
 \contentsline {paragraph}{}{28}%
 \contentsline {paragraph}{}{28}%
 \contentsline {paragraph}{}{29}%
-\contentsline {paragraph}{}{29}%
-\contentsline {subsection}{\numberline {5.2.1}Poboljšanje realističnosti simulacije}{30}%
+\contentsline {chapter}{\numberline {5}Ocjena rezultata}{30}%
+\contentsline {section}{\numberline {5.1}Realističnost prikaza}{30}%
 \contentsline {paragraph}{}{30}%
 \contentsline {paragraph}{}{30}%
-\contentsline {section}{\numberline {5.3}Brzina izvođenja}{30}%
-\contentsline {paragraph}{}{30}%
-\contentsline {subsection}{\numberline {5.3.1}Pristupi poboljšanju brzine izvođenja}{31}%
-\contentsline {paragraph}{}{31}%
-\contentsline {subsubsection}{Paralelno izvođenje fizičke simulacije}{31}%
 \contentsline {paragraph}{}{31}%
 \contentsline {paragraph}{}{31}%
-\contentsline {subsubsection}{Smanjenje rezolucije simulacije i zaglađivanje rezultata}{32}%
+\contentsline {paragraph}{}{31}%
+\contentsline {subsection}{\numberline {5.1.1}Mogućnosti poboljšanja}{31}%
+\contentsline {paragraph}{}{31}%
+\contentsline {paragraph}{}{31}%
 \contentsline {paragraph}{}{32}%
 \contentsline {paragraph}{}{32}%
 \contentsline {paragraph}{}{32}%
-\contentsline {subsubsection}{Izračunavanje sličnosti modela i grupiranje izračuna}{33}%
+\contentsline {section}{\numberline {5.2}Realističnost fizičke simulacije}{32}%
+\contentsline {paragraph}{}{32}%
+\contentsline {paragraph}{}{32}%
+\contentsline {paragraph}{}{32}%
 \contentsline {paragraph}{}{33}%
 \contentsline {paragraph}{}{33}%
-\contentsline {chapter}{\numberline {6}Zaključak}{34}%
+\contentsline {subsection}{\numberline {5.2.1}Poboljšanje realističnosti simulacije}{34}%
 \contentsline {paragraph}{}{34}%
 \contentsline {paragraph}{}{34}%
-\contentsline {chapter}{Popis slika}{35}%
-\contentsline {chapter}{Popis isječaka koda}{36}%
+\contentsline {section}{\numberline {5.3}Brzina izvođenja}{34}%
+\contentsline {paragraph}{}{34}%
+\contentsline {subsection}{\numberline {5.3.1}Pristupi poboljšanju brzine izvođenja}{35}%
+\contentsline {paragraph}{}{35}%
+\contentsline {subsubsection}{Paralelno izvođenje fizičke simulacije}{35}%
+\contentsline {paragraph}{}{35}%
+\contentsline {paragraph}{}{35}%
+\contentsline {subsubsection}{Smanjenje rezolucije simulacije i zaglađivanje rezultata}{36}%
+\contentsline {paragraph}{}{36}%
+\contentsline {paragraph}{}{36}%
+\contentsline {paragraph}{}{36}%
+\contentsline {subsubsection}{Izračunavanje sličnosti modela i grupiranje izračuna}{37}%
+\contentsline {paragraph}{}{37}%
+\contentsline {paragraph}{}{37}%
+\contentsline {chapter}{\numberline {6}Zaključak}{38}%
+\contentsline {paragraph}{}{38}%
+\contentsline {paragraph}{}{38}%
+\contentsline {chapter}{Literatura}{39}%
+\contentsline {chapter}{Popis slika}{40}%
+\contentsline {chapter}{Popis isječaka koda}{42}%

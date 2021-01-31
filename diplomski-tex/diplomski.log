@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.16)  29 JAN 2021 07:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.16)  31 JAN 2021 10:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -333,6 +333,7 @@ File: listings.cfg 2019/09/10 1.8c listings configuration
 ))
 Package: listings 2019/09/10 1.8c (Carsten Heinz)
 
+\citation{*}
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count281
@@ -345,21 +346,21 @@ LaTeX Warning: Label `code25-3' multiply defined.
 )
 \openout1 = `diplomski.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 41
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 44
 .
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
@@ -434,19 +435,19 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 \c@lstlisting=\count288
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 49
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 51
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 49.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 49.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -457,36 +458,36 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <hr_0036487393_56.pdf, id=8, 597.23125pt x 845.1575pt>
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf>
-Package pdftex.def Info: hr_0036487393_56.pdf  used on input line 51.
+Package pdftex.def Info: hr_0036487393_56.pdf  used on input line 53.
 (pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf>
-Package pdftex.def Info: hr_0036487393_56.pdf  used on input line 51.
+Package pdftex.def Info: hr_0036487393_56.pdf  used on input line 53.
 (pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
 <hr_0036487393_56.pdf, id=11, page=1, 597.23125pt x 845.1575pt>
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf, page 1>
-Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
+Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 53.
 (pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf, page 1>
-Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
+Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 53.
 (pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf, page 1>
-Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
+Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 53.
 (pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf, page 1>
-Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
+Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 53.
 (pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
 File: hr_0036487393_56.pdf Graphic file (type pdf)
 <use hr_0036487393_56.pdf, page 1>
-Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 51.
+Package pdftex.def Info: hr_0036487393_56.pdf , page1 used on input line 53.
 (pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
  [1 <./hr_0036487393_56.pdf>] [3]
 (./diplomski.toc
-Overfull \hbox (1.14377pt too wide) in paragraph at lines 21--21
+Overfull \hbox (1.14377pt too wide) in paragraph at lines 25--25
  [][] []\T1/ptm/m/n/12 Primjer ko-ri-²te-nja ra-zvi-je-nog pro-grama za ge-ne-r
 i-ra-nje jed-nos-tavne pro- 
  []
@@ -503,205 +504,260 @@ Poglavlje 1.
 
 ]
 Poglavlje 2.
-<img/21-5.png, id=45, 877.2775pt x 654.445pt>
-File: img/21-5.png Graphic file (type png)
-<use img/21-5.png>
-Package pdftex.def Info: img/21-5.png  used on input line 123.
-(pdftex.def)             Requested size: 412.56497pt x 307.77893pt.
 [2
 
 ]
-<img/25-1.png, id=51, 401.5pt x 382.42876pt>
+<img/21-1.png, id=49, 330.48468pt x 139.27031pt>
+File: img/21-1.png Graphic file (type png)
+<use img/21-1.png>
+Package pdftex.def Info: img/21-1.png  used on input line 128.
+(pdftex.def)             Requested size: 247.54149pt x 104.32071pt.
+<img/21-2.png, id=51, 186.6975pt x 196.48407pt>
+File: img/21-2.png Graphic file (type png)
+<use img/21-2.png>
+Package pdftex.def Info: img/21-2.png  used on input line 141.
+(pdftex.def)             Requested size: 185.65297pt x 195.39226pt.
+ [3 <./img/21-1.png> <./img/21-2.png>]
+<img/22-1.png, id=57, 602.25pt x 385.44pt>
+File: img/22-1.png Graphic file (type png)
+<use img/22-1.png>
+Package pdftex.def Info: img/22-1.png  used on input line 166.
+(pdftex.def)             Requested size: 330.05322pt x 211.23984pt.
+<img/22-2.png, id=58, 292.84406pt x 300.3722pt>
+File: img/22-2.png Graphic file (type png)
+<use img/22-2.png>
+Package pdftex.def Info: img/22-2.png  used on input line 178.
+(pdftex.def)             Requested size: 185.65297pt x 190.43172pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4 <./img/22-1.png>]
+<img/22-3.png, id=63, 559.33969pt x 336.50719pt>
+File: img/22-3.png Graphic file (type png)
+<use img/22-3.png>
+Package pdftex.def Info: img/22-3.png  used on input line 188.
+(pdftex.def)             Requested size: 309.42372pt x 186.15779pt.
+<img/22-4.png, id=64, 817.0525pt x 758.835pt>
+File: img/22-4.png Graphic file (type png)
+<use img/22-4.png>
+Package pdftex.def Info: img/22-4.png  used on input line 200.
+(pdftex.def)             Requested size: 309.42372pt x 287.3761pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5 <./img/22-2.png> <./img/22-3.png>]
+<img/221-1.png, id=70, 385.44pt x 385.44pt>
+File: img/221-1.png Graphic file (type png)
+<use img/221-1.png>
+Package pdftex.def Info: img/221-1.png  used on input line 217.
+(pdftex.def)             Requested size: 185.65297pt x 185.65016pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/221-2.png, id=71, 385.44pt x 385.44pt>
+File: img/221-2.png Graphic file (type png)
+<use img/221-2.png>
+Package pdftex.def Info: img/221-2.png  used on input line 231.
+(pdftex.def)             Requested size: 185.65297pt x 185.65016pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6 <./img/22-4.png>]
+<img/25-1.png, id=76, 401.5pt x 382.42876pt>
 File: img/25-1.png Graphic file (type png)
 <use img/25-1.png>
-Package pdftex.def Info: img/25-1.png  used on input line 141.
+Package pdftex.def Info: img/25-1.png  used on input line 249.
 (pdftex.def)             Requested size: 247.54149pt x 235.7904pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3 <./img/21-5.png>]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 15
-0.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+[7 <./img/221-1.png> <./img/221-2.png>]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 25
+8.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-[4 <./img/25-1.png>]
-<img/25-2.png, id=63, 369.38pt x 368.37625pt>
+) [8 <./img/25-1.png>]
+<img/25-2.png, id=90, 369.38pt x 368.37625pt>
 File: img/25-2.png Graphic file (type png)
 <use img/25-2.png>
-Package pdftex.def Info: img/25-2.png  used on input line 206.
+Package pdftex.def Info: img/25-2.png  used on input line 314.
 (pdftex.def)             Requested size: 247.54149pt x 246.867pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (44.53421pt too wide) in paragraph at lines 212--220
+Overfull \hbox (44.53421pt too wide) in paragraph at lines 320--328
 \T1/ptm/m/n/12 kriv-lje-nost mo-dela se pos-tav-lja u me-todi $\OML/cmm/m/it/12
  calculateCurvePoint$\T1/ptm/m/n/12 . Me-toda $\OML/cmm/m/it/12 calculateCurveP
 oint$
  []
 
-[5]
-<img/25-3.png, id=67, 104.39pt x 165.61874pt>
+[9]
+<img/25-3.png, id=94, 104.39pt x 165.61874pt>
 File: img/25-3.png Graphic file (type png)
 <use img/25-3.png>
-Package pdftex.def Info: img/25-3.png  used on input line 234.
+Package pdftex.def Info: img/25-3.png  used on input line 342.
 (pdftex.def)             Requested size: 82.51173pt x 130.91571pt.
- [6 <./img/25-2.png> <./img/25-3.png>] [7]
+ [10 <./img/25-2.png> <./img/25-3.png>] [11]
 Poglavlje 3.
-<img/31-1.png, id=76, 385.44pt x 385.44pt>
+<img/31-1.png, id=103, 385.44pt x 385.44pt>
 File: img/31-1.png Graphic file (type png)
 <use img/31-1.png>
-Package pdftex.def Info: img/31-1.png  used on input line 270.
+Package pdftex.def Info: img/31-1.png  used on input line 378.
 (pdftex.def)             Requested size: 309.42372pt x 309.42282pt.
-[8
+[12
 
  <./img/31-1.png>]
-<img/32-1.png, id=82, 385.44pt x 385.44pt>
+<img/32-1.png, id=108, 385.44pt x 385.44pt>
 File: img/32-1.png Graphic file (type png)
 <use img/32-1.png>
-Package pdftex.def Info: img/32-1.png  used on input line 315.
+Package pdftex.def Info: img/32-1.png  used on input line 423.
 (pdftex.def)             Requested size: 330.05322pt x 330.05453pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9] [10 <./img/32-1.png>]
-<img/32-2.png, id=93, 305.57642pt x 399.84163pt>
+[13] [14 <./img/32-1.png>]
+<img/32-2.png, id=120, 305.57642pt x 399.84163pt>
 File: img/32-2.png Graphic file (type png)
 <use img/32-2.png>
-Package pdftex.def Info: img/32-2.png  used on input line 350.
+Package pdftex.def Info: img/32-2.png  used on input line 458.
 (pdftex.def)             Requested size: 206.28249pt x 269.92415pt.
- [11 <./img/32-2.png>]
-<img/321-1.png, id=98, 385.44pt x 385.44pt>
+ [15 <./img/32-2.png>]
+<img/321-1.png, id=125, 385.44pt x 385.44pt>
 File: img/321-1.png Graphic file (type png)
 <use img/321-1.png>
-Package pdftex.def Info: img/321-1.png  used on input line 395.
+Package pdftex.def Info: img/321-1.png  used on input line 503.
 (pdftex.def)             Requested size: 288.79422pt x 288.79109pt.
- [12 <./img/321-1.png>]
-Overfull \hbox (8.5217pt too wide) in paragraph at lines 436--444
+ [16 <./img/321-1.png>]
+Overfull \hbox (8.5217pt too wide) in paragraph at lines 544--552
  [] \T1/ptm/m/n/12 Prvi pa-ra-me-tar kod ini-ci-ja-li-za-cije je iz-bor al-go-r
 itma rje-²a-va£a ko-li-zija (engl.  \T1/ptm/m/it/12 collision-
  []
 
-[13] [14] [15] [16] [17]
+[17] [18] [19] [20] [21]
 Poglavlje 4.
-<img/41-1.png, id=119, 240.9pt x 240.9pt>
+<img/41-1.png, id=146, 240.9pt x 240.9pt>
 File: img/41-1.png Graphic file (type png)
 <use img/41-1.png>
-Package pdftex.def Info: img/41-1.png  used on input line 637.
+Package pdftex.def Info: img/41-1.png  used on input line 745.
 (pdftex.def)             Requested size: 288.79422pt x 288.82123pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[18
+[22
 
-] [19 <./img/41-1.png>] [20] [21]
-<img/43-4.png, id=134, 646.415pt x 594.22pt>
+] [23 <./img/41-1.png>] [24] [25]
+<img/43-4.png, id=160, 646.415pt x 594.22pt>
 File: img/43-4.png Graphic file (type png)
 <use img/43-4.png>
-Package pdftex.def Info: img/43-4.png  used on input line 755.
+Package pdftex.def Info: img/43-4.png  used on input line 863.
 (pdftex.def)             Requested size: 412.56497pt x 379.24773pt.
- [22 <./img/43-4.png>]
-<img/43-0.png, id=139, 595.22375pt x 365.365pt>
+ [26 <./img/43-4.png>]
+<img/43-0.png, id=166, 595.22375pt x 365.365pt>
 File: img/43-0.png Graphic file (type png)
 <use img/43-0.png>
-Package pdftex.def Info: img/43-0.png  used on input line 777.
+Package pdftex.def Info: img/43-0.png  used on input line 885.
 (pdftex.def)             Requested size: 330.05322pt x 202.596pt.
-<img/43-1.png, id=140, 595.22375pt x 360.34625pt>
+<img/43-1.png, id=167, 595.22375pt x 360.34625pt>
 File: img/43-1.png Graphic file (type png)
 <use img/43-1.png>
-Package pdftex.def Info: img/43-1.png  used on input line 789.
+Package pdftex.def Info: img/43-1.png  used on input line 897.
 (pdftex.def)             Requested size: 330.05322pt x 199.81308pt.
- [23 <./img/43-0.png> <./img/43-1.png>]
-<img/43-2.png, id=146, 595.22375pt x 363.3575pt>
+ [27 <./img/43-0.png> <./img/43-1.png>]
+<img/43-2.png, id=173, 595.22375pt x 363.3575pt>
 File: img/43-2.png Graphic file (type png)
 <use img/43-2.png>
-Package pdftex.def Info: img/43-2.png  used on input line 802.
+Package pdftex.def Info: img/43-2.png  used on input line 910.
 (pdftex.def)             Requested size: 330.05322pt x 201.48282pt.
-<img/43-3.png, id=147, 598.235pt x 360.34625pt>
+<img/43-3.png, id=174, 598.235pt x 360.34625pt>
 File: img/43-3.png Graphic file (type png)
 <use img/43-3.png>
-Package pdftex.def Info: img/43-3.png  used on input line 815.
+Package pdftex.def Info: img/43-3.png  used on input line 923.
 (pdftex.def)             Requested size: 330.05322pt x 198.80687pt.
- [24 <./img/43-2.png> <./img/43-3.png>] [25]
+ [28 <./img/43-2.png> <./img/43-3.png>] [29]
 Poglavlje 5.
-<img/51-1.png, id=156, 784.9325pt x 592.2125pt>
+<img/51-1.png, id=183, 784.9325pt x 592.2125pt>
 File: img/51-1.png Graphic file (type png)
 <use img/51-1.png>
-Package pdftex.def Info: img/51-1.png  used on input line 831.
+Package pdftex.def Info: img/51-1.png  used on input line 939.
 (pdftex.def)             Requested size: 330.05322pt x 249.01671pt.
-[26
+[30
 
- <./img/51-1.png>] [27]
-<img/52-1.png, id=165, 92.9874pt x 80.2197pt>
+ <./img/51-1.png>] [31]
+<img/52-1.png, id=191, 92.9874pt x 80.2197pt>
 File: img/52-1.png Graphic file (type png)
 <use img/52-1.png>
-Package pdftex.def Info: img/52-1.png  used on input line 927.
+Package pdftex.def Info: img/52-1.png  used on input line 1035.
 (pdftex.def)             Requested size: 165.02347pt x 142.3683pt.
- [28]
-<img/52-2.png, id=169, 107.6823pt x 96.1191pt>
+ [32]
+<img/52-2.png, id=196, 107.6823pt x 96.1191pt>
 File: img/52-2.png Graphic file (type png)
 <use img/52-2.png>
-Package pdftex.def Info: img/52-2.png  used on input line 942.
+Package pdftex.def Info: img/52-2.png  used on input line 1050.
 (pdftex.def)             Requested size: 165.02347pt x 147.31543pt.
- [29 <./img/52-1.png> <./img/52-2.png>]
-<img/53-1.png, id=175, 596.2275pt x 362.35374pt>
+ [33 <./img/52-1.png> <./img/52-2.png>]
+<img/53-1.png, id=202, 596.2275pt x 362.35374pt>
 File: img/53-1.png Graphic file (type png)
 <use img/53-1.png>
-Package pdftex.def Info: img/53-1.png  used on input line 971.
+Package pdftex.def Info: img/53-1.png  used on input line 1079.
 (pdftex.def)             Requested size: 391.93546pt x 238.19768pt.
- [30 <./img/53-1.png>]
-<img/531-1.png, id=180, 351.3125pt x 346.29375pt>
+ [34 <./img/53-1.png>]
+<img/531-1.png, id=207, 351.3125pt x 346.29375pt>
 File: img/531-1.png Graphic file (type png)
 <use img/531-1.png>
-Package pdftex.def Info: img/531-1.png  used on input line 992.
+Package pdftex.def Info: img/531-1.png  used on input line 1100.
 (pdftex.def)             Requested size: 288.79422pt x 284.6919pt.
- [31 <./img/531-1.png>]
-<img/531-2.png, id=185, 233.87375pt x 320.19624pt>
+ [35 <./img/531-1.png>]
+<img/531-2.png, id=212, 233.87375pt x 320.19624pt>
 File: img/531-2.png Graphic file (type png)
 <use img/531-2.png>
-Package pdftex.def Info: img/531-2.png  used on input line 1018.
+Package pdftex.def Info: img/531-2.png  used on input line 1126.
 (pdftex.def)             Requested size: 206.28249pt x 282.43314pt.
- [32 <./img/531-2.png>]
-<img/531-3.png, id=191, 261.97874pt x 242.9075pt>
+ [36 <./img/531-2.png>]
+<img/531-3.png, id=217, 261.97874pt x 242.9075pt>
 File: img/531-3.png Graphic file (type png)
 <use img/531-3.png>
-Package pdftex.def Info: img/531-3.png  used on input line 1038.
+Package pdftex.def Info: img/531-3.png  used on input line 1146.
 (pdftex.def)             Requested size: 206.28249pt x 191.27213pt.
- [33 <./img/531-3.png>]
+ [37 <./img/531-3.png>]
 Poglavlje 6.
-[34
+(./diplomski.bbl [38
 
-] (./diplomski.lof)
+]) [39
+
+] (./diplomski.lof [40
+
+])
 \tf@lof=\write4
 \openout4 = `diplomski.lof'.
 
- [35
-
-] (./diplomski.lol)
+ [41] (./diplomski.lol)
 \tf@lol=\write5
 \openout5 = `diplomski.lol'.
 
 
-No file diplomski.bbl.
-[36
+[42
 
-] [37] (./diplomski.aux)
+] [43] (./diplomski.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9280 strings out of 482600
- 129733 string characters out of 5949960
- 415057 words of memory out of 5000000
- 24144 multiletter control sequences out of 15000+600000
+ 9354 strings out of 482600
+ 130756 string characters out of 5949960
+ 416220 words of memory out of 5000000
+ 24209 multiletter control sequences out of 15000+600000
  588550 words of font info for 91 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 49i,18n,46p,270b,1713s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,18n,46p,425b,1713s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
@@ -713,10 +769,10 @@ sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on diplomski.pdf (42 pages, 603190 bytes).
+Output written on diplomski.pdf (48 pages, 695429 bytes).
 PDF statistics:
- 248 PDF objects out of 1000 (max. 8388607)
- 141 compressed objects within 2 object streams
+ 281 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 161 words of extra memory for PDF output out of 10000 (max. 10000000)
 
