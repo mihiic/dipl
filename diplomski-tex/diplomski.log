@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.16)  31 JAN 2021 17:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.16)  1 FEB 2021 07:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -750,10 +750,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9408 strings out of 482600
- 131525 string characters out of 5949960
- 445287 words of memory out of 5000000
- 24263 multiletter control sequences out of 15000+600000
+ 9417 strings out of 482600
+ 131708 string characters out of 5949960
+ 445370 words of memory out of 5000000
+ 24272 multiletter control sequences out of 15000+600000
  588550 words of font info for 91 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  49i,18n,46p,834b,1709s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -768,7 +768,7 @@ sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on diplomski.pdf (52 pages, 705440 bytes).
+Output written on diplomski.pdf (52 pages, 706990 bytes).
 PDF statistics:
  294 PDF objects out of 1000 (max. 8388607)
  163 compressed objects within 2 object streams

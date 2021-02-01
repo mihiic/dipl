@@ -7,11 +7,11 @@
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Ekstrapolacija točaka trave\relax }}{5}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Spajanje točaka u model kroz iteracije\relax }}{5}%
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Korisničko sučelje za generiranje modela biljaka\relax }}{6}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Generirane biljke sa različitim brojem vertikalnih segmenata\relax }}{7}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Generirane biljke s različitim brojem vertikalnih segmenata\relax }}{7}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Prikaz ovisnosti baze kruga o razini detalja prikaza\relax }}{7}%
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Prikaz završenog modela tulipana\relax }}{12}%
 \contentsline {figure}{\numberline {2.10}{\ignorespaces Rezultat generiranja osnovnog oblika i pretpostavljene visine\relax }}{14}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Rezultat generiranja sa definiranim oblikom biljke\relax }}{15}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Rezultat generiranja s definiranim oblikom biljke\relax }}{15}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Prikaz sila koje djeluju na biljku\relax }}{16}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Ilustracija prikaza fizičkog modela stvarnog gibanja\relax }}{18}%
@@ -21,7 +21,7 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Ilustracija omotane mreže točaka oko kosti\relax }}{27}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Prikaz sučelja za simuliranje vjetra\relax }}{30}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Funkcija udara vjetra uz parametar snage 1\relax }}{31}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Funkcija konstantog puhanja vjetra uz parametar snage 1\relax }}{31}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Funkcija konstantnog puhanja vjetra uz parametar snage 1\relax }}{31}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Funkcija vjetra u udarima uz parametar snage 1 i frekvencije 0.5\relax }}{32}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Funkcija vjetra u valovima uz parametar snage 1 i frekvencije 0.16\relax }}{32}%
 \addvspace {10\p@ }

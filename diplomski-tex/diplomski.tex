@@ -94,7 +94,7 @@ mogao automatizirati i time skratiti vrijeme razvoja igara.
 \section{Osnovni pristup generiranju modela} \label{generation_basics}
 \paragraph{}
 Grafička programska sučelja (engl. \textit{graphics application programming interface}) su 
-skup bibloteka korištena za interakciju sa grafičkom karticom u svrhu postizanja
+skup biblioteka korištena za interakciju s grafičkom karticom u svrhu postizanja
 sklopovski ubrzanog iscrtavanja (engl. \textit{hardware-accelerated rendering}). Najpoznatija grafička programska sučelja su OpenGL, DirectX, Vulkan te verzija OpenGL-a 
 napisana za korištenje na webu - WebGL.
 
@@ -157,7 +157,7 @@ kako bi se popunila i lica koja omeđuju model s gornje i donje strane.
 \section{Generiranje točaka i lica modela biljaka} \label{plant_gen}
 \paragraph{}
 Generiranje točaka biljaka vrši se ekstrapolacijom osnovnog oblika biljke na različite 
-visine. Osnovni oblik biljke je presjek biljke sa horizontalnom ravninom. Za primjer 
+visine. Osnovni oblik biljke je presjek biljke s horizontalnom ravninom. Za primjer 
 trstike osnovni oblik je krug, a trave paralelogram. Slika \ref{fig:22-1} prikazuje 
 vizualizaciju dobivanja osnovnog oblika biljke za tulipan i travku.
 
@@ -181,7 +181,7 @@ svoju određenu širinu oko centralne točke koja se dobiva iz opisne funkcije b
 \end{figure}
 
 \paragraph{}
-Generirane točke spajaju se u model dodavanjem lica. Dodavanje lica se vrši šetnjom gledišta oko generiranih točaka. Postupak dodavanja lica na generirane točke opisan je u poglavlju \ref{generation_basics}. Slika \ref{fig:22-3} prikazuje postupak omatanja u dvije različite iteracije. Tamnije obojana lica reprezentiraju lica koja gledaju u smjeru suprotnom od trenutnog gledišta.
+Generirane točke spajaju se u model dodavanjem lica. Dodavanje lica se vrši šetnjom gledišta oko generiranih točaka. Postupak dodavanja lica na generirane točke opisan je u poglavlju \ref{generation_basics}. Slika \ref{fig:22-3} prikazuje postupak omatanja u dvije različite iteracije. Tamnije pobojana lica reprezentiraju lica koja gledaju u smjeru suprotnom od trenutnog gledišta.
 
 \begin{figure}[h]
 	\centering
@@ -207,15 +207,15 @@ biljaka prikazano je na slici \ref{fig:22-4}.
 Različite razina za sve biljke detalja uvjetovane su brojem vertikalnih segmenata na koje je 
 biljka razdvojena po svojoj visini. Veći broj segmenata rezultira većom razinom detalja. 
 Razdvajanje biljaka po vertikalnim segmentima prikazano je na slici \ref{fig:221-1}. 
-Dodavanjem većeg broja segmenata biljka dobiva sve više točaka te na taj način objekt dobiva 
-i više detalja. Sijenčanje takvog modela rezultira postepenim prijelazom između boja. Kod 
+Dodavanjem većeg broja segmenata biljka dobiva sve više točaka te tako objekt dobiva 
+i više detalja. Sjenčanje takvog modela rezultira postepenim prijelazom između boja. Kod 
 modela s malim brojem segmenata, promjene u intenzitetu osvjetljenja su mnogo izraženije što 
 je također vidljivo na slici \ref{fig:221-1}.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.45\textwidth]{img/221-1}
-	\caption{Generirane biljke sa različitim brojem vertikalnih segmenata}
+	\caption{Generirane biljke s različitim brojem vertikalnih segmenata}
 	\label{fig:221-1}
 \end{figure}
 
@@ -308,7 +308,7 @@ for (let level = 0; level < lod + 1; level++) {
 \end{lstlisting}
 
 \paragraph{}
-Nakon generiranja svih potrebnih podataka, potrebno ih je poslati na grafičku karticu kako bi se ti podaci mogli iscrtati. Slanje podataka na grafičku karticu otvara se otvaranjem kanala (engl. \textit{buffer}). Isječak koda \ref{code:24-3} prikazuje način povezivanja kanala sa atributima u programu za sjenčanje. Isječak koda za kreiranje kanala je identičan za sve vrste podataka koje šaljemo na grafičku karticu i razlikuje se samo u parametrima.
+Nakon generiranja svih potrebnih podataka, potrebno ih je poslati na grafičku karticu kako bi se ti podaci mogli iscrtati. Slanje podataka na grafičku karticu otvara se otvaranjem kanala (engl. \textit{buffer}). Isječak koda \ref{code:24-3} prikazuje način povezivanja kanala s atributima u programu za sjenčanje. Isječak koda za kreiranje kanala je identičan za sve vrste podataka koje šaljemo na grafičku karticu i razlikuje se samo u parametrima.
 
 \begin{lstlisting}[language=Javascript,caption=Kreiranje kanala za slanje podataka prema grafičkoj kartici ,label=code24-3]
 createAttributeBuffer(shaderBinding, size, type) {
@@ -344,7 +344,7 @@ createAttributeBuffer(shaderBinding, size, type) {
 Program za sjenčanje kojem šaljemo podatke sastoji se od dva dijela. Programa za sjenčanje točaka (engl. vertex shader) i programa za sjenčanje slikovnih elemenata (engl. fragment shader). Program za sjenčanje točaka se izvršava za svaku točku u prostoru, a program za sjenčanje slikovnih elemenata za svaki slikovni element prikaza. Na početku svakog dijela programa definiramo atribute, uniformne elemente i varirajuće elemente. Atributi su svojstva neke točke u prostoru poput pozicije, boje i normale. Uniformni elementi su jednaki u jednom iscrtavanju za sve točke odnosno slikovne elemente. Varirajući elementi svoju vrijednost dobivaju interpolacijom između točaka koji čine lice od kuda im i naziv. Svaki slikovni element ima svoju jedinstvenu vrijednost varirajućih elemenata.
 
 \paragraph{}
-Isječak koda \ref{code24-2} prikazuje primjer jednostavnog programa za sjenčanje točaka korištenog u prezentiranom rješenju. U nastavku rada ovaj program je nadograđen mogučnošću animacije.
+Isječak koda \ref{code24-2} prikazuje primjer jednostavnog programa za sjenčanje točaka korištenog u prezentiranom rješenju. U nastavku rada ovaj program je nadograđen mogućnošću animacije.
 
 \paragraph{}
 \begin{lstlisting}[language=Javascript,caption=Program za sjenčanje točaka,label=code24-4]
@@ -389,7 +389,7 @@ void main() {
 \section{Primjer korištenja razvijenog programa za generiranje jednostavne proizvoljne biljke} \label{usage_tutorial}
 \paragraph{}
 Generiranje biljke prezentiranim rješenjem je jednostavno. Potrebno je definirati svega 
-nekoliko svojstava. Oblik baze, visinu biljke, širinu na pojedinim dijelovima te opcijanalno 
+nekoliko svojstava. Oblik baze, visinu biljke, širinu na pojedinim dijelovima te opcionalno 
 boju na dijelovima biljke. Slika \ref{fig:25-1} prikazuje završeni model tulipana 
 objašnjenog u ovom primjeru.
 
@@ -401,7 +401,7 @@ objašnjenog u ovom primjeru.
 \end{figure}
 
 \paragraph{}
-Prije opisa biljke potrebno je osigurati apstraktna svojstva biljke naslijeđivanjem razreda
+Prije opisa biljke potrebno je osigurati apstraktna svojstva biljke nasljeđivanjem razreda
 $BaseGenerationFunction$. Postupak je vidljiv u isječku koda \ref{code25-1}.
 
 \begin{lstlisting}[language=Javascript,caption=Naslijeđivanje razreda BaseGenerationFunction,label=code25-1]
@@ -411,7 +411,7 @@ export class TulipFunction extends BaseGenerationFunction {
 \end{lstlisting}
 
 \paragraph{}
-Nakon naslijeđivanja, potrebno je generirati osnovni oblik biljke. Osnovni oblik biljke 
+Nakon nasljeđivanja, potrebno je generirati osnovni oblik biljke. Osnovni oblik biljke 
 možemo zamisliti kao presjek biljke i horizontalne ravnine. U slučaju tulipana to je krug.
 Skup točaka koje reprezentiraju krug možemo izračunati kretanjem po jediničnoj kružnici, i 
 na svakom pomaku trigonometrijskim funkcijama $sin$ i $cos$ izračunati koordinate na 
@@ -466,12 +466,12 @@ pretpostavljenom visinom.
 \end{figure}
 
 \paragraph{}
-Nakon opisa osnovna dva svojsta, potrebno je definirati zakrivljenost modela. Zakrivljenost 
+Nakon opisa dva osnovna svojstva, potrebno je definirati zakrivljenost modela. Zakrivljenost 
 modela se postavlja u metodi $calculateCurvePoint$. Metoda $calculateCurvePoint$ prima 
 parametar $offset$ koji nam govori za koju visinu biljke tražimo širinu. Parametar $offset$ 
 je vrijednost između 0 i 1, gdje 0 simbolizira dno biljke, a 1 simbolizira vrh biljke.
 Tulipan je biljka tanke stabljike i zvonolikog cvijeta. Za tanku stabljiku vraćamo 
-vrijednost širine 0.1, a zvono modeliramo sa pola periode spljoštene sinusoide i bazne 
+vrijednost širine 0.1, a zvono modeliramo s pola periode spljoštene sinusoide i bazne 
 širine na koju dodajemo amplitudu takve sinusoide. Isječak koda \ref{code25-3} pokazuje opis 
 biljke tulipana, a slika \ref{fig:25-3} rezultat pokretanja nakon opisa oblika.
 \paragraph{}
@@ -489,13 +489,13 @@ calculateCurvePoint(offset) {
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.2\textwidth]{img/25-3}
-	\caption{Rezultat generiranja sa definiranim oblikom biljke}
+	\caption{Rezultat generiranja s definiranim oblikom biljke}
 	\label{fig:25-3}
 \end{figure}
 \paragraph{}
 Dodavanje boje se odvija na sličan način kao definiranje oblika. Dodavanje boje definira se 
 u metodi $calculateColorAtPoint$ koja također prima parametar $offset$. Tulipan ima zelenu 
-stabiljku i cvijet neke boje. U primjeru je korištena crvena boja cvijeta. Isječak koda 
+stabljiku i cvijet neke boje. U primjeru je korištena crvena boja cvijeta. Isječak koda 
 \ref{code25-4} prikazuje postavljanje boje, a rezultat generiranja i prikazan je na slici 
 \ref{fig:21-1}.
 
@@ -1037,14 +1037,14 @@ toga je njegovo puhanje gotovo. Graf snage puhanja kod udara vjetra prikazan je 
 \end{figure}
 
 \paragraph{}
-Konstantno puhanje djeluje istim inzetitetom u jednom smjeru bez prestanka. Graf konstantnog 
+Konstantno puhanje djeluje istim intenzitetom u jednom smjeru bez prestanka. Graf konstantnog 
 puhanja prikazan je na slici \ref{fig:43-1}. Konstantno puhanje i udar vjetra su jednostavne 
 simulacije korištene u razvoju i ne simuliraju dobro stvarnu pojavu vjetra.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{img/43-1}
-	\caption{Funkcija konstantog puhanja vjetra uz parametar snage 1}
+	\caption{Funkcija konstantnog puhanja vjetra uz parametar snage 1}
 	\label{fig:43-1}
 \end{figure}
 
